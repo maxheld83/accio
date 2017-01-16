@@ -10,7 +10,7 @@
 <style>
   #makeMeDraggable {}
     .ui-widget-header p, .ui-widget-content p { margin: 0; }
-    #snaptarget { height: 140px; }
+  #containment-line { width: 95%; height:150px; border:2px solid #ccc; padding: 10px; }
 </style>
 
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
@@ -20,7 +20,7 @@
   $( init );
 
   function init() {
-  $('#makeMeDraggable').draggable({ snap: ".ui-widget-header", stack: "#makeMeDraggable" });
+  $('#makeMeDraggable').draggable({snap: "window", stack: "#makeMeDraggable", containment: "window", scroll: false});
   // see the jquery stack option http://jqueryui.com/draggable/#visual-feedback it ensures that the last item dragged will appear on top of others
   $('#makeMeDraggable1').draggable({stack: "#makeMeDraggable1" });
   $('#makeMeDraggable2').draggable({stack: "#makeMeDraggable2" });
@@ -32,6 +32,8 @@
   $('#makeMeDraggable8').draggable({stack: "#makeMeDraggable8" });
 
 }
+
+
 
 </script>
   <title>Accio Waben</title>
@@ -50,12 +52,9 @@
   <div class="middle"></div>
   <div class="right"></div> -->
 
-  <div id="snaptarget" class="ui-widget-header">
-    <p>Snaptarget</p>
-  </div>
 
   <div class="hexrow">
-      <div id="makeMeDraggable">
+      <div id="makeMeDraggable" >
           <span>Bei der Arbeit kann ich meiner Kreativität freien Lauf lassen.</span>
           <div></div>
           <div></div>

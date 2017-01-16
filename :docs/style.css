@@ -31,9 +31,6 @@ body {
 }*/
 
 
-
-
-
 .hexrow {
     white-space: nowrap;
     /*right/left margin set at (( width of child div x sin(30) ) / 2) makes a fairly tight fit; a 3px bottom seems to match*/

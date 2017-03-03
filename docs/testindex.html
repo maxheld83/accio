@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="de">
+   <meta charset="utf-8", content="width=device-width, initial-scale=1">
+   <title>QWrks Onlinetool</title>
+   <link rel="stylesheet" href="teststyle.css">
+   <style>
+      @import url('https://fonts.googleapis.com/css?family=Lato');
+   </style>
+   <head>
+      <script src="testjs.js"></script>
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      <script>
+         window.jQuery || document.write('<script src="../docs/jquery-ui/jquery-ui.min.js"><\/script>');
+      </script>
+      <script type="text/javascript"></script>
+
+      <!-- How to get all the statements from an document automatically? Probably with a for loop http://stackoverflow.com/questions/17200431/appending-multiple-divs  -->
+
+<body>
+      <div class="hexagon">
+      <span class="textstyle">Bei der Arbeit kann ich meiner Kreativität freien Lauf lassen.</span>
+    </div>
+    <div class="hexagon">
+    <span class="textstyle">Die Unterscheidung von Arbeit und Freizeit ergibt wenig Sinn für mich.</span>
+
+      <div></div>
+
+<script>
+
+      $(function () {
+      $('.hexagon').draggable({snap: "window", stack: "#makeMeDraggable", containment: "window", scroll: false})
+    });
+
+</script>
+
+      </head>
+   </body>
+</html>

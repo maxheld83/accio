@@ -5,6 +5,9 @@
    <link rel="stylesheet" href="teststyle.css">
    <style>
       @import url('https://fonts.googleapis.com/css?family=Lato');
+      .ui-widget-header p, .ui-widget-content p { margin: 0; }
+      #containment-wrapper { width: 95%; height:900px; border:1px solid #ccc;}
+
    </style>
    <head>
       <script src="testjs.js"></script>
@@ -18,6 +21,7 @@
       <!-- How to get all the statements from an document automatically? Probably with a for loop http://stackoverflow.com/questions/17200431/appending-multiple-divs  -->
 
 <body>
+  <div id="containment-wrapper" class="ui-widget-header">
       <div class="hexagon">
       <span class="textstyle">Bei der Arbeit kann ich meiner Kreativität freien Lauf lassen.</span>
     </div>
@@ -29,7 +33,7 @@
 <script>
 
       $(function () {
-      $('.hexagon').draggable({snap: "window", stack: "#makeMeDraggable", containment: "window", scroll: false})
+      $('.hexagon').draggable({stack: "#makeMeDraggable", containment: "#containment-wrapper", scroll: false, cursorAt: { top: 86.605, left: 160 }, snap: ".ui-widget-header,.hexagon"});
     });
 
 </script>

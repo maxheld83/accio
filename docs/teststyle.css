@@ -40,7 +40,6 @@
         /*hexagon items*/
 
         .hexagon-item {
-            float: left;
             width: 8.3571428571%;
             padding: 0 0 9.6502804355% 0;
             -o-transform: rotate(-60deg) skewY(30deg);
@@ -49,11 +48,8 @@
             -ms-transform: rotate(-60deg) skewY(30deg);
             transform: rotate(-60deg) skewY(30deg);
             overflow: hidden;
-            visibility: hidden;
-        }
-
-        .hexagon-item * {
-            visibility: visible;
+            float: left;
+            position: relative;
         }
 
         .inner {
@@ -67,7 +63,7 @@
             -ms-transform: skewY(-30deg) rotate(60deg);
             transform: skewY(-30deg) rotate(60deg);
             background-color: #C0C0C0;
-            overflow: hidden;
+            float: left;
         }
         /* hexagon grid*/
 
@@ -125,10 +121,4 @@
 
         #grid .hexagon.hover {
             background-color: #e0e0e0;
-        }
-
-        .accept {
-            position: absolute;
-            top: 0;
-            left: 0;
         }

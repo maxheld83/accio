@@ -353,14 +353,12 @@
         $( ".hexagon" ).droppable({accept: ".hexagon-item", tolerance: "pointer", hoverClass: "hover"});
       });
 
+      $('.hexagon-item').css({
+   'position' : 'absolute',
+   'left' : ($(window).innerWidth() / 2) - ($('.elem').width() / 2),
+   'top' : ($(window).innerHeight() / 2) - ($('.elem').height() / 2)
+})
 
-        // $(function() {
-        //     $('.hexagon-item').draggable({
-        //         stack: "#makeMeDraggable",
-        //         containment: window,
-        //         scroll: false,
-        //     });
-        // });
     </script>
 
 </body>

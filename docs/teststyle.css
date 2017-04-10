@@ -1,124 +1,87 @@
-        /*Hexagon adapted from http://csshexagon.com*/
-        /*.hexagon {
+/*span style*/
+
+.textstyle {
+    color: black;
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    text-align: center;
+    padding: 5px;
+}
+
+
+/*shapes fot items*/
+
+.hexagon-item {
     position: relative;
-    width: 320px;
-    height: 173.21px;
-    background-color: #64C7CC;
-    margin: 86.60px 0;
+    width: 250px;
+    height: 144.34px;
+    background-color: #C0C0C0;
+    margin: 72.17px 0;
+    float: left;
     cursor: pointer;
+}
+
+.hexagon-item:before, .hexagon-item:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    border-left: 125px solid transparent;
+    border-right: 125px solid transparent;
+}
+
+.hexagon-item:before {
+    bottom: 100%;
+    border-bottom: 72.17px solid #C0C0C0;
+}
+
+.hexagon-item:after {
+    top: 100%;
+    width: 0;
+    border-top: 72.17px solid #C0C0C0;
+}
+
+
+/* hexagon grid*/
+
+.hexagon {
+    position: relative;
+    width: 250px;
+    height: 144.34px;
+    background-color: #f6f6f6;
+    margin: 72.17px 0;
+    float: left;
+    cursor: pointer;
+    margin-left: 5.5px;
+    margin-bottom: 5.5px;
 }
 
 .hexagon:before, .hexagon:after {
     content: "";
     position: absolute;
     width: 0;
-    border-left: 160px solid transparent;
-    border-right: 160px solid transparent;
+    border-left: 125px solid transparent;
+    border-right: 125px solid transparent;
 }
 
 .hexagon:before {
     bottom: 100%;
-    border-bottom: 89.49px solid #64C7CC;
+    border-bottom: 72.17px solid #f6f6f6;
 }
 
 .hexagon:after {
     top: 100%;
     width: 0;
-    border-top: 89.49px solid #64C7CC;
-}*/
-        /*Span Style*/
+    border-top: 72.17px solid #f6f6f6;
+}
 
-        .textstyle {
-            color: black;
-            font-family: 'Lato', sans-serif;
-            display: flex;
-            height: 100%;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-        /*hexagon items*/
+.hex-row {
+    clear: left;
+}
 
-        .hexagon-item {
-            width: 8.3571428571%;
-            padding: 0 0 9.6502804355% 0;
-            -o-transform: rotate(-60deg) skewY(30deg);
-            -moz-transform: rotate(-60deg) skewY(30deg);
-            -webkit-transform: rotate(-60deg) skewY(30deg);
-            -ms-transform: rotate(-60deg) skewY(30deg);
-            transform: rotate(-60deg) skewY(30deg);
-            overflow: hidden;
-            float: left;
-            position: relative;
-        }
+.hex-row.even {
+    margin-left: 128px;
+}
 
-        .inner {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            -o-transform: skewY(-30deg) rotate(60deg);
-            -moz-transform: skewY(-30deg) rotate(60deg);
-            -webkit-transform: skewY(-30deg) rotate(60deg);
-            -ms-transform: skewY(-30deg) rotate(60deg);
-            transform: skewY(-30deg) rotate(60deg);
-            background-color: #C0C0C0;
-            float: left;
-        }
-        /* hexagon grid*/
-
-        #grid li {
-            list-style-type: none;
-            position: relative;
-            float: left;
-            width: 8.3571428571%;
-            padding: 0 0 9.6502804355% 0;
-            -o-transform: rotate(-60deg) skewY(30deg);
-            -moz-transform: rotate(-60deg) skewY(30deg);
-            -webkit-transform: rotate(-60deg) skewY(30deg);
-            -ms-transform: rotate(-60deg) skewY(30deg);
-            transform: rotate(-60deg) skewY(30deg);
-            overflow: hidden;
-            visibility: hidden;
-        }
-
-        #grid li * {
-            visibility: visible;
-        }
-
-        #grid li .hexagon {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #f9f9f9;
-            -o-transform: skewY(-30deg) rotate(60deg);
-            -moz-transform: skewY(-30deg) rotate(60deg);
-            -webkit-transform: skewY(-30deg) rotate(60deg);
-            -ms-transform: skewY(-30deg) rotate(60deg);
-            transform: skewY(-30deg) rotate(60deg);
-            overflow: hidden;
-        }
-
-        #grid li:nth-child(2n+2) {
-            margin: 0 1%;
-        }
-
-        #grid li:nth-child(20n+11), #grid li:nth-child(20n+12), #grid li:nth-child(20n+13), #grid li:nth-child(20n+14), #grid li:nth-child(20n+15), #grid li:nth-child(20n+16), #grid li:nth-child(20n+17), #grid li:nth-child(20n+18), #grid li:nth-child(20n+19), #grid li:nth-child(20n+20) {
-            margin-top: -1.6%;
-            margin-bottom: -1.7%;
-            -o-transform: translateX(50%) rotate(-60deg) skewY(30deg);
-            -moz-transform: translateX(50%) rotate(-60deg) skewY(30deg);
-            -webkit-transform: translateX(50%) rotate(-60deg) skewY(30deg);
-            -ms-transform: translateX(50%) rotate(-60deg) skewY(30deg);
-            transform: translateX(50%) rotate(-60deg) skewY(30deg);
-        }
-
-        #grid li:nth-child(20n+11) {
-            margin-left: 0.5%;
-        }
-
-        #grid .hexagon.hover {
-            background-color: #e0e0e0;
-        }
+#grid .hexagon.hover {
+    background-color: #e0e0e0;
+}

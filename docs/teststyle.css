@@ -2,10 +2,11 @@
 
 .textstyle {
     color: black;
-    font-family: 'Lato', sans-serif;
     display: flex;
     text-align: center;
-    padding: 5px;
+    font-family: 'Lato', sans-serif;
+    font-size: 70%;
+    padding: 5%;
 }
 
 
@@ -13,10 +14,10 @@
 
 .hexagon-item {
     position: relative;
-    width: 250px;
-    height: 144.34px;
+    width: 120px;
+    height: 69.28px;
     background-color: #C0C0C0;
-    margin: 72.17px 0;
+    margin: 34.64px 0;
     float: left;
     cursor: pointer;
 }
@@ -25,19 +26,19 @@
     content: "";
     position: absolute;
     width: 0;
-    border-left: 125px solid transparent;
-    border-right: 125px solid transparent;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
 }
 
 .hexagon-item:before {
     bottom: 100%;
-    border-bottom: 72.17px solid #C0C0C0;
+    border-bottom: 34.64px solid #C0C0C0;
 }
 
 .hexagon-item:after {
     top: 100%;
     width: 0;
-    border-top: 72.17px solid #C0C0C0;
+    border-top: 34.64px solid #C0C0C0;
 }
 
 
@@ -45,33 +46,33 @@
 
 .hexagon {
     position: relative;
-    width: 250px;
-    height: 144.34px;
+    width: 120px;
+    height: 69.28px;
     background-color: #f6f6f6;
-    margin: 72.17px 0;
     float: left;
     cursor: pointer;
-    margin-left: 5.5px;
-    margin-bottom: 5.5px;
+    margin-top: 34px;
+    margin-left: 3px;
+    margin-bottom: 3px;
 }
 
 .hexagon:before, .hexagon:after {
     content: "";
     position: absolute;
     width: 0;
-    border-left: 125px solid transparent;
-    border-right: 125px solid transparent;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
 }
 
 .hexagon:before {
     bottom: 100%;
-    border-bottom: 72.17px solid #f6f6f6;
+    border-bottom: 34.64px solid #f6f6f6;
 }
 
 .hexagon:after {
     top: 100%;
     width: 0;
-    border-top: 72.17px solid #f6f6f6;
+    border-top: 34.64px solid #f6f6f6;
 }
 
 .hex-row {
@@ -79,7 +80,7 @@
 }
 
 .hex-row.even {
-    margin-left: 128px;
+    margin-left: 61.3px;
 }
 
 #grid .hexagon.hover {

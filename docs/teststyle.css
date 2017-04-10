@@ -6,6 +6,9 @@
     display: flex;
     text-align: center;
     padding: 5px;
+    flex-direction: column;
+    justify-content: center;
+    height: 144.34px;
 }
 
 

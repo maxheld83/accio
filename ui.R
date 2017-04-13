@@ -6,14 +6,17 @@ shinyUI(fluidPage(
   titlePanel("title panel"),
 
   sidebarLayout(
-    sidebarPanel(
-      "sidebar panel",
-      shiny::textOutput(outputId = "text1")
-    ),
     mainPanel(
       h3("Items"),
       tags$div(
-        HTML(read_file(file = "www/index.html"))
+        HTML(read_file(file = "www/grid.html"))
+      )
+    ),
+    sidebarPanel(
+      "sidebar panel",
+      shiny::textOutput(outputId = "text1"),
+      tags$div(
+        HTML(read_file(file = "www/items.html"))
       )
     )
   )

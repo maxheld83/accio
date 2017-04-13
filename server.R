@@ -13,7 +13,8 @@ shinyServer(function(input, output) {
                  options = list(
                    shiny = list(
                      dropped = list(
-                       drop = htmlwidgets::JS('function(event, ui) { return ui.draggable.attr("id");}')
+                       drop = htmlwidgets::JS('function(event, ui) { return ui.draggable.attr("id");}'),
+                       dropout = htmlwidgets::JS('function(event, ui) { return "NA";}')
                      )
                    )
                  ))

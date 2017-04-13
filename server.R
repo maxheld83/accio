@@ -4,9 +4,6 @@ library(readr)
 
 shinyServer(function(input, output) {
   output$text1 <- shiny::renderText({
-    paste("Item on dropzone:", input$dropzone_dropped)
-  })
-  output$text1 <- shiny::renderText({
     paste("Ich bin in Zelle 0a links oben:", input$'0a_dropped')
   })
 

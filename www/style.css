@@ -85,6 +85,6 @@
     margin-left: 128px;
 }
 
-#grid .hexagon.hover {
+.hover {
     background-color: #e0e0e0;
 }

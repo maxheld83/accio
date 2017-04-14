@@ -1,3 +1,7 @@
+library(shiny)
+library(shinyjqui)
+library(readr)
+
 shinyUI(fluidPage(
   includeJqueryUI(),
   tags$head(

@@ -20,13 +20,14 @@ shinyServer(function(input, output) {
                 )
   jqui_droppable(selector = '.hexagon',
                  options = list(
-                   # tolerance = "pointer",
-                   hoverClass = ".hover",
+                   tolerance = "pointer",
+                   classes = list(`ui-droppable-hover` = "hover"),
                    shiny = list(
                      dropped = list(
                        drop = htmlwidgets::JS('function(event, ui) { return ui.draggable.attr("id");}'),
                        dropout = htmlwidgets::JS('function(event, ui) { return "NA";}')
                      )
                    )
-                 ))
+                 )
+  )
 })

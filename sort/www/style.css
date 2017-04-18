@@ -46,35 +46,46 @@
 
 /* hexagon grid*/
 
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+#wrapper {
+    overflow: hidden;
+    padding: 0 0 5vw;
+    transform-origin: 0 0;
+    width: 140vw;
+}
+
 .hexagon {
     position: relative;
-    width: 250px;
-    height: 144.34px;
-    background-color: #f6f6f6;
-    margin: 72.17px 0;
+    width: 16vw;
+    background-color: #33cc99;
+    margin: 5.5vw 0;
+    padding: 0 0 9.7vw;
     float: left;
-    cursor: pointer;
-    margin-left: 5.5px;
-    margin-bottom: 5.5px;
+    margin-left: 0.7vw;
+    margin-bottom: 0.1%;
 }
 
 .hexagon:before, .hexagon:after {
     content: "";
     position: absolute;
     width: 0;
-    border-left: 125px solid transparent;
-    border-right: 125px solid transparent;
+    border-left: 8vw solid transparent;
+    border-right: 8vw solid transparent;
 }
 
 .hexagon:before {
     bottom: 100%;
-    border-bottom: 72.17px solid #f6f6f6;
+    border-bottom: 5vw solid #33cc99;
 }
 
 .hexagon:after {
     top: 100%;
     width: 0;
-    border-top: 72.17px solid #f6f6f6;
+    border-top: 5vw solid #33cc99;
 }
 
 .hex-row {
@@ -82,11 +93,6 @@
 }
 
 .hex-row.even {
-    margin-left: 128px;
+    margin: 0 0 0 8.4vw;
+    margin-right: 8.4vw;
 }
-
-
-/*
-#hexagon.hover {
-    background-color: yellow;
-}*/

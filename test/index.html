@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+</head>
+
+<style>
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#wrapper {
+	overflow: auto;
+  padding: 0 0 0;
+  transform-origin: 0 0;
+  width: 100vw;
+  height: 100vw;
+}
+
+.hexagon {
+  display: inline-block;
+  position: relative;
+  width: 16vw;
+  background-color: #33cc99;
+  margin: 5.5vw 0;
+  padding: 0 0 9.7vw;
+  margin-left: 0.7vw;
+  margin-bottom: 0.7vw;
+}
+
+.hexagon::before,
+.hexagon::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 8vw solid transparent;
+  border-right: 8vw solid transparent;
+}
+
+.hexagon::before {
+  bottom: 100%;
+  border-bottom: 5vw solid #33cc99;
+}
+
+.hexagon::after {
+  top: 100%;
+  border-top: 5vw solid #33cc99;
+}
+
+.hex-row-even, .hex-row-odd{
+  clear: left;
+  position: relative;
+}
+
+.hex-row-even {
+  margin-right: 1200vw;
+  margin: 0 0 0 8.4vw;
+}
+
+.hex-row-odd {
+}
+
+</style>
+
+<body>
+<div id="wrapper">
+  <div class="hex-row-odd">
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+  </div>
+  <div class="hex-row-even">
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <!-- <div class="hexagon"></div> -->
+  </div>
+  <div class="hex-row-odd">
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+  </div>
+</div>
+</body>
+
+<!-- <script>
+  function scaleSection(){
+    var $win = $(window)
+    var $wrapper = $('#wrapper');
+    if ($wrapper.outerHeight() > $win.height()) {
+      $wrapper.css({
+        'transform': 'scale(' + $win.height()/$wrapper.outerHeight() + ')'
+      })
+    };
+  }
+
+  scaleSection();
+  $(window).resize(function() {
+    scaleSection();
+  })
+</script> -->
+</html>

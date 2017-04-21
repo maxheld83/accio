@@ -2,13 +2,14 @@
 
 .textstyle {
     color: black;
-    font-family: 'Lato', sans-serif;
     display: flex;
+    font-family: 'Lato', sans-serif;
     text-align: center;
     padding: 5px;
     flex-direction: column;
     justify-content: center;
-    height: 144.34px;
+    position: absolute;
+    font-size: 90%;
 }
 
 
@@ -16,11 +17,13 @@
 
 .hexagon-item {
     position: relative;
-    width: 250px;
-    height: 144.34px;
+    width: 16vw;
     background-color: #C0C0C0;
-    margin: 72.17px 0;
+    margin: 5.5vw 0;
+    padding: 0 0 9.7vw;
     float: left;
+    margin-left: 0.7vw;
+    margin-bottom: 0.1%;
     cursor: pointer;
 }
 
@@ -28,40 +31,40 @@
     content: "";
     position: absolute;
     width: 0;
-    border-left: 125px solid transparent;
-    border-right: 125px solid transparent;
+    border-left: 8vw solid transparent;
+    border-right: 8vw solid transparent;
 }
 
 .hexagon-item:before {
     bottom: 100%;
-    border-bottom: 72.17px solid #C0C0C0;
+    border-bottom: 5vw solid #C0C0C0;
 }
 
 .hexagon-item:after {
     top: 100%;
     width: 0;
-    border-top: 72.17px solid #C0C0C0;
+    border-top: 5vw solid #C0C0C0;
 }
 
 
 /* hexagon grid*/
 
 html, body {
+    padding: inherit;
     margin: 0;
-    padding: 0;
 }
 
 #wrapper {
     overflow: hidden;
     padding: 0 0 5vw;
     transform-origin: 0 0;
-    width: 140vw;
+    width: 180vw;
 }
 
 .hexagon {
     position: relative;
     width: 16vw;
-    background-color: #33cc99;
+    background-color: #f2f2f2;
     margin: 5.5vw 0;
     padding: 0 0 9.7vw;
     float: left;
@@ -79,13 +82,13 @@ html, body {
 
 .hexagon:before {
     bottom: 100%;
-    border-bottom: 5vw solid #33cc99;
+    border-bottom: 5vw solid #f2f2f2;
 }
 
 .hexagon:after {
     top: 100%;
     width: 0;
-    border-top: 5vw solid #33cc99;
+    border-top: 5vw solid #f2f2f2;
 }
 
 .hex-row {
@@ -96,3 +99,12 @@ html, body {
     margin: 0 0 0 8.4vw;
     margin-right: 8.4vw;
 }
+
+
+/*.hexagon-item:hover {
+    -webkit-transform: scale(1.4);
+    -moz-transform: scale(1.4);
+    -ms-transform: scale(1.4);
+    -o-transform: scale(1.4);
+    transform: scale(1.4);
+}*/

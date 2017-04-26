@@ -14,7 +14,7 @@
     padding: 0;
   }
 
-  #wrapper {
+  #grid {
     /*otherwise there's some stuff running over to the right corner */
     /*TODO this stuff really should not be there*/
     overflow: hidden;
@@ -65,21 +65,20 @@
   }
 
   .hex-row {
-
+    position: relative;
   }
   .hex-row:first-child {
     /*this weirdly acts only on first row and moves it down again to normal position*/
     margin-top: calc(100% / 6.5 / 1.732050807568877 * 1/2);
   }
   .hex-row:nth-child(even) {
-    position: relative;
     left: calc(100% / 13);
   }
 
 </style>
 
 <body>
-  <div id="wrapper">
+  <div id="grid">
     <div class="hex-row">
       <div class="parallelogram">
         <div class="hexagon">

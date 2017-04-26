@@ -2,8 +2,9 @@
 <html>
 
 <head>
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Our little hexagon playground</title>
+  <meta charset="utf-8">
 </head>
 
 <style>
@@ -14,18 +15,26 @@
   }
 
   #wrapper {
+    /*otherwise there's some stuff running over to the right corner */
     overflow: hidden;
     background-color: lightgrey;
     width: 100vw;
     height: 100vh;
+    position: relative;
   }
 
+  /**
+   Hexagon Construction
+   hexagons are here constructed by masking parallelogram with hexagon as per https://www.codesmite.com/freebie/hexa-free-responsive-portfolio-template
+   The more frequently used method of a rectangle with before:/after: triangles didn't work well, because it relies on border widths, which cannot be expressed in percent.
+   */
+   
   .parallelogram {
     position: relative;
     float: left;
     width: calc(100%/(6+1/2));
-    padding-bottom: calc(100%/(6+1/2) / 1.732050807568877 * 2);
     /*the above long weird number is sqrt(3), which is not available in base CSS*/
+    padding-bottom: calc(100%/(6+1/2) / 1.732050807568877 * 2);
     -o-transform: rotate(-60deg) skewY(30deg);
     -moz-transform: rotate(-60deg) skewY(30deg);
     -webkit-transform: rotate(-60deg) skewY(30deg);
@@ -33,7 +42,7 @@
     transform: rotate(-60deg) skewY(30deg);
     overflow: hidden;
     visibility: hidden;
-    margin-bottom: calc(100%/(6+1/2) / 1.732050807568877 * -1/2);
+    margin-top: calc(100%/(6+1/2) / 1.732050807568877 * -1/2);
     /*the above long weird number is sqrt(3), which is not available in base CSS*/
   }
 
@@ -50,6 +59,12 @@
     -ms-transform: skewY(-30deg) rotate(60deg);
     transform: skewY(-30deg) rotate(60deg);
     visibility: visible;
+  }
+
+  .hex-row-odd,
+  .hex-row-even {
+    /*this oddly only affects the first row, and can therefore restore the missing margin for the first row*/
+    margin-top: calc(100%/(6+1/2) / 1.732050807568877 * 1/2);
   }
 
   .hex-row-odd{

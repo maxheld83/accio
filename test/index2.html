@@ -16,6 +16,7 @@
 
   #wrapper {
     /*otherwise there's some stuff running over to the right corner */
+    /*TODO this stuff really should not be there*/
     overflow: hidden;
     background-color: lightgrey;
     width: 100vw;
@@ -28,13 +29,13 @@
    hexagons are here constructed by masking parallelogram with hexagon as per https://www.codesmite.com/freebie/hexa-free-responsive-portfolio-template
    The more frequently used method of a rectangle with before:/after: triangles didn't work well, because it relies on border widths, which cannot be expressed in percent.
    */
-   
+
   .parallelogram {
     position: relative;
     float: left;
-    width: calc(100%/(6+1/2));
+    width: calc(100% / 6.5);
     /*the above long weird number is sqrt(3), which is not available in base CSS*/
-    padding-bottom: calc(100%/(6+1/2) / 1.732050807568877 * 2);
+    padding-bottom: calc(100% / 6.5 / 1.732050807568877 * 2);
     -o-transform: rotate(-60deg) skewY(30deg);
     -moz-transform: rotate(-60deg) skewY(30deg);
     -webkit-transform: rotate(-60deg) skewY(30deg);
@@ -42,7 +43,9 @@
     transform: rotate(-60deg) skewY(30deg);
     overflow: hidden;
     visibility: hidden;
-    margin-top: calc(100%/(6+1/2) / 1.732050807568877 * -1/2);
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-top: calc(100% / 6.5 / 1.732050807568877 * -1/2);
     /*the above long weird number is sqrt(3), which is not available in base CSS*/
   }
 
@@ -63,16 +66,13 @@
 
   .hex-row-odd,
   .hex-row-even {
-    /*this oddly only affects the first row, and can therefore restore the missing margin for the first row*/
-    margin-top: calc(100%/(6+1/2) / 1.732050807568877 * 1/2);
+    /*this weirdly acts only on first row and moves it down again to normal position*/
+    margin-top: calc(100% / 6.5 / 1.732050807568877 * 1/2)
   }
-
-  .hex-row-odd{
-    margin-right: calc(100%/13);
-  }
-
+  
   .hex-row-even {
-    margin-left: calc(100%/13);
+    position: relative;
+    left: calc(100% / 13);
   }
 
 </style>

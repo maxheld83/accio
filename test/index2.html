@@ -45,8 +45,8 @@
     visibility: hidden;
     margin-bottom: 0;
     margin-left: 0;
-    margin-top: calc(100% / 6.5 / 1.732050807568877 * -1/2);
     /*the above long weird number is sqrt(3), which is not available in base CSS*/
+    margin-top: calc(100% / 6.5 / 1.732050807568877 * -1/2);
   }
 
   .hexagon {
@@ -64,13 +64,14 @@
     visibility: visible;
   }
 
-  .hex-row-odd,
-  .hex-row-even {
-    /*this weirdly acts only on first row and moves it down again to normal position*/
-    margin-top: calc(100% / 6.5 / 1.732050807568877 * 1/2)
-  }
+  .hex-row {
 
-  .hex-row-even {
+  }
+  .hex-row:first-child {
+    /*this weirdly acts only on first row and moves it down again to normal position*/
+    margin-top: calc(100% / 6.5 / 1.732050807568877 * 1/2);
+  }
+  .hex-row:nth-child(even) {
     position: relative;
     left: calc(100% / 13);
   }
@@ -79,7 +80,7 @@
 
 <body>
   <div id="wrapper">
-    <div class="hex-row-odd">
+    <div class="hex-row">
       <div class="parallelogram">
         <div class="hexagon">
         </div>
@@ -105,7 +106,7 @@
         </div>
       </div>
     </div>
-    <div class="hex-row-even">
+    <div class="hex-row">
       <div class="parallelogram">
         <div class="hexagon">
         </div>
@@ -131,7 +132,7 @@
         </div>
       </div>
     </div>
-    <div class="hex-row-odd">
+    <div class="hex-row">
       <div class="parallelogram">
         <div class="hexagon">
         </div>
@@ -157,7 +158,7 @@
         </div>
       </div>
     </div>
-    <div class="hex-row-even">
+    <div class="hex-row">
       <div class="parallelogram">
         <div class="hexagon">
         </div>
@@ -183,7 +184,7 @@
         </div>
       </div>
     </div>
-    <div class="hex-row-odd">
+    <div class="hex-row">
       <div class="parallelogram">
         <div class="hexagon">
         </div>
@@ -209,7 +210,7 @@
         </div>
       </div>
     </div>
-    <div class="hex-row-even">
+    <div class="hex-row">
       <div class="parallelogram">
         <div class="hexagon">
         </div>
@@ -235,7 +236,7 @@
         </div>
       </div>
     </div>
-    <div class="hex-row-odd">
+    <div class="hex-row">
       <div class="parallelogram">
         <div class="hexagon">
         </div>

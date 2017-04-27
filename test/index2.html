@@ -22,8 +22,16 @@
     width: 100vw;
     height: 100vh;
     position: relative;
+    /*other gradients: #2196f3, #f44336 or: #d3959b, #bfe6ba (best) or: #5fc3e4, #e55d87*/
+    background: -webkit-linear-gradient(left, #bfe9ff, #ff6e7f);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(left, #bfe9ff, #ff6e7f);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(left, #bfe9ff, #ff6e7f);
+    /* For Fx 3.6 to 15 */
+    background: linear-gradient(left, #bfe9ff, #ff6e7f);
+    /* Standard syntax (must be last) */
   }
-
   /**
    Hexagon Construction
    hexagons are here constructed by https://codepen.io/elbarto84/pen/wrcob
@@ -39,6 +47,7 @@
                 skewY(30deg)
                 scaleX(0.866025403784439); /* sqrt(3)/2 */
     margin-top: calc(100% / 6.5 / 1.732050807568877 * -1/6.5); /* sqrt(2) */
+    opacity: 0.4;
   }
 
   .hex:before, .hex:after {
@@ -51,21 +60,22 @@
     transform: scaleX(1.154700538379252) /* 1.155 = 2/sqrt(3) */
                skewY(-30deg)
                rotate(-30deg);
-    background-color: green;
+    background-color: white;
     content: '';
   }
 
   .hex-row {
     position: relative;
   }
+
   .hex-row:first-child {
     /*this weirdly acts only on first row and moves it down again to normal position*/
     margin-top: calc(100% / 6.5 / 1.732050807568877 * 1/6.5); /* sqrt(2) */
   }
+
   .hex-row:nth-child(even) {
     left: calc(100% / 13);
   }
-
 </style>
 
 <body>
@@ -113,4 +123,5 @@
   </div>
 
 </body>
+
 </html>

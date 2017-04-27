@@ -56,10 +56,6 @@
     opacity: 0.4;
   }
 
-  .hidden {
-    visibility: hidden;
-  }
-
   .hex:before, .hex:after {
     position: absolute;
     /* 86.6% = (sqrt(3)/2)*100% = .866*100% */
@@ -80,6 +76,17 @@
     content: '';
   }
 
+  .item {
+    opacity: 1;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+  }
+
+  .hidden {
+    visibility: hidden;
+  }
+
   .hex-row {
     position: relative;
   }
@@ -96,6 +103,7 @@
 
 <body>
   <div id="grid">
+    <div class="hex item"> </div>
     <div class="hex-row">
       <div class="hex"> </div>
       <div class="hex"> </div>

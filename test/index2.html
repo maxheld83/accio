@@ -33,9 +33,9 @@
   .parallelogram {
     position: relative;
     float: left;
-    width: calc(100% / 6.5);
+    width: calc(100% / 6.5 - .5%);
     /*the above long weird number is sqrt(3), which is not available in base CSS*/
-    padding-bottom: calc(100% / 6.5 / 1.732050807568877 * 2);
+    padding-bottom: calc(100% / 6.5 / 1.732050807568877 * 2 - .5%);
     -o-transform: rotate(-60deg) skewY(30deg);
     -moz-transform: rotate(-60deg) skewY(30deg);
     -webkit-transform: rotate(-60deg) skewY(30deg);
@@ -43,10 +43,11 @@
     transform: rotate(-60deg) skewY(30deg);
     overflow: hidden;
     visibility: hidden;
-    margin-bottom: 0;
-    margin-left: 0;
+    margin-bottom: .25%;
+    margin-left: .25%;
+    margin-right: .25%;
     /*the above long weird number is sqrt(3), which is not available in base CSS*/
-    margin-top: calc(100% / 6.5 / 1.732050807568877 * -1/2);
+    margin-top: calc(100% / 6.5 / 1.732050807568877 * -1/2 + .25%);
   }
 
   .hexagon {
@@ -97,7 +98,7 @@
         </div>
       </div>
       <div class="parallelogram">
-        <div class="hexagon" visibility: hidden>
+        <div class="hexagon">
         </div>
       </div>
       <div class="parallelogram">

@@ -22,8 +22,16 @@
     width: 100vw;
     height: 100vh;
     position: relative;
+    /*other gradients: #2196f3, #f44336 or: #d3959b, #bfe6ba (best) or: #5fc3e4, #e55d87*/
+    background: -webkit-linear-gradient(left, #bfe9ff, #ff6e7f);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(left, #bfe9ff, #ff6e7f);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(left, #bfe9ff, #ff6e7f);
+    /* For Fx 3.6 to 15 */
+    background: linear-gradient(left, #bfe9ff, #ff6e7f);
+    /* Standard syntax (must be last) */
   }
-
   /**
    Hexagon Construction
    hexagons are here constructed by masking parallelogram with hexagon as per https://www.codesmite.com/freebie/hexa-free-responsive-portfolio-template
@@ -51,12 +59,13 @@
   }
 
   .hexagon {
-  	position: absolute;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: green;
+    background: white;
+    opacity: 0.2;
     -o-transform: skewY(-30deg) rotate(60deg);
     -moz-transform: skewY(-30deg) rotate(60deg);
     -webkit-transform: skewY(-30deg) rotate(60deg);
@@ -68,14 +77,15 @@
   .hex-row {
     position: relative;
   }
+
   .hex-row:first-child {
     /*this weirdly acts only on first row and moves it down again to normal position*/
     margin-top: calc(100% / 6.5 / 1.732050807568877 * 1/2);
   }
+
   .hex-row:nth-child(even) {
     left: calc(100% / 13);
   }
-
 </style>
 
 <body>
@@ -265,4 +275,5 @@
   </div>
 
 </body>
+
 </html>

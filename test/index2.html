@@ -43,9 +43,15 @@
     float: left;
     overflow: hidden;
     padding: calc(100% / 6.5 / 2);
-    transform:  rotate(0deg)
-                skewY(30deg)
-                scaleX(0.866025403784439); /* sqrt(3)/2 */
+    -webkit-transform:  rotate(0deg)
+                        skewY(30deg)
+                        scaleX(0.866025403784439); /* sqrt(3)/2 */
+    -ms-transform:      rotate(0deg)
+                        skewY(30deg)
+                        scaleX(0.866025403784439); /* sqrt(3)/2 */
+    transform:          rotate(0deg)
+                        skewY(30deg)
+                        scaleX(0.866025403784439); /* sqrt(3)/2 */
     margin-top: calc(100% / 6.5 / 1.732050807568877 * -1/6.5); /* sqrt(2) */
     opacity: 0.4;
   }
@@ -61,6 +67,12 @@
     right: 0;
     bottom: 6.7%;
     left: 0; /* 6.7% = (100% -86.6%)/2 */
+    -webkit-transform:  scaleX(1.154700538379252) /* 1.155 = 2/sqrt(3) */
+                        skewY(-30deg)
+                        rotate(-30deg);
+    -ms-transform:      scaleX(1.154700538379252) /* 1.155 = 2/sqrt(3) */
+                        skewY(-30deg)
+                        rotate(-30deg);
     transform: scaleX(1.154700538379252) /* 1.155 = 2/sqrt(3) */
                skewY(-30deg)
                rotate(-30deg);

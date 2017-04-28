@@ -52,6 +52,19 @@
   .ui-state-highlight {
     background-color: blue;
   }
+
+  .img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-position: center center;
+    background-size: cover;
+    overflow: hidden;
+    -webkit-clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  }
 </style>
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -77,8 +90,12 @@
 
 <body>
   <div class= grid>
-    <div id="droppable" class="hexagon droppable"> </div>
-    <div id="draggable" class="hexagon red"> </div>
+    <div id="droppable" class="hexagon droppable">
+      <div class='img' style='background-image: url(text.svg);'></div>
+    </div>
+    <div id="draggable" class="hexagon red">
+      <div class='img' style='background-image: url(kiwi.svg);'></div>
+    </div>
   </div>
 </body>
 

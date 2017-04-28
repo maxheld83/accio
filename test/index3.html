@@ -65,17 +65,28 @@
     margin-left: 1%;
     margin-right: 1%;
   }
+
+  .textstyle {
+    color: black;
+    font-family: sans-serif;
+    position: absolute;
+    display: inline-block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1%;
+  }
 </style>
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
   $(function() {
-    $("#draggable").draggable({
+    $(".draggable").draggable({
       snap: ".droppable",
       snapMode: "inner",
     });
-    $("#droppable").droppable({
+    $(".droppable").droppable({
       classes: {
         "ui-droppable-hover": "ui-state-hover"
       },
@@ -90,11 +101,14 @@
 
 <body>
   <div class=g rid>
-    <div id="droppable" class="hexagon droppable">
-      <div class='img' style='background-image: url(text.svg);'></div>
+    <div class="hexagon droppable">
+      <div class="img" style='background-image: url(text.svg);'></div>
     </div>
-    <div id="draggable" class="hexagon red">
-      <div class='img' style='background-image: url(kiwi.svg);'></div>
+    <div class="hexagon draggable red">
+      <div class="img" style='background-image: url(kiwi.svg);'></div>
+    </div>
+    <div class="hexagon red">
+      <span class="textstyle">Bei der Arbeit kann ich meiner Kreativität freien Lauf lassen.</span>
     </div>
   </div>
 </body>

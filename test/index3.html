@@ -29,7 +29,7 @@
     float: left;
     overflow: hidden;
     -webkit-clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
-    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);*/
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
     -webkit-shape-outside: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
     background-color: green;
   }
@@ -59,37 +59,37 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-position: center center;
-    background-size: cover;
-    overflow: hidden;
-    -webkit-clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
-    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: 1%;
+    margin-right: 1%;
   }
 </style>
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
-  $( function() {
-    $( "#draggable" ).draggable({
+  $(function() {
+    $("#draggable").draggable({
       snap: ".droppable",
       snapMode: "inner",
     });
-    $( "#droppable" ).droppable({
+    $("#droppable").droppable({
       classes: {
-            "ui-droppable-hover": "ui-state-hover"
-          },
-          drop: function( event, ui ) {
-            $( this )
-              .addClass( "ui-state-highlight" )
-          }
-        });
-  } );
+        "ui-droppable-hover": "ui-state-hover"
+      },
+      drop: function(event, ui) {
+        $(this)
+          .addClass("ui-state-highlight")
+      }
+    });
+  });
 </script>
 
 
 <body>
-  <div class= grid>
+  <div class=g rid>
     <div id="droppable" class="hexagon droppable">
       <div class='img' style='background-image: url(text.svg);'></div>
     </div>

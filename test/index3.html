@@ -19,9 +19,10 @@
 
   .grid {
     margin: 0 auto;
+    /*horizontal centering*/
     width: 100%;
     height: 100%;
-    position: relative;
+    position: absolute;
     overflow: scroll;
     /*other gradients: #2196f3, #f44336 or: #d3959b, #bfe6ba (best) or: #5fc3e4, #e55d87*/
     background: -webkit-linear-gradient(left, #bfe9ff, #ff6e7f);
@@ -35,20 +36,14 @@
   }
 
   .hexagon {
-    position: relative;
-    margin-top: -2.7%;
-    margin-right: 0.1%;
-    margin-left: 0.1%;
     width: calc(100% / 9.5 - 0.2%);
-    float: left;
     overflow: hidden;
     -webkit-clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
     clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
     -webkit-shape-outside: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
     background-color: white;
-    opacity: 0.4;
+    float: left;
   }
-  /*no idea what this does, but it is important, do not touch number*/
 
   .hexagon:before {
     display: block;
@@ -57,19 +52,28 @@
     content: '';
   }
 
-  /*give first/last n items a top/bottom margin*/
-  .hexagon:nth-child(-n+9) {
+  .cell {
+    margin-top: -2.7%;
+    /*this needs to be calculated programmatically*/
+    margin-right: 0.1%;
+    margin-left: 0.1%;
+    opacity: 0.3;
+  }
+
+  .cell:nth-child(-n+9) {
     margin-top: 0.1%;
   }
-  .hexagon:nth-last-child(-n+9) {
+  /*give first/last n items a top/bottom margin*/
+
+  .cell:nth-last-child(-n+9) {
     margin-bottom: 0.1%;
   }
+  /*give first/last n items a top/bottom margin*/
 
-  /*intend every n*2 items, HERE you can set whether to indent even or odd rows*/
-
-  .hexagon:nth-child(18n +1) {
+  .cell:nth-child(18n +1) {
     margin-left: calc(100% / 9.5 / 2 + 0.1%);
   }
+  /*intend every n*2 items, HERE you can set whether to indent even or odd rows*/
 
   .img {
     position: absolute;
@@ -82,6 +86,12 @@
     background-position: center;
     margin-left: 1%;
     margin-right: 1%;
+  }
+
+  .item {
+    opacity: 0.9;
+    z-index: 999;
+    position: absolute;
   }
 
   .textstyle {
@@ -101,72 +111,68 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
   $(function() {
-    $(".draggable").draggable({
-      snap: ".droppable",
+    $(".item").draggable({
+      snap: ".cell",
       snapMode: "inner",
     });
-    $(".droppable").droppable({
-      classes: {
-        "ui-droppable-hover": "ui-state-hover"
-      },
-      drop: function(event, ui) {
-        $(this)
-          .addClass("ui-state-highlight")
-      }
-    });
+    $(".cell").droppable();
   });
 </script>
 
 
 <body>
   <div class="grid">
-    <div class="hexagon">
-      <span class="textstyle">Bei der Arbeit kann ich meiner Kreativität freien Lauf lassen.</span>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell">
+      <!-- <div class="hexagon item">
+        <span class="textstyle">
+            Bei der Arbeit kann ich meiner Kreativität freien Lauf lassen.
+        </span>
+      </div> -->
     </div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
-    <div class="hexagon"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
   </div>
 </body>
 

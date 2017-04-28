@@ -13,44 +13,58 @@
   body {
     margin: 0;
     padding: 0;
+    width: 100vw;
+    height: 100vh;
   }
 
   .grid {
     margin: 0 auto;
-    max-width: 100vw;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: scroll;
+    /*other gradients: #2196f3, #f44336 or: #d3959b, #bfe6ba (best) or: #5fc3e4, #e55d87*/
+    background: -webkit-linear-gradient(left, #bfe9ff, #ff6e7f);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(left, #bfe9ff, #ff6e7f);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(left, #bfe9ff, #ff6e7f);
+    /* For Fx 3.6 to 15 */
+    background: linear-gradient(left, #bfe9ff, #ff6e7f);
+    /* Standard syntax (must be last) */
   }
 
   .hexagon {
     position: relative;
-    margin-top: 90px;
-    margin-right: 5px;
-    margin-left: 5px;
-    width: calc(33.33% - 10px);
+    margin-top: -2.7%;
+    margin-right: 0.1%;
+    margin-left: 0.1%;
+    width: calc(100% / 9.5 - 0.2%);
     float: left;
     overflow: hidden;
     -webkit-clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
     clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
     -webkit-shape-outside: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
-    background-color: green;
+    background-color: white;
+    opacity: 0.4;
   }
+  /*no idea what this does, but it is important, do not touch number*/
 
   .hexagon:before {
     display: block;
     padding-top: 112.5%;
+    /*TODO figure out where this number comes from*/
     content: '';
   }
+  /*give first n items an upper margin*/
 
-  .red {
-    background-color: red;
-    width: calc(33.33% - 10px);
+  .hexagon:nth-child(-n+9) {
+    margin-top: 0.1%;
   }
+  /*intend every n*2 items, HERE you can set whether to indent even or odd rows*/
 
-  .ui-state-hover {
-    background-color: yellow;
-  }
-
-  .ui-state-highlight {
-    background-color: blue;
+  .hexagon:nth-child(18n +1) {
+    margin-left: calc(100% / 9.5 / 2 + 0.1%);
   }
 
   .img {
@@ -69,12 +83,13 @@
   .textstyle {
     color: black;
     font-family: sans-serif;
+    top: 25%;
+    left: 10%;
+    right: 10%;
+    bottom: 10%;
+    text-align: center;
     position: absolute;
-    display: inline-block;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 1%;
+    font-size: 1vw;
   }
 </style>
 
@@ -100,22 +115,54 @@
 
 
 <body>
-<<<<<<< HEAD
-  <div class=g rid>
-    <div class="hexagon droppable">
-      <div class="img" style='background-image: url(text.svg);'></div>
-    </div>
-    <div class="hexagon draggable red">
-      <div class="img" style='background-image: url(kiwi.svg);'></div>
-=======
   <div class="grid">
-    <div id="droppable" class="hexagon droppable">
-      <div class='img' style='background-image: url(text.svg);'></div>
->>>>>>> origin/master
-    </div>
-    <div class="hexagon red">
+    <div class="hexagon">
       <span class="textstyle">Bei der Arbeit kann ich meiner Kreativität freien Lauf lassen.</span>
     </div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
   </div>
 </body>
 

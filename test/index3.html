@@ -56,9 +56,12 @@
     content: '';
   }
 
-  /*give first n items an upper margin*/
+  /*give first/last n items a top/bottom margin*/
   .hexagon:nth-child(-n+9) {
     margin-top: 0.1%;
+  }
+  .hexagon:nth-last-child(-n+9) {
+    margin-bottom: 0.1%;
   }
 
   /*intend every n*2 items, HERE you can set whether to indent even or odd rows*/

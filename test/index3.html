@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our little hexagon playground</title>
+  <meta charset="utf-8">
+</head>
+
+
+<style>
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .grid {
+    margin: 0 auto;
+    max-width: 100vw;
+  }
+
+  .hexagon {
+    position: relative;
+    margin-top: 90px;
+    margin-right: 5px;
+    margin-left: 5px;
+    width: calc(33.33% - 10px);
+    float: left;
+    overflow: hidden;
+    -webkit-clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);*/
+    -webkit-shape-outside: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+    background-color: green;
+  }
+
+  .hexagon:before {
+    display: block;
+    padding-top: 112.5%;
+    content: '';
+  }
+
+  .red {
+    background-color: red;
+    width: calc(33.33% - 10px);
+  }
+
+  .ui-state-hover {
+    background-color: yellow;
+  }
+
+  .ui-state-highlight {
+    background-color: blue;
+  }
+</style>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $( function() {
+    $( "#draggable" ).draggable({
+      snap: ".droppable",
+      snapMode: "inner",
+    });
+    $( "#droppable" ).droppable({
+      classes: {
+            "ui-droppable-hover": "ui-state-hover"
+          },
+          drop: function( event, ui ) {
+            $( this )
+              .addClass( "ui-state-highlight" )
+          }
+        });
+  } );
+</script>
+
+
+<body>
+  <div class= grid>
+    <div id="droppable" class="hexagon droppable"> </div>
+    <div id="draggable" class="hexagon red"> </div>
+  </div>
+</body>
+
+</html>

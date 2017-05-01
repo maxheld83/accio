@@ -394,7 +394,7 @@
       snapMode: "inner",
       snapTolerance: 20,
       opacity: 0.7,
-      addClasses: false,
+      addClasses: true,
       refreshPositions: true,
       scroll: true,
       stack: ".item",
@@ -404,10 +404,15 @@
     $(".cell").droppable({
       accept: ".item",
       tolerance: "fit",
+      drop: function(event, ui) {
+        $(this).droppable('option', 'accept', ui.draggable);
+      },
+      out: function(event, ui) {
+        $(this).droppable('option', 'accept', '.drag-item');
+      }
     });
   });
 </script>
-
 
 <body>
   <div class="grid ncol09">

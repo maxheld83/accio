@@ -8,20 +8,29 @@ shinyServer(function(input, output) {
   })
 
   # INTERACTIONS for items and cells
-  jqui_draggable(selector = '.hexagon-item',
+  jqui_draggable(selector = '.item',
                  options = list(
-                   snap = ".hexagon",
+                   snap = ".cell",
                    snapMode = "inner",
                    snapTolerance = 20,
                    opacity = 0.7,
+                   addClasses = TRUE,
                    scroll = TRUE,
-                   cursorAt = list(left = 120)
+                   cursorAt = list(left = 120),
+                   stack =  ".item",
+                   revert = "invalid"
                    )
                 )
-  jqui_droppable(selector = '.hexagon',
+  jqui_droppable(selector = '.cell',
                  options = list(
-                   tolerance = "pointer",
+                   tolerance = "fit",
                    classes = list(`ui-droppable-hover` = "hover"),
+                   drop = "function(event, ui) {
+    $(this).droppable('option', 'accept', ui.draggable);
+},",
+                   out = "function(event, ui) {
+    $(this).droppable('option', 'accept', '.drag-item');
+}",
                    shiny = list(
                      dropped = list(
                        drop = htmlwidgets::JS('function(event, ui) { return ui.draggable.attr("id");}'),

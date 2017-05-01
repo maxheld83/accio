@@ -120,7 +120,6 @@
     -webkit-clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
     clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
     -webkit-shape-outside: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
-    background-color: white;
     float: left;
     margin-right: var(--margins);
     margin-left: var(--margins);
@@ -130,7 +129,8 @@
     margin-top: calc(var(--verticalinset) * -1);
     position: relative;
     z-index: 1;
-    visibility: hidden;
+    background-color: rgba(255, 255, 255, 0.3);
+    /*this is a hackfix for opacity, because opacity cannot be overwritten in child*/
   }
 
   .ncol02>.cell:nth-child(-n + 2) {
@@ -344,14 +344,18 @@
   /*intend every n*2 items, HERE you can set whether to indent even or odd rows*/
 
   .item {
-    opacity: 1;
     z-index: 999;
     position: absolute;
+    background-color: white;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
 
-  .droppable {
-    visibility: visible;
-    opacity: 0.3;
+  .hidden {
+    visibility: hidden;
   }
 
   .img {
@@ -390,11 +394,8 @@
       snapTolerance: 20,
       opacity: 0.7,
       addClasses: true,
-      refreshPositions: true,
-      scroll: true,
       stack: ".item",
       revert: "invalid",
-      // cursorAt: list(left = 120)
     });
     $(".cell").droppable({
       accept: ".item",
@@ -411,70 +412,63 @@
 
 <body>
   <div class="grid ncol09">
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable">
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell">
       <div class="hexagon item">
         <span class="textstyle">
-            Item 1.
+            Item 3.
+        </span>
+      </div>
+      <div class="hexagon item">
+        <span class="textstyle">
+            Item 4.
         </span>
       </div>
     </div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell droppable"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
+    <div class="hexagon cell"></div>
 
-    <!-- ITEMS -->
-
-    <div class="hexagon item">
-      <span class="textstyle">
-          Item 1.
-      </span>
-    </div>
-    <div class="hexagon item">
-      <span class="textstyle">
-          Item 2.
-      </span>
-    </div>
   </div>
 </body>
 

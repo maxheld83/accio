@@ -14,13 +14,10 @@ shinyUI(fluidPage(
   #     shiny::textOutput(outputId = "text1")
   #   ),
 
-    mainPanel(
-      tags$div(
-        HTML(read_file(file = "www/grid.html"))
-      )
+  tags$div(HTML(read_file(file = "www/grid.html"))),
       # tags$div(
       #   HTML(read_file(file = "www/items.html"))
       # )
-    )
-  )
-)
+  tags$p("Bitte sortieren Sie von die Aussagen von links nach rechts nach dem Grad ihrer Zustimmung.
+         Links die Aussagen, die Sie ablehnen, und rechts die Aussagen, denen Sie zustimmen.")
+))

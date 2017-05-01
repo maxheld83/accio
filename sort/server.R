@@ -15,10 +15,11 @@ shinyServer(function(input, output) {
                    snapTolerance = 20,
                    opacity = 0.7,
                    addClasses = TRUE,
-                   scroll = TRUE,
+                   scroll = FALSE,
                    cursorAt = list(left = 120),
                    stack =  ".item",
-                   revert = "invalid"
+                   revert = "invalid",
+                   containment = ".grid"
                    )
                 )
   jqui_droppable(selector = '.cell',

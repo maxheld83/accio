@@ -115,7 +115,8 @@
 
   .hexagon {
     width: var(--d2-short);
-    overflow: hidden;
+    padding-top: var(--d-long);
+    /*overflow: hidden;*/
     -webkit-clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
     clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
     -webkit-shape-outside: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
@@ -123,7 +124,6 @@
     float: left;
     margin-right: var(--margins);
     margin-left: var(--margins);
-    padding-top: var(--d-long);
   }
 
   .cell {
@@ -343,6 +343,17 @@
   }
   /*intend every n*2 items, HERE you can set whether to indent even or odd rows*/
 
+  .item {
+    opacity: 1;
+    z-index: 999;
+    position: absolute;
+  }
+
+  .droppable {
+    visibility: visible;
+    opacity: 0.3;
+  }
+
   .img {
     position: absolute;
     top: 0;
@@ -354,17 +365,6 @@
     background-position: center;
     margin-left: 1%;
     margin-right: 1%;
-  }
-
-  .item {
-    opacity: 1;
-    z-index: 999;
-    position: absolute;
-  }
-
-  .droppable {
-    visibility: visible;
-    opacity: 0.3;
   }
 
   .textstyle {
@@ -433,7 +433,13 @@
     <div class="hexagon cell droppable"></div>
     <div class="hexagon cell droppable"></div>
     <div class="hexagon cell droppable"></div>
-    <div class="hexagon cell"></div>
+    <div class="hexagon cell">
+      <div class="hexagon item">
+        <span class="textstyle">
+            Item 1.
+        </span>
+      </div>
+    </div>
     <div class="hexagon cell droppable"></div>
     <div class="hexagon cell droppable"></div>
     <div class="hexagon cell droppable"></div>

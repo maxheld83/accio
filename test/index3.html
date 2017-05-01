@@ -16,9 +16,87 @@
     width: 100vw;
     height: 100vh;
   }
+  /*retrieving dimensions from html via classes*/
+  /*the below ain't pretty, but avoids editing the css in R/shiny and makes the css merely static*/
+  /*it's worthwhile NOT doing in this in jQuery, because in some non-survey use cases jQuery might not be available*/
+  /*notice that as of 2017, arbitrary attributes from HTML can still not be accessed via attr() in css, so we have to hack-fix our way through classes*/
+
+  .ncol01 {
+    --ncol: 1;
+  }
+
+  .ncol02 {
+    --ncol: 2;
+  }
+
+  .ncol03 {
+    --ncol: 3;
+  }
+
+  .ncol04 {
+    --ncol: 4;
+  }
+
+  .ncol05 {
+    --ncol: 5;
+  }
+
+  .ncol06 {
+    --ncol: 6;
+  }
+
+  .ncol07 {
+    --ncol: 7;
+  }
+
+  .ncol08 {
+    --ncol: 8;
+  }
+
+  .ncol09 {
+    --ncol: 9;
+  }
+
+  .ncol10 {
+    --ncol: 10;
+  }
+
+  .ncol11 {
+    --ncol: 11;
+  }
+
+  .ncol12 {
+    --ncol: 12;
+  }
+
+  .ncol13 {
+    --ncol: 13;
+  }
+
+  .ncol14 {
+    --ncol: 14;
+  }
+
+  .ncol15 {
+    --ncol: 15;
+  }
 
   .grid {
-    margin: 0 auto;
+    /*=== calculation of dimensions===*/
+    --margins: 0.1%;
+
+    --d2-short: calc(100% / calc(var(--ncol) + 1/2) - calc(var(--margins) * 2));
+    --sqrt3: 1.732050807568877;
+
+    /*--a-radius: calc(var(--d2-short) / var(--sqrt3));*/
+    --a-radius: calc(var(--d2-short) / var(--sqrt3));
+    /*--a-radius: var(--d2-short);*/
+    /*to appease jquery droppable, draggable must be ever so slightly smaller*/
+    /*TODO fix this hackfix: https://github.com/maxheld83/accio/issues/94*/
+    --droppablemargin: 0.05%;
+    --d-long: calc(var(--a-radius) * 2);
+    --verticalinset: calc(((var(--d-long) - var(--d2-short)) * 2) - calc(4.5 * var(--margins)));
+
     /*horizontal centering*/
     width: 100%;
     height: 100%;
@@ -36,45 +114,47 @@
   }
 
   .hexagon {
-    width: calc(100% / 9.5 - 0.2%);
+    width: var(--d2-short);
     overflow: hidden;
     -webkit-clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
     clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
     -webkit-shape-outside: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
     background-color: white;
     float: left;
+    margin-right: var(--margins);
+    margin-left: var(--margins);
   }
 
   .hexagon:before {
     display: block;
-    padding-top: 115.4700538379252%;
-    /*this is 1/sqrt(3) * 2*/
+    padding-top: calc(1 / var(--sqrt3) * 2 * 100%);
     content: '';
     /*content field is necessary as per the spec*/
   }
 
   .cell {
-    margin-top: -2.7%;
+    /*margin-top: calc(var(--d-long));*/
+    /*margin-top: calc(var(--d-long) - var(--d2-short) * -1/2);*/
     /*this needs to be calculated programmatically*/
-    margin-right: 0.1%;
-    margin-left: 0.1%;
+    /*--testvar: */
+    margin-top: calc(var(--verticalinset) * -1);
     opacity: 0.3;
     position: relative;
     z-index: 1;
   }
 
   .cell:nth-child(-n+9) {
-    margin-top: 0.1%;
+    margin-top: var(--margins);
   }
   /*give first/last n items a top/bottom margin*/
 
   .cell:nth-last-child(-n+9) {
-    margin-bottom: 0.1%;
+    margin-bottom: var(--margins);
   }
   /*give first/last n items a top/bottom margin*/
 
   .cell:nth-child(18n +1) {
-    margin-left: calc(100% / 9.5 / 2 + 0.1%);
+    margin-left: calc(var(--d2-short) / 2 + 2 * var(--margins));
   }
   /*intend every n*2 items, HERE you can set whether to indent even or odd rows*/
 
@@ -94,10 +174,7 @@
   .item {
     opacity: 1;
     z-index: 999;
-    top: 11.4%;
-    left: 47.5%;
     position: absolute;
-    width: calc(100% / 9.5 - 0.2% - 0.05%)
   }
 
   .textstyle {
@@ -138,7 +215,8 @@
 
 
 <body>
-  <div class="grid">
+  <div class="grid ncol09">
+    <div class="hexagon cell"></div>
     <div class="hexagon cell"></div>
     <div class="hexagon cell"></div>
     <div class="hexagon cell"></div>

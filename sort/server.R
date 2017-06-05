@@ -22,7 +22,7 @@ shinyServer(function(input, output) {
                    containment = ".grid"
                    )
                 )
-  jqui_droppable(selector = '.cell',
+  jqui_droppable(selector = '.droppable',
                  options = list(
                    tolerance = "fit",
                    classes = list(`ui-droppable-hover` = "hover"),

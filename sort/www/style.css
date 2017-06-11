@@ -1,4 +1,7 @@
-y.ncol01 {
+/*=== hack-fix to read in number of columns ===*/
+/*necessary because css cannot read, and calc on number of siblings*/
+
+.ncol01 {
   --ncol: 1;
 }
 
@@ -98,13 +101,14 @@ y.ncol01 {
   float: left;
   margin-right: var(--margins);
   margin-left: var(--margins);
+  position: relative;
 }
 
 .cell {
   margin-top: calc(var(--verticalinset) * -1);
   position: relative;
-  z-index: 1;
-  visibility: hidden;
+  z-index: 0;
+  /*visibility: hidden;*/
 }
 
 .ncol02>.cell:nth-child(-n + 2) {
@@ -403,16 +407,34 @@ y.ncol01 {
 
 .item {
   opacity: 1;
-  z-index: 999;
+  visibility: visible;
+  z-index: 9999;
   position: absolute;
+  margin: 0 auto;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  background-color: white;
 }
 
 .droppable {
   visibility: visible;
   opacity: 0.3;
+  z-index: 0;
 }
 
-.img {
+.draggable {
+
+}
+
+.draggable.ui-draggable-dragging {
+  position: absolute;
+  bottom: auto;
+  width: var(--d2-short);
+  padding-top: 25%;
+}
+
+/*.img {
   position: absolute;
   top: 0;
   right: 0;
@@ -424,7 +446,7 @@ y.ncol01 {
   margin-left: 1%;
   margin-right: 1%;
 }
-
+*/
 .textstyle {
   color: black;
   font-family: sans-serif;

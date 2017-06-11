@@ -8,23 +8,25 @@ shinyServer(function(input, output) {
   })
 
   # INTERACTIONS for items and cells
-  jqui_draggable(selector = '.item',
+  jqui_draggable(selector = '.draggable',
                  options = list(
                    snap = ".cell",
                    snapMode = "inner",
                    snapTolerance = 20,
                    opacity = 0.7,
                    addClasses = TRUE,
-                   scroll = FALSE,
-                   cursorAt = list(left = 120),
-                   stack =  ".item",
+                   # scroll = FALSE,
+                   # cursorAt = list(left = 120),
+                   # stack =  ".item",
                    revert = "invalid",
-                   containment = ".grid"
+                   appendTo = "body",
+                   helper = "clone"
+                   # containment = ".grid"
                    )
                 )
   jqui_droppable(selector = '.droppable',
                  options = list(
-                   tolerance = "fit",
+                   tolerance = "intersect",
                    classes = list(`ui-droppable-hover` = "hover"),
                    drop = "function(event, ui) {
     $(this).droppable('option', 'accept', ui.draggable);

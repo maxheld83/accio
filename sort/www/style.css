@@ -422,16 +422,12 @@
   z-index: 0;
 }
 
-.draggable {
-
-}
-
-.draggable.ui-draggable-dragging {
+.ui-draggable-dragging {
   position: absolute;
   bottom: auto;
   width: var(--d2-short);
-  padding-top: 25%;
 }
+
 
 /*.img {
   position: absolute;

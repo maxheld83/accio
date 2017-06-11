@@ -19,7 +19,7 @@ shinyServer(function(input, output) {
                    # cursorAt = list(left = 120),
                    # stack =  ".item",
                    revert = "invalid",
-                   appendTo = "body",
+                   appendTo = ".grid",
                    helper = "clone"
                    # containment = ".grid"
                    )

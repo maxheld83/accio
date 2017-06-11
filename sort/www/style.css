@@ -108,7 +108,7 @@
   margin-top: calc(var(--verticalinset) * -1);
   position: relative;
   z-index: 0;
-  /*visibility: hidden;*/
+  visibility: hidden;
 }
 
 .ncol02>.cell:nth-child(-n + 2) {
@@ -414,7 +414,6 @@
   width: 100%;
   top: 0;
   bottom: 0;
-  background-color: white;
 }
 
 .droppable {

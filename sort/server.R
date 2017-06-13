@@ -16,7 +16,7 @@ shinyServer(function(input, output) {
                    opacity = 0.7,
                    addClasses = TRUE,
                    # scroll = FALSE,
-                   # cursorAt = list(left = 120),
+                   cursor = "move",
                    # stack =  ".item",
                    revert = "invalid",
                    appendTo = ".grid",

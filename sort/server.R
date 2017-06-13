@@ -27,6 +27,7 @@ shinyServer(function(input, output) {
   jqui_droppable(selector = '.droppable',
                  options = list(
                    tolerance = "intersect",
+                   accept = ".item",
                    classes = list(`ui-droppable-hover` = "hover"),
                    drop = "function(event, ui) {
     $(this).droppable('option', 'accept', ui.draggable);

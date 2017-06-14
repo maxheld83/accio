@@ -8,7 +8,7 @@ shinyServer(function(input, output) {
   })
 
   # INTERACTIONS for items and cells
-  jqui_draggable(selector = '.draggable',
+  jqui_draggable(selector = ".draggable",
                  options = list(
                    snap = ".droppable",
                    snapMode = "inner",
@@ -21,8 +21,9 @@ shinyServer(function(input, output) {
                    revert = "invalid",
                    appendTo = ".grid",
                    helper = "clone",
-                   containment = ".grid"
-                   )
+                   containment = ".grid",
+                   start = htmlwidgets::JS("function(){$(this).hide();}")
+                  )
                 )
   jqui_droppable(selector = '.droppable',
                  options = list(

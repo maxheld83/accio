@@ -22,26 +22,36 @@ shinyServer(function(input, output) {
                    appendTo = ".grid",
                    helper = "clone",
                    containment = ".grid",
-                   start = htmlwidgets::JS("function(){$(this).hide();}")
+                   start = htmlwidgets::JS("function(){$(this).hide();}"),
+                   stop = htmlwidgets::JS("function(){$(this).show();}")
                   )
                 )
-  jqui_droppable(selector = '.droppable',
-                 options = list(
-                   tolerance = "intersect",
-                   accept = ".item",
-                   classes = list(`ui-droppable-hover` = "hover"),
-                   drop = "function(event, ui) {
-    $(this).droppable('option', 'accept', ui.draggable);
-},",
-                   out = "function(event, ui) {
-    $(this).droppable('option', 'accept', '.drag-item');
-}",
-                   shiny = list(
-                     dropped = list(
-                       drop = htmlwidgets::JS('function(event, ui) { return ui.draggable.attr("id");}'),
-                       dropout = htmlwidgets::JS('function(event, ui) { return "NA";}')
-                     )
-                   )
-                 )
-  )
+  # jqui_droppable(selector = ".droppable",
+  #                options = list(
+  #                  tolerance = "intersect",
+  #                  accept = ".draggable",p
+  #                  drop = htmlwidgets::JS(
+  #                    "function(event, ui){
+  #                      ui.draggable.detach().appendTo($(this));
+  #                      $(this).removeClass('droppable');
+  #                      $(this).droppable('option', 'disabled', 'true')
+  #                     }"
+  #                  ),
+  #                  out = htmlwidgets::JS(
+  #                    "function(event, ui){
+  #                      $(this).addClass('droppable');
+  #                      $(this).droppable('option', 'disabled', 'false')
+  #                    }"
+  #                  )
+                 #   out = htmlwidgets::JS(
+                 #     "function(event, ui) {$(this).droppable('option', 'accept', '.item');}"
+                 #   ),
+                 #   shiny = list(
+                 #     dropped = list(
+                 #       drop = htmlwidgets::JS('function(event, ui) { return ui.draggable.attr("id");}'),
+                 #       dropout = htmlwidgets::JS('function(event, ui) { return "NA";}')
+                 #     )
+                 #   )
+                 # )
+  # )
 })

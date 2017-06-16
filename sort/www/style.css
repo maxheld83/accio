@@ -1,4 +1,6 @@
 /*=== hack-fix to read in number of columns ===*/
+
+
 /*necessary because css cannot read, and calc on number of siblings*/
 
 .ncol01 {
@@ -416,7 +418,9 @@
   bottom: 0;
 }
 
-.droppable {
+.droppable {}
+
+.ui-droppable-active {
   visibility: visible;
   opacity: 0.3;
   z-index: 0;
@@ -442,6 +446,7 @@
   margin-right: 1%;
 }
 */
+
 .textstyle {
   color: black;
   font-family: sans-serif;

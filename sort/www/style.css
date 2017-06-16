@@ -104,14 +104,12 @@
   margin-right: var(--margins);
   margin-left: var(--margins);
   position: relative;
-}
-
-.cell {
   margin-top: calc(var(--verticalinset) * -1);
-  position: relative;
   z-index: 0;
   visibility: hidden;
 }
+
+.cell {}
 
 .ncol02>.cell:nth-child(-n + 2) {
   margin-top: var(--margins);
@@ -420,10 +418,11 @@
 
 .droppable {}
 
-.ui-droppable-active {
+.free {
+  background-color: white;
   visibility: visible;
   opacity: 0.3;
-  z-index: 0;
+  z-index: 9999;
 }
 
 .ui-draggable-dragging {

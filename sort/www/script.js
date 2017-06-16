@@ -1,6 +1,6 @@
 $(function() {
   $(".draggable").draggable({
-    snap: ".droppable",
+    snap: ".free",
     snapMode: "inner",
     snapTolerance: 10,
     opacity: 0.7,
@@ -27,17 +27,15 @@ $(function() {
       // Enable all the .droppable elements
       $('.droppable').droppable('enable');
 
-      // If the droppable element we're hovered over already contains a .draggable element,
-      // don't allow another one to be dropped on it
+      // If the droppable element we're hovered over already contains a .draggable element, don't allow another one to be dropped on it
       if ($(this).has('.draggable').length) {
         $(this).droppable('disable');
-      }
+      };
     },
     drop: function(event, ui) {
       ui.draggable.detach().appendTo($(this));
-      // $(this).removeClass("droppable");
-      //   $(this).droppable("disable");
-      //   // $(".droppable").droppable("enable");
+      $(this).removeClass("free");
+      $(".droppable:empty").addClass("free");
     },
   });
 });

@@ -1,3 +1,8 @@
+/*=== design for elements ===*/
+
+
+/*this is for the overall grid*/
+
 .grid {
   /*=== calculation of dimensions===*/
   --margins: 0.1%;
@@ -27,6 +32,9 @@
   /* Standard syntax (must be last) */
 }
 
+
+/*this is simply the hexagonal shape*/
+
 .hexagon {
   width: var(--d2-short);
   padding-top: var(--d-long);
@@ -34,7 +42,12 @@
   -webkit-clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
   clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
   -webkit-shape-outside: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
-  background-color: white;
+}
+
+
+/*this takes care of all the arrangement of the cells IN the grid*/
+
+.cell {
   float: left;
   margin-right: var(--margins);
   margin-left: var(--margins);
@@ -44,10 +57,12 @@
   visibility: hidden;
 }
 
-.cell {}
+
+/*this designs an item, must be child of cell*/
 
 .item {
   opacity: 1;
+  background-color: white;
   visibility: visible;
   z-index: 9999;
   position: absolute;
@@ -57,7 +72,13 @@
   bottom: 0;
 }
 
+
+/*used simply to select interactivity*/
+
 .droppable {}
+
+
+/*design for free, but available cells*/
 
 .free {
   background-color: white;
@@ -65,6 +86,9 @@
   opacity: 0.3;
   z-index: 9999;
 }
+
+
+/*additions for the cloned item while dragging, which is now relative to .grid!*/
 
 .ui-draggable-dragging {
   position: absolute;
@@ -98,6 +122,9 @@
   position: absolute;
   font-size: 0.9vw;
 }
+
+
+/*=== hack fix: intend lines dependening on ncol ===*/
 
 .ncol02>.cell:nth-child(-n + 2) {
   margin-top: var(--margins);

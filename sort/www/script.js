@@ -2,7 +2,7 @@ $(function() {
   $(".draggable").draggable({
     snap: ".droppable",
     snapMode: "inner",
-    snapTolerance: 20,
+    snapTolerance: 10,
     opacity: 0.7,
     addClasses: true,
     scroll: true,

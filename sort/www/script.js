@@ -30,24 +30,16 @@ $(function() {
     // this is too generous
     tolerance: "intersect",
     accept: ".draggable",
-    greedy: true,
-    over: function(event, ui) {
-      // Enable all the .droppable elements by default
-      $('.droppable').droppable('enable');
-
-      // If the droppable element we're hovered over already contains a .draggable element, don't allow another one to be dropped on it
-      if ($(this).has('.draggable').length) {
-        $(this).droppable('disable');
-      };
-    },
     drop: function(event, ui) {
       // append the clone as a child
       ui.draggable.detach().appendTo($(this));
       // remove the free class, necessary because opacity otherwise won't work
       $(this).removeClass("free");
+      $(this).droppable('disable');
       // but ALSO check on drop whether some OTHER droppable is now empty (the place of origin, probably), and mark it as free gradients
       // notice that this is a workaround for a "dropout" event, which would be nice, but does not exist
       $(".droppable:empty").addClass("free");
+      $(".droppable:empty").droppable("enable");
     },
   });
 });

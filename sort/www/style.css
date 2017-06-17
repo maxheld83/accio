@@ -8,7 +8,6 @@
   --margins: 0.1%;
   --d2-short: calc(100% / calc(var(--ncol) + 1/2) - calc(var(--margins) * 2));
   --sqrt3: 1.732050807568877;
-  /*--a-radius: calc(var(--d2-short) / var(--sqrt3));*/
   --a-radius: calc(var(--d2-short) / var(--sqrt3));
   /*--a-radius: var(--d2-short);*/
   /*to appease jquery droppable, draggable must be ever so slightly smaller*/
@@ -36,29 +35,29 @@
 /*this is simply the hexagonal shape*/
 
 .hexagon {
-  width: var(--d2-short);
-  padding-top: var(--d-long);
   overflow: hidden;
-  -webkit-clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
   clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  -webkit-clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
   -webkit-shape-outside: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
 }
 
 
-/*this takes care of all the arrangement of the cells IN the grid*/
+/*this gives dimensions to hexagons when they are direct children of grid*/
 
-.cell {
-  float: left;
-  margin-right: var(--margins);
-  margin-left: var(--margins);
-  position: relative;
-  margin-top: calc(var(--verticalinset) * -1);
-  z-index: 0;
-  visibility: hidden;
+.cell, .ui-draggable-dragging {
+  width: var(--d2-short);
+  padding-top: var(--d-long);
 }
 
 
-/*this designs an item, must be child of cell*/
+/*this gives dimensions when item is in parent cell*/
+
+.cell .item {
+  width: 100%;
+}
+
+
+/*this designs an item*/
 
 .item {
   opacity: 1;
@@ -67,9 +66,21 @@
   z-index: 9999;
   position: absolute;
   margin: 0 auto;
-  width: 100%;
   top: 0;
   bottom: 0;
+}
+
+
+/*this takes care of all the arrangement of the cells IN the grid*/
+
+.cell {
+  float: left;
+  position: relative;
+  margin-right: var(--margins);
+  margin-left: var(--margins);
+  margin-top: calc(var(--verticalinset) * -1);
+  z-index: 0;
+  visibility: hidden;
 }
 
 
@@ -93,7 +104,6 @@
 .ui-draggable-dragging {
   position: absolute;
   bottom: auto;
-  width: var(--d2-short);
 }
 
 

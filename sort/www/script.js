@@ -42,4 +42,7 @@ $(function() {
       $(".droppable:empty").droppable("enable");
     },
   });
+  $(".cell").click(function() {
+    $(this).toggleClass("zoom-in");
+  });
 });

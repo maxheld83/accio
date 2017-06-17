@@ -44,7 +44,7 @@
 
 /*this gives dimensions to hexagons when they are direct children of grid*/
 
-.cell, .ui-draggable-dragging {
+.cell, .ui-draggable-dragging, .itemzoom {
   width: var(--d2-short);
   padding-top: var(--d-long);
 }
@@ -81,6 +81,14 @@
   margin-top: calc(var(--verticalinset) * -1);
   z-index: 0;
   visibility: hidden;
+  transition: all 0.2s ease-in-out;
+}
+
+.zoom-in {
+  transform: scale(2);
+  /*TODO calculate scale plus margins, so that it fits exactly*/
+  display: grid;
+  transition: all 0.2s ease-in-out;
 }
 
 

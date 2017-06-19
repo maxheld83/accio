@@ -87,8 +87,7 @@
 .zoom-in {
   transform: scale(2);
   /*TODO calculate scale plus margins, so that it fits exactly*/
-  display: grid;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s;
 }
 
 

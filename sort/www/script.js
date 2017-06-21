@@ -26,6 +26,7 @@ $(function() {
       $(this).show();
     }
   });
+
   $(".droppable").droppable({
     // this is too generous
     tolerance: "intersect",
@@ -42,7 +43,62 @@ $(function() {
       $(".droppable:empty").droppable("enable");
     },
   });
+})
+
+// The following code prevents overflow when scaling items. The items should only scale inside container (.grid)
+
+$(function() {
   $(".cell").click(function() {
     $(this).toggleClass("zoom-in");
   });
 });
+
+document.addEventListener("DOMContentLoaded", setEvent, false);
+
+function setEvent() {
+  var elements = document.getElementsByClassName('cell');
+  var grid = elements[0].parentElement;
+
+  // calculate dimensions of grid. We need this to compare it with item positions below.
+
+  var gridWidth = grid.clientWidth;
+  var gridHeight = grid.clientHeight;
+  var maxGrid = {
+    right: gridWidth,
+    bottom: gridHeight
+  }
+
+  for (var n = 0; n < elements.length; n++) {
+    evaluate(elements[n], maxGrid);
+  }
+}
+
+function evaluate(element, maxGrid) {
+
+  // We need the declare variable "transOrigin" to put it into the .transformOrigin method later on in order to transform item position.
+
+  var transOrigin = "";
+
+  // This is the important part, where we compare item position with grid dimensions and say how the item should be transformed in which case (left, right, bottom, top).
+
+  var left = element.offsetLeft;
+  if (left < element.clientWidth / 2) {
+    transOrigin += "left ";
+  }
+  if (left + element.clientWidth / 2 > maxGrid.right - element.clientWidth) {
+    transOrigin += "right";
+  }
+
+
+  var top = element.offsetTop;
+  if (top < element.clientHeight / 2) {
+    transOrigin += "top";
+  }
+  if (top + element.clientHeight / 2 > maxGrid.bottom - element.clientHeight) {
+    transOrigin += "bottom";
+  }
+
+  // Finally, the transformOrigin property sets the position on items ('x-axis y-axis z-axis').
+
+  element.style.transformOrigin = transOrigin;
+}

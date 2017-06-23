@@ -60,7 +60,6 @@
 /*this designs an item*/
 
 .item {
-  opacity: 1;
   background-color: white;
   visibility: visible;
   z-index: 9999;
@@ -79,7 +78,6 @@
   margin-right: var(--margins);
   margin-left: var(--margins);
   margin-top: calc(var(--verticalinset) * -1);
-  z-index: 0;
   visibility: hidden;
   transition: all 0.2s ease-in-out;
 }
@@ -99,11 +97,11 @@
 /*design for free, but available cells*/
 
 .free {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.3);
   visibility: visible;
-  opacity: 0.3;
-  z-index: 9999;
 }
+
+.filled-cells {}
 
 
 /*additions for the cloned item while dragging, which is now relative to .grid!*/

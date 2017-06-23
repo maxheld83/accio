@@ -86,6 +86,7 @@
   transform: scale(2);
   /*TODO calculate scale plus margins, so that it fits exactly*/
   transition: all 0.2s ease-in-out;
+  z-index: 9999;
 }
 
 

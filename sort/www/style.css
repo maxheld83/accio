@@ -99,9 +99,9 @@
 .free {
   background-color: rgba(255, 255, 255, 0.3);
   visibility: visible;
+  /*transition must override parameters from cell (zoom-in), because free cells shouldn't transition slowly.*/
+  transition: initial;
 }
-
-.filled-cells {}
 
 
 /*additions for the cloned item while dragging, which is now relative to .grid!*/

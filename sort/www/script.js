@@ -1,6 +1,10 @@
 $(function() {
   $(".draggable").draggable({
     // only snap to whatever is actually marked free in thml
+    cursorAt: {
+      left: 50,
+      top: 50
+    },
     snap: ".free",
     snapMode: "inner",
     snapTolerance: 10,
@@ -20,6 +24,7 @@ $(function() {
     start: function() {
       // original must be hidden on start of dragging clone
       $(this).hide();
+      $(this).removeClass("zoom-in");
     },
     stop: function() {
       // and original shown again, once clone is appended
@@ -56,6 +61,7 @@ $(function() {
       $(".droppable:not(:has(.draggable))")
         // revert what happens on "drop" in the above
         .addClass("free")
+        .removeClass("zoom-in")
         .droppable("enable");
 
       // and we also revert the zoom-in, and to be sure, we do this on empty cells, not empty droppables
@@ -116,7 +122,7 @@ function evaluate(element, maxGrid) {
   if (left < element.clientWidth / 2) {
     transOrigin += "left ";
   }
-  if (left + element.clientWidth / 2 > maxGrid.right - element.clientWidth) {
+  if (left + (element.clientWidth / 2) > maxGrid.right - element.clientWidth) {
     transOrigin += "right";
   }
 
@@ -125,7 +131,7 @@ function evaluate(element, maxGrid) {
   if (top < element.clientHeight / 2) {
     transOrigin += "top";
   }
-  if (top + element.clientHeight / 2 > maxGrid.bottom - element.clientHeight) {
+  if (top + (element.clientHeight / 2) > maxGrid.bottom - element.clientHeight) {
     transOrigin += "bottom";
   }
 

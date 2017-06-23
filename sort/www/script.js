@@ -40,9 +40,13 @@ $(function() {
         .removeClass("free")
         // prevent other draggable from being dropped on top
         .droppable("disable")
-        // allow receiving parent to zoom
+        // allow receiving parent to scale
         .click(function() {
-          $(this).toggleClass("zoom-in");
+          $(this)
+            // but at the same time unscale all other scaled cells
+            .toggleClass("zoom-in")
+            .siblings("div")
+            .removeClass("zoom-in");
         });
 
       // the following happens to SENDING parent cells, which are now orphaned
@@ -68,8 +72,14 @@ $(function() {
   // this must happen at the very beginning, BEFORE any drop event is triggered
   // this initial assignment is then added/removed on any drop event in above .droppable function
   $(".cell").not(".free").click(function() {
-    $(this).toggleClass("zoom-in");
+    $(this)
+      .toggleClass("zoom-in")
+      .siblings("div")
+      .removeClass("zoom-in");
   });
+  // initial droppables must also be disabled if they are already filled
+  // this is a rare use case, but will be used when item are dynamically presented as in item-response theory settings
+  $(".droppable:has(.draggable)").droppable("disable");
 });
 
 // The following code prevents overflow when scaling items. The items should only scale inside container(.grid)

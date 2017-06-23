@@ -32,78 +32,95 @@ $(function() {
     tolerance: "intersect",
     accept: ".draggable",
     drop: function(event, ui) {
-      // append the clone as a child
+      // The following happens to RECEIVING parent cells on drop
+      // child from SENDING parent was a clone appended to grid, so must first be appended to receiving parent
       ui.draggable.detach().appendTo($(this));
-      // remove the free class, necessary because opacity otherwise won't work
-      $(this).removeClass("free");
-      $(this).droppable("disable");
-      // but ALSO check on drop whether some OTHER droppable is now empty (the place of origin, probably), and mark it as free
-      // notice that this is a workaround for a "dropout" event, which would be nice, but does not exis
-      // The following selector does not work relieably: $(".droppable:empty")
+      $(this)
+        // change layout appropriately
+        .removeClass("free")
+        // prevent other draggable from being dropped on top
+        .droppable("disable")
+        // allow receiving parent to zoom
+        .click(function() {
+          $(this).toggleClass("zoom-in");
+        });
 
+      // the following happens to SENDING parent cells, which are now orphaned
+      // notice that there is no "dropout" event, so we here shoehorn the DROP event into the same purpose by selecting all "empty" (sic!) parent cells on drop
+      // however, the actual "empty" selector does NOT work reliably:  $(".droppable:empty")
+      // hence the not has action. enjoy.
       $(".droppable:not(:has(.draggable))")
+        // revert what happens on "drop" in the above
         .addClass("free")
         .droppable("enable");
+
+      // and we also revert the zoom-in, and to be sure, we do this on empty cells, not empty droppables
+      $(".cell:not(:has(.item))")
+        .off("click");
     },
   });
 });
 
-//   scale cells
-//   $(".cell").not(".free").click(function() {
-//     $(this).toggleClass("zoom-in");
-//   });
-// })
+$(function() {
+  // scale cells
+  // notice this always has to happen at the parent CELL level, not the child item level, because otherwise you can't scale outside of the containing cell.
+  // must also use scale so as not to disrupt the flow of cells (scale results are ignored in boxmodel etc.)
+  // this must happen at the very beginning, BEFORE any drop event is triggered
+  // this initial assignment is then added/removed on any drop event in above .droppable function
+  $(".cell").not(".free").click(function() {
+    $(this).toggleClass("zoom-in");
+  });
+});
 
-// The following code prevents overflow when scaling items. The items should only scale inside container (.grid)
-//
-// document.addEventListener("DOMContentLoaded", setEvent, false);
-//
-// function setEvent() {
-//   var elements = document.getElementsByClassName("cell");
-//   var grid = elements[0].parentElement;
-//
-//   // calculate dimensions of grid. We need this to compare it with item positions below.
-//
-//   var gridWidth = grid.clientWidth;
-//   var gridHeight = grid.clientHeight;
-//   var maxGrid = {
-//     right: gridWidth,
-//     bottom: gridHeight
-//   }
-//
-//   for (var n = 0; n < elements.length; n++) {
-//     evaluate(elements[n], maxGrid);
-//   }
-// }
-//
-// function evaluate(element, maxGrid) {
-//
-//   // We need the declare variable "transOrigin" to put it into the .transformOrigin method later on in order to transform item position.
-//
-//   var transOrigin = "";
-//
-//   // This is the important part, where we compare item position with grid dimensions and say how the item should be transformed in which case (left, right, bottom, top).
-//
-//   var left = element.offsetLeft;
-//   if (left < element.clientWidth / 2) {
-//     transOrigin += "left ";
-//   }
-//   if (left + element.clientWidth / 2 > maxGrid.right - element.clientWidth) {
-//     transOrigin += "right";
-//   }
-//
-//
-//   var top = element.offsetTop;
-//   if (top < element.clientHeight / 2) {
-//     transOrigin += "top";
-//   }
-//   if (top + element.clientHeight / 2 > maxGrid.bottom - element.clientHeight) {
-//     transOrigin += "bottom";
-//   }
-//
-//   // Finally, the transformOrigin property sets the position on items ('x-axis y-axis z-axis').
-//
-//   element.style.transformOrigin = transOrigin;
-// }
-// n = transOrigin;
-// }
+// The following code prevents overflow when scaling items. The items should only scale inside container(.grid)
+
+document.addEventListener("DOMContentLoaded", setEvent, false);
+
+function setEvent() {
+  var elements = document.getElementsByClassName("cell");
+  var grid = elements[0].parentElement;
+
+  // calculate dimensions of grid. We need this to compare it with item positions below.
+
+  var gridWidth = grid.clientWidth;
+  var gridHeight = grid.clientHeight;
+  var maxGrid = {
+    right: gridWidth,
+    bottom: gridHeight
+  }
+
+  for (var n = 0; n < elements.length; n++) {
+    evaluate(elements[n], maxGrid);
+  }
+}
+
+function evaluate(element, maxGrid) {
+
+  // We need the declare variable "transOrigin" to put it into the .transformOrigin method later on in order to transform item position.
+
+  var transOrigin = "";
+
+  // This is the important part, where we compare item position with grid dimensions and say how the item should be transformed in which case (left, right, bottom, top).
+
+  var left = element.offsetLeft;
+  if (left < element.clientWidth / 2) {
+    transOrigin += "left ";
+  }
+  if (left + element.clientWidth / 2 > maxGrid.right - element.clientWidth) {
+    transOrigin += "right";
+  }
+
+
+  var top = element.offsetTop;
+  if (top < element.clientHeight / 2) {
+    transOrigin += "top";
+  }
+  if (top + element.clientHeight / 2 > maxGrid.bottom - element.clientHeight) {
+    transOrigin += "bottom";
+  }
+
+  // Finally, the transformOrigin property sets the position on items ('x-axis y-axis z-axis').
+
+  element.style.transformOrigin = transOrigin;
+  n = transOrigin;
+}

@@ -114,7 +114,8 @@ function evaluate(element, maxGrid) {
 
   // We need the declare variable "transOrigin" to put it into the .transformOrigin method later on in order to transform item position.
 
-  var transOrigin = "";
+  var transOrigin = " ";
+
 
   // This is the important part, where we compare item position with grid dimensions and say how the item should be transformed in which case (left, right, bottom, top).
 
@@ -123,9 +124,8 @@ function evaluate(element, maxGrid) {
     transOrigin += "left ";
   }
   if (left + (element.clientWidth / 2) > maxGrid.right - element.clientWidth) {
-    transOrigin += "right";
+    transOrigin += "right ";
   }
-
 
   var top = element.offsetTop;
   if (top < element.clientHeight / 2) {
@@ -136,7 +136,5 @@ function evaluate(element, maxGrid) {
   }
 
   // Finally, the transformOrigin property sets the position on items ('x-axis y-axis z-axis').
-
   element.style.transformOrigin = transOrigin;
-  n = transOrigin;
 }

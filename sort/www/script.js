@@ -8,11 +8,8 @@ $(function() {
     snap: ".free",
     snapMode: "inner",
     snapTolerance: 10,
-    opacity: 0.7,
-    addClasses: true,
     scroll: true,
     cursor: "move",
-    // stack: ".item",
     // go back to original place, if placed on invalid droppable
     revert: "invalid",
     // this makes sure that we can escape the parent

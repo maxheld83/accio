@@ -44,7 +44,7 @@
 
 /*this gives dimensions to hexagons when they are direct children of grid*/
 
-.cell, .ui-draggable-dragging, .itemzoom {
+.cell, .ui-draggable-dragging {
   width: var(--d2-short);
   padding-top: var(--d-long);
 }

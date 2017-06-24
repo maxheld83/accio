@@ -62,11 +62,17 @@
 .item {
   background-color: white;
   visibility: visible;
-  z-index: 9999;
+  z-index: 1;
   position: absolute;
   margin: 0 auto;
   top: 0;
   bottom: 0;
+}
+
+.cell.ui-droppable-hover {
+  background-color: white;
+  opacity: 0.5;
+  visibility: visible;
 }
 
 

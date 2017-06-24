@@ -5,9 +5,9 @@ $(function() {
       left: 50,
       top: 50
     },
-    snap: ".free",
-    snapMode: "inner",
-    snapTolerance: 10,
+    // snap: ".free",
+    // snapMode: "inner",
+    // snapTolerance: 10,
     scroll: true,
     cursor: "move",
     // go back to original place, if placed on invalid droppable
@@ -31,7 +31,7 @@ $(function() {
 
   $(".droppable").droppable({
     // this is too generous
-    tolerance: "intersect",
+    tolerance: "pointer",
     accept: ".draggable",
     drop: function(event, ui) {
       // The following happens to RECEIVING parent cells on drop

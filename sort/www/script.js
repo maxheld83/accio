@@ -97,14 +97,25 @@ $(function() {
   // this initial assignment is then added/removed on any drop event in above .droppable function
   $(".cell").has(".item").click(function() {
     $(this)
+      // scale in-out currently clicked cell
       .toggleClass("zoom-in")
-      .removeClass("scale-contrast")
-      .siblings(".cell")
-      .removeClass("zoom-in")
-      // reset the scale-contrast state (keep toggle in minds)
-      // .removeClass("scale-contrast")
-      .has(".item")
-      .toggleClass("scale-contrast");
+      // clicked must never be transparent
+      .removeClass("scale-contrast");
+    if ($(this).hasClass("zoom-in")) {
+      // in case the clicked cell becomes toggled ON, scale out all others and make them transparent
+      $(this)
+        .siblings(".cell")
+        .has(".item")
+        .addClass("scale-contrast")
+        .removeClass("zoom-in");
+    } else {
+      // in case the clicked cell becomes toggled OFF, make all others opaque
+      console.log("falsye");
+      $(this)
+        .siblings(".cell")
+        .has(".item")
+        .removeClass("scale-contrast");
+    }
   });
   // initial droppables must also be disabled if they are already filled
   // this is a rare use case, but will be used when item are dynamically presented as in item-response theory settings

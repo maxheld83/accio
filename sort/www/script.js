@@ -57,13 +57,25 @@ $(function() {
         // allow receiving parent to scale
         .click(function() {
           $(this)
+            // scale in-out currently clicked cell
             .toggleClass("zoom-in")
-            // Ensure that only one item is scaled at a time
-            .siblings("div")
-            .removeClass("zoom-in")
-            // fade out non-scaled items
-            .has(".item")
-            .toggleClass("scale-contrast");
+            // clicked must never be transparent
+            .removeClass("scale-contrast");
+          if ($(this).hasClass("zoom-in")) {
+            // in case the clicked cell becomes toggled ON, scale out all others and make them transparent
+            $(this)
+              .siblings(".cell")
+              .has(".item")
+              .addClass("scale-contrast")
+              .removeClass("zoom-in");
+          } else {
+            // in case the clicked cell becomes toggled OFF, make all others opaque
+            console.log("falsye");
+            $(this)
+              .siblings(".cell")
+              .has(".item")
+              .removeClass("scale-contrast");
+          }
         });
 
       // the following happens to SENDING parent cells, which are now orphaned
@@ -82,7 +94,7 @@ $(function() {
       $(".cell:not(:has(.item))")
         .off("click");
 
-      // we also revert the scale-contrast of the unscaled item cells
+      // we also revert the scale-contrast of the unscaled cells
       $(".cell")
         .removeClass("scale-contrast");
     },

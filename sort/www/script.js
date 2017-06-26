@@ -1,10 +1,10 @@
 $(function() {
   $(".draggable").draggable({
-    // only snap to whatever is actually marked free in thml
     cursorAt: {
       left: 50,
       top: 50
     },
+    // only snap to whatever is actually marked free in html
     // snap: ".free",
     // snapMode: "inner",
     // snapTolerance: 10,
@@ -18,14 +18,26 @@ $(function() {
     helper: "clone",
     // prevents draggint outside of grid
     containment: ".grid",
-    start: function() {
+    start: function(event, ui) {
       // original must be hidden on start of dragging clone
-      $(this).hide();
-      $(this).removeClass("zoom-in");
+      $(this)
+        .hide()
+        .removeClass("zoom-in");
+
+      // $(this).draggable("instance").offset.click = {
+      //   left: Math.floor(ui.helper.width() / 3),
+      //   top: Math.floor(ui.helper.height() / 3)
+      // };
+      // $(this).draggable("option", "cursorAt", {
+      //   left: Math.floor(ui.helper.width() / 2),
+      //   top: Math.floor(ui.helper.height() / 2)
+      // });
     },
+
     stop: function() {
       // and original shown again, once clone is appended
-      $(this).show();
+      $(this)
+        .show();
     }
   });
 
@@ -45,40 +57,54 @@ $(function() {
         // allow receiving parent to scale
         .click(function() {
           $(this)
-            // but at the same time unscale all other scaled cells
             .toggleClass("zoom-in")
+            // Ensure that only one item is scaled at a time
             .siblings("div")
-            .removeClass("zoom-in");
+            .removeClass("zoom-in")
+            // fade out non-scaled items
+            .has(".item")
+            .toggleClass("scale-contrast");
         });
 
       // the following happens to SENDING parent cells, which are now orphaned
       // notice that there is no "dropout" event, so we here shoehorn the DROP event into the same purpose by selecting all "empty" (sic!) parent cells on drop
       // however, the actual "empty" selector does NOT work reliably:  $(".droppable:empty")
-      // hence the not has action. enjoy.
+      // hence the :not:has action. enjoy.
       $(".droppable:not(:has(.draggable))")
         // revert what happens on "drop" in the above
         .addClass("free")
+        // unscale the sending cell (remove artefact)
         .removeClass("zoom-in")
+        // make the sending cell droppable again
         .droppable("enable");
 
-      // and we also revert the zoom-in, and to be sure, we do this on empty cells, not empty droppables
+      // ensure that sending cells are no longer scalable
       $(".cell:not(:has(.item))")
         .off("click");
+
+      // we also revert the scale-contrast of the unscaled item cells
+      $(".cell")
+        .removeClass("scale-contrast");
     },
   });
 });
 
+// INIT
 $(function() {
-  // scale cells
   // notice this always has to happen at the parent CELL level, not the child item level, because otherwise you can't scale outside of the containing cell.
   // must also use scale so as not to disrupt the flow of cells (scale results are ignored in boxmodel etc.)
   // this must happen at the very beginning, BEFORE any drop event is triggered
   // this initial assignment is then added/removed on any drop event in above .droppable function
-  $(".cell").not(".free").click(function() {
+  $(".cell").has(".item").click(function() {
     $(this)
       .toggleClass("zoom-in")
-      .siblings("div")
-      .removeClass("zoom-in");
+      .removeClass("scale-contrast")
+      .siblings(".cell")
+      .removeClass("zoom-in")
+      // reset the scale-contrast state (keep toggle in minds)
+      // .removeClass("scale-contrast")
+      .has(".item")
+      .toggleClass("scale-contrast");
   });
   // initial droppables must also be disabled if they are already filled
   // this is a rare use case, but will be used when item are dynamically presented as in item-response theory settings

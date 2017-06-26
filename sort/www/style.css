@@ -95,6 +95,10 @@
   z-index: 9999;
 }
 
+.scale-contrast {
+  opacity: 0.6;
+}
+
 
 /*used simply to select interactivity*/
 

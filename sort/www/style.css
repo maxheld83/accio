@@ -19,7 +19,7 @@
   width: 100%;
   height: 100%;
   position: relative;
-  overflow: scroll;
+  overflow: hidden;
   /*other gradients: #2196f3, #f44336 or: #d3959b, #bfe6ba (best) or: #5fc3e4, #e55d87*/
   background: -webkit-linear-gradient(left, #bfe9ff, #ff6e7f);
   /* For Safari 5.1 to 6.0 */

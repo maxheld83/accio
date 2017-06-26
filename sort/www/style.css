@@ -72,7 +72,6 @@
 .cell.ui-droppable-hover {
   background-color: white;
   opacity: 0.5;
-  visibility: visible;
 }
 
 
@@ -97,6 +96,8 @@
 
 .scale-contrast {
   opacity: 0.6;
+  /*needs to be visible, because otherwise .cells visibility:hidden conflicted in safari*/
+  visibility: visible;
 }
 
 

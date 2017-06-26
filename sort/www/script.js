@@ -21,9 +21,9 @@ $(function() {
     start: function(event, ui) {
       // original must be hidden on start of dragging clone
       $(this)
-        .hide()
-        .removeClass("zoom-in");
-
+        .hide();
+      $(".cell")
+        .removeClass("zoom-in scale-contrast");
       // $(this).draggable("instance").offset.click = {
       //   left: Math.floor(ui.helper.width() / 3),
       //   top: Math.floor(ui.helper.height() / 3)
@@ -94,7 +94,7 @@ $(function() {
       $(".cell:not(:has(.item))")
         .off("click");
 
-      // we also revert the scale-contrast of the unscaled cells
+      // we also revert the scale-contrast of the unscaled item cells
       $(".cell")
         .removeClass("scale-contrast");
     },

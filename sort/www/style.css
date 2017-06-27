@@ -20,14 +20,13 @@
   height: 100%;
   position: relative;
   overflow: hidden;
-  /*other gradients: #2196f3, #f44336 or: #d3959b, #bfe6ba (best) or: #5fc3e4, #e55d87*/
-  background: -webkit-linear-gradient(left, #bfe9ff, #ff6e7f);
+  background: -webkit-linear-gradient(left, #5fc3e4, #e55d87);
   /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(left, #bfe9ff, #ff6e7f);
+  background: -o-linear-gradient(left, #5fc3e4, #e55d87);
   /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(left, #bfe9ff, #ff6e7f);
+  background: -moz-linear-gradient(left, #5fc3e4, #e55d87);
   /* For Fx 3.6 to 15 */
-  background: linear-gradient(left, #bfe9ff, #ff6e7f);
+  background: linear-gradient(left, #5fc3e4, #e55d87);
   /* Standard syntax (must be last) */
 }
 

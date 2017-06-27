@@ -1,10 +1,8 @@
 $(function() {
   $(".draggable").draggable({
-    cursorAt: {
-      left: 50,
-      top: 50
-    },
-    // only snap to whatever is actually marked free in html
+    // option cursorAt is set dynamically in the below
+
+    // snap is an option, but does not work great.
     // snap: ".free",
     // snapMode: "inner",
     // snapTolerance: 10,
@@ -24,14 +22,14 @@ $(function() {
         .hide();
       $(".cell")
         .removeClass("zoom-in scale-contrast");
-      // $(this).draggable("instance").offset.click = {
-      //   left: Math.floor(ui.helper.width() / 3),
-      //   top: Math.floor(ui.helper.height() / 3)
-      // };
-      // $(this).draggable("option", "cursorAt", {
-      //   left: Math.floor(ui.helper.width() / 2),
-      //   top: Math.floor(ui.helper.height() / 2)
-      // });
+    },
+
+    create: function(event, ui) {
+      // calculate cursorAt the first time draggable is created, updated below when viewport changes
+      $(this).draggable("option", "cursorAt", {
+        left: Math.floor(this.clientWidth / 2),
+        top: Math.floor(this.clientHeight / 2)
+      });
     },
 
     stop: function() {
@@ -39,6 +37,17 @@ $(function() {
       $(this)
         .show();
     }
+  });
+
+  $(window).resize(function() {
+    // TODO this is atrocious code that evaluates many times on a resize; eval should wait until resize is done. -> https://github.com/maxheld83/accio/issues/141
+    // first grab ONE of item class
+    var firstitem = document.getElementsByClassName("item")[0];
+    // then recalculate cursorAt based on dims of this one item
+    $(".draggable").draggable("option", "cursorAt", {
+      left: Math.floor(firstitem.clientWidth / 2),
+      top: Math.floor(firstitem.clientHeight / 2)
+    });
   });
 
   $(".droppable").droppable({
@@ -70,7 +79,6 @@ $(function() {
               .removeClass("zoom-in");
           } else {
             // in case the clicked cell becomes toggled OFF, make all others opaque
-            console.log("falsye");
             $(this)
               .siblings(".cell")
               .has(".item")
@@ -122,7 +130,6 @@ $(function() {
         .removeClass("zoom-in");
     } else {
       // in case the clicked cell becomes toggled OFF, make all others opaque
-      console.log("falsye");
       $(this)
         .siblings(".cell")
         .has(".item")

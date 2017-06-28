@@ -142,8 +142,13 @@ $(function() {
 });
 
 // The following code prevents overflow when scaling items. The items should only scale inside container(.grid)
-
+// TODO: Why option false?
 document.addEventListener("DOMContentLoaded", setEvent, false);
+// window.addEventListener("resize", setEvent);
+
+$(window).resize(function () {
+  setEvent();
+});
 
 function setEvent() {
   var elements = document.getElementsByClassName("cell");
@@ -161,7 +166,7 @@ function setEvent() {
   for (var n = 0; n < elements.length; n++) {
     evaluate(elements[n], maxGrid);
   }
-}
+};
 
 function evaluate(element, maxGrid) {
 
@@ -175,9 +180,10 @@ function evaluate(element, maxGrid) {
   var left = element.offsetLeft;
   if (left < element.clientWidth / 2) {
     transOrigin += "left ";
-  }
-  if (left + (element.clientWidth / 2) > maxGrid.right - element.clientWidth) {
+  } else if (left + (element.clientWidth / 2) > maxGrid.right - element.clientWidth) {
     transOrigin += "right ";
+  } else {
+    transOrigin += "center ";
   }
 
   // for the available space on top or bottom of cells, we need to know the distance of every cell from its GRANDPARENT gridcontainer
@@ -186,9 +192,10 @@ function evaluate(element, maxGrid) {
   var top = element.offsetTop + whitespacetop;
   if (top < element.clientHeight / 2) {
     transOrigin += "top";
-  }
-  if (top + (element.clientHeight / 2) > maxGrid.bottom - element.clientHeight) {
+  } else if (top + (element.clientHeight / 2) > maxGrid.bottom - element.clientHeight) {
     transOrigin += "bottom";
+  } else {
+    transOrigin += "center";
   }
 
   // Finally, the transformOrigin property sets the position on items ('x-axis y-axis z-axis').

@@ -6,7 +6,9 @@ body {
 }
 
 .gridcontainer {
-  background-size: cover;
+display: flex;
+flex-direction: column;
+justify-content: center;
   height: 100%;
   /* START: gradient blue to pink, good contrast for items*/
   background: #3494E6;

@@ -146,7 +146,7 @@ $(function() {
 document.addEventListener("DOMContentLoaded", setEvent, false);
 // window.addEventListener("resize", setEvent);
 
-$(window).resize(function () {
+$(window).resize(function() {
   setEvent();
 });
 
@@ -201,3 +201,26 @@ function evaluate(element, maxGrid) {
   // Finally, the transformOrigin property sets the position on items ('x-axis y-axis z-axis').
   element.style.transformOrigin = transOrigin;
 }
+
+
+// when the grid is "wider" (in terms of aspect ratio) than the gridcontainer (happens rarely), the dimensions of the grid must be resized to fit
+// specifically, only the width can/must be resized, because all dimensions in grid depend only on grid.
+function squishvertical(heightneed) {
+  var outeraspect = $(".gridcontainer")[0].clientWidth / $(".gridcontainer")[0].clientHeight;
+  var inneraspect = $(".grid")[0].clientWidth / $(".grid")[0].clientHeight;
+  if (outeraspect > inneraspect) {
+    // attention: this part of the if clause writes out pixels, not percent
+    var heightneed = $(".grid")[0].clientHeight;
+    var heightavail = $(".gridcontainer")[0].clientHeight;
+    var widthfactor = heightavail / heightneed;
+    var newwidth = widthfactor * $(".grid")[0].clientWidth;
+    $(".grid").css("width", newwidth);
+  } else {
+    $(".grid").css("width", "100%");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", squishvertical, false);
+$(window).resize(function() {
+  squishvertical();
+});

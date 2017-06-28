@@ -7,8 +7,8 @@ body {
 
 .gridcontainer {
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  align-items: center;
   height: 100%;
   /* START: gradient blue to pink, good contrast for items*/
   background: #3494E6;
@@ -59,6 +59,8 @@ body {
   position: relative;
   /*TODO this actually causes problems until https://github.com/maxheld83/accio/issues/107 is solved!*/
   overflow: visible;
+  /*this is rewritten by below js*/
+  width: 100%;
 }
 
 

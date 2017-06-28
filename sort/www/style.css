@@ -20,14 +20,34 @@
   height: 100%;
   position: relative;
   overflow: hidden;
-  background: -webkit-linear-gradient(left, #5fc3e4, #e55d87);
-  /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(left, #5fc3e4, #e55d87);
-  /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(left, #5fc3e4, #e55d87);
-  /* For Fx 3.6 to 15 */
-  background: linear-gradient(left, #5fc3e4, #e55d87);
-  /* Standard syntax (must be last) */
+  /* START: gradient blue to pink, good contrast for items*/
+  background: #3494E6;
+  background: -webkit-linear-gradient(to left, #EC6EAD, #3494E6);
+  background: linear-gradient(to left, #EC6EAD, #3494E6);
+  /* START: another gradient blue to pink, but more muted colors*/
+  /*background: #E55D87;
+  background: -webkit-linear-gradient(to right, #5FC3E4, #E55D87);
+  background: linear-gradient(to right, #5FC3E4, #E55D87);*/
+  /* START: gradient blue to green, lighter*/
+  /*background: #67B26F;
+  background: -webkit-linear-gradient(to right, #4ca2cd, #67B26F);
+  background: linear-gradient(to right, #4ca2cd, #67B26F);*/
+  /* START: gradient blue to purple, muted colors*/
+  /*background: #4568DC;
+  background: -webkit-linear-gradient(to left, #B06AB3, #4568DC);
+  background: linear-gradient(to left, #B06AB3, #4568DC);*/
+  /* START: simply blue*/
+  /*background: #6190E8;
+  background: -webkit-linear-gradient(to right, #A7BFE8, #6190E8);
+  background: linear-gradient(to right, #A7BFE8, #6190E8);*/
+  /* START: orange to red*/
+  /*background: #FF5F6D;
+  background: -webkit-linear-gradient(to right, #FFC371, #FF5F6D);
+  background: linear-gradient(to right, #FFC371, #FF5F6D);*/
+  /* START: yellow to green*/
+  /*background: #16A085;
+  background: -webkit-linear-gradient(to right, #F4D03F, #16A085);
+  background: linear-gradient(to right, #F4D03F, #16A085);*/
 }
 
 
@@ -59,7 +79,7 @@
 /*this designs an item*/
 
 .item {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.9);
   visibility: visible;
   z-index: 1;
   position: absolute;
@@ -70,7 +90,7 @@
 
 .cell.ui-droppable-hover {
   background-color: white;
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
 
@@ -108,7 +128,7 @@
 /*design for free, but available cells*/
 
 .free {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.2);
   visibility: visible;
   /*transition must override parameters from cell (zoom-in), because free cells shouldn't transition slowly.*/
   transition: initial;

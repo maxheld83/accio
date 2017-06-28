@@ -1,5 +1,9 @@
 /*=== design for elements ===*/
 
+body {
+  margin: 0 0;
+}
+
 
 /*this is for the overall grid*/
 

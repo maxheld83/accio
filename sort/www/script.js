@@ -1,3 +1,11 @@
+// set height of .grid-container depending on window (full screen)
+$(function(){
+  $(".grid-container").css({ height: $(window).innerHeight() });
+  $(window).resize(function(){
+    $(".grid-container").css({ height: $(window).innerHeight() });
+  });
+});
+
 $(function() {
   $(".draggable").draggable({
     // option cursorAt is set dynamically in the below

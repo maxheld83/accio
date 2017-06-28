@@ -4,26 +4,7 @@ body {
   margin: 0 0;
 }
 
-
-/*this is for the overall grid*/
-
-.grid {
-  /*=== calculation of dimensions===*/
-  --margins: 0.1%;
-  --d2-short: calc(100% / calc(var(--ncol) + 1/2) - calc(var(--margins) * 2));
-  --sqrt3: 1.732050807568877;
-  --a-radius: calc(var(--d2-short) / var(--sqrt3));
-  /*--a-radius: var(--d2-short);*/
-  /*to appease jquery droppable, draggable must be ever so slightly smaller*/
-  /*TODO fix this hackfix: https://github.com/maxheld83/accio/issues/94*/
-  --droppablemargin: 0.05%;
-  --d-long: calc(var(--a-radius) * 2);
-  --verticalinset: calc(((var(--d-long) - var(--d2-short)) * 2) - calc(4.5 * var(--margins)));
-  /*horizontal centering*/
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
+.grid-container {
   /* START: gradient blue to pink, good contrast for items*/
   background: #3494E6;
   background: -webkit-linear-gradient(to left, #EC6EAD, #3494E6);
@@ -52,6 +33,28 @@ body {
   /*background: #16A085;
   background: -webkit-linear-gradient(to right, #F4D03F, #16A085);
   background: linear-gradient(to right, #F4D03F, #16A085);*/
+}
+
+
+/*this is for the overall grid*/
+
+.grid {
+  /*=== calculation of dimensions===*/
+  --margins: 0.1%;
+  --d2-short: calc(100% / calc(var(--ncol) + 1/2) - calc(var(--margins) * 2));
+  --sqrt3: 1.732050807568877;
+  --a-radius: calc(var(--d2-short) / var(--sqrt3));
+  /*--a-radius: var(--d2-short);*/
+  /*to appease jquery droppable, draggable must be ever so slightly smaller*/
+  /*TODO fix this hackfix: https://github.com/maxheld83/accio/issues/94*/
+  --droppablemargin: 0.05%;
+  --d-long: calc(var(--a-radius) * 2);
+  --verticalinset: calc(((var(--d-long) - var(--d2-short)) * 2) - calc(4.5 * var(--margins)));
+  /*horizontal centering*/
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
 

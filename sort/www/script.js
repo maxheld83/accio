@@ -15,7 +15,7 @@ $(function() {
     // necessary to espace the parent
     helper: "clone",
     // prevents draggint outside of grid
-    containment: ".grid",
+    containment: ".gridcontainer",
     start: function(event, ui) {
       // original must be hidden on start of dragging clone
       $(this)
@@ -147,8 +147,8 @@ document.addEventListener("DOMContentLoaded", setEvent, false);
 
 function setEvent() {
   var elements = document.getElementsByClassName("cell");
-  var grid = elements[0].parentElement;
-
+  // compare all of the below to grandparent dimensions (gridcontainer)
+  var grid = elements[0].parentElement.parentElement;
   // calculate dimensions of grid. We need this to compare it with item positions below.
 
   var gridWidth = grid.clientWidth;
@@ -180,7 +180,10 @@ function evaluate(element, maxGrid) {
     transOrigin += "right ";
   }
 
-  var top = element.offsetTop;
+  // for the available space on top or bottom of cells, we need to know the distance of every cell from its GRANDPARENT gridcontainer
+  // because this is not easily available, we first calculate the offset from parent (grid) to grandparent (gridcontainer) and add these up.
+  var whitespacetop = element.parentElement.offsetTop;
+  var top = element.offsetTop + whitespacetop;
   if (top < element.clientHeight / 2) {
     transOrigin += "top";
   }

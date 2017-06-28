@@ -6,9 +6,9 @@ body {
 }
 
 .gridcontainer {
-display: flex;
-flex-direction: column;
-justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   height: 100%;
   /* START: gradient blue to pink, good contrast for items*/
   background: #3494E6;
@@ -57,7 +57,8 @@ justify-content: center;
   --verticalinset: calc(((var(--d-long) - var(--d2-short)) * 2) - calc(4.5 * var(--margins)));
   /*horizontal centering*/
   position: relative;
-  overflow: scroll;
+  /*TODO this actually causes problems until https://github.com/maxheld83/accio/issues/107 is solved!*/
+  overflow: visible;
 }
 
 

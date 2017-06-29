@@ -1,5 +1,46 @@
 /*=== design for elements ===*/
 
+body {
+  margin: 0 0;
+  height: 100vh;
+}
+
+.gridcontainer {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  /* START: gradient blue to pink, good contrast for items*/
+  background: #3494E6;
+  background: -webkit-linear-gradient(to left, #EC6EAD, #3494E6);
+  background: linear-gradient(to left, #EC6EAD, #3494E6);
+  /* START: another gradient blue to pink, but more muted colors*/
+  /*background: #E55D87;
+  background: -webkit-linear-gradient(to right, #5FC3E4, #E55D87);
+  background: linear-gradient(to right, #5FC3E4, #E55D87);*/
+  /* START: gradient blue to green, lighter*/
+  /*background: #67B26F;
+  background: -webkit-linear-gradient(to right, #4ca2cd, #67B26F);
+  background: linear-gradient(to right, #4ca2cd, #67B26F);*/
+  /* START: gradient blue to purple, muted colors*/
+  /*background: #4568DC;
+  background: -webkit-linear-gradient(to left, #B06AB3, #4568DC);
+  background: linear-gradient(to left, #B06AB3, #4568DC);*/
+  /* START: simply blue*/
+  /*background: #6190E8;
+  background: -webkit-linear-gradient(to right, #A7BFE8, #6190E8);
+  background: linear-gradient(to right, #A7BFE8, #6190E8);*/
+  /* START: orange to red*/
+  /*background: #FF5F6D;
+  background: -webkit-linear-gradient(to right, #FFC371, #FF5F6D);
+  background: linear-gradient(to right, #FFC371, #FF5F6D);*/
+  /* START: yellow to green*/
+  /*background: #16A085;
+  background: -webkit-linear-gradient(to right, #F4D03F, #16A085);
+  background: linear-gradient(to right, #F4D03F, #16A085);*/
+}
+
 
 /*this is for the overall grid*/
 
@@ -8,7 +49,6 @@
   --margins: 0.1%;
   --d2-short: calc(100% / calc(var(--ncol) + 1/2) - calc(var(--margins) * 2));
   --sqrt3: 1.732050807568877;
-  /*--a-radius: calc(var(--d2-short) / var(--sqrt3));*/
   --a-radius: calc(var(--d2-short) / var(--sqrt3));
   /*--a-radius: var(--d2-short);*/
   /*to appease jquery droppable, draggable must be ever so slightly smaller*/
@@ -17,31 +57,54 @@
   --d-long: calc(var(--a-radius) * 2);
   --verticalinset: calc(((var(--d-long) - var(--d2-short)) * 2) - calc(4.5 * var(--margins)));
   /*horizontal centering*/
-  width: 100%;
-  height: 100%;
   position: relative;
-  overflow: scroll;
-  /*other gradients: #2196f3, #f44336 or: #d3959b, #bfe6ba (best) or: #5fc3e4, #e55d87*/
-  background: -webkit-linear-gradient(left, #bfe9ff, #ff6e7f);
-  /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(left, #bfe9ff, #ff6e7f);
-  /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(left, #bfe9ff, #ff6e7f);
-  /* For Fx 3.6 to 15 */
-  background: linear-gradient(left, #bfe9ff, #ff6e7f);
-  /* Standard syntax (must be last) */
+  /*TODO this actually causes problems until https://github.com/maxheld83/accio/issues/107 is solved!*/
+  overflow: visible;
+  /*this is rewritten by below js*/
+  width: 100%;
 }
 
 
 /*this is simply the hexagonal shape*/
 
 .hexagon {
+  overflow: hidden;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  -webkit-clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  -webkit-shape-outside: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+}
+
+
+/*this gives dimensions to hexagons when they are direct children of grid*/
+
+.cell, .ui-draggable-dragging {
   width: var(--d2-short);
   padding-top: var(--d-long);
-  overflow: hidden;
-  -webkit-clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
-  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
-  -webkit-shape-outside: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+}
+
+
+/*this gives dimensions when item is in parent cell*/
+
+.cell .item {
+  width: 100%;
+}
+
+
+/*this designs an item*/
+
+.item {
+  background-color: rgba(255, 255, 255, 0.9);
+  visibility: visible;
+  z-index: 1;
+  position: absolute;
+  margin: 0 auto;
+  top: 0;
+  bottom: 0;
+}
+
+.cell.ui-droppable-hover {
+  background-color: white;
+  opacity: 0.4;
 }
 
 
@@ -49,27 +112,25 @@
 
 .cell {
   float: left;
+  position: relative;
   margin-right: var(--margins);
   margin-left: var(--margins);
-  position: relative;
   margin-top: calc(var(--verticalinset) * -1);
-  z-index: 0;
   visibility: hidden;
+  transition: all 0.2s ease-in-out;
 }
 
-
-/*this designs an item, must be child of cell*/
-
-.item {
-  opacity: 1;
-  background-color: white;
-  visibility: visible;
+.zoom-in {
+  transform: scale(2.027);
+  /*TODO calculate scale plus margins, so that it fits exactly*/
+  transition: all 0.2s ease-in-out;
   z-index: 9999;
-  position: absolute;
-  margin: 0 auto;
-  width: 100%;
-  top: 0;
-  bottom: 0;
+}
+
+.scale-contrast {
+  opacity: 0.6;
+  /*needs to be visible, because otherwise .cells visibility:hidden conflicted in safari*/
+  visibility: visible;
 }
 
 
@@ -81,10 +142,10 @@
 /*design for free, but available cells*/
 
 .free {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.2);
   visibility: visible;
-  opacity: 0.3;
-  z-index: 9999;
+  /*transition must override parameters from cell (zoom-in), because free cells shouldn't transition slowly.*/
+  transition: initial;
 }
 
 
@@ -93,7 +154,6 @@
 .ui-draggable-dragging {
   position: absolute;
   bottom: auto;
-  width: var(--d2-short);
 }
 
 
@@ -113,6 +173,7 @@
 
 .textstyle {
   color: black;
+  opacity: 0.7;
   font-family: sans-serif;
   top: 25%;
   left: 10%;
@@ -121,6 +182,27 @@
   text-align: center;
   position: absolute;
   font-size: 0.9vw;
+}
+
+
+/*.gridcontainer > #condition { order: 1; }*/
+
+
+/*.gridcontainer > .grid { order: 2; }*/
+
+
+/*.gridcontainer > #extremes { order: 3; }*/
+
+.gridlabel {
+  color: white;
+  font-family: sans-serif;
+  opacity: 0.6;
+  /*padding: 1.5%;*/
+  text-align: center;
+  font-size: 1.5vw;
+  width: 100%;
+  text-align: center;
+  margin: 2% auto;
 }
 
 

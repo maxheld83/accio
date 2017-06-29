@@ -1,24 +1,121 @@
 <!DOCTYPE html>
+<meta charset="utf-8">
 <html>
 <!-- this is only for testing purposes! -->
 
 <head>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://www.w3schools.com/lib/w3.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
   <script src="script.js"></script>
 
-  <script>
+
+  <!-- this is helpful to include external html, though does not work reliably -->
+  <!-- <script>
     $(function() {
       $("#includedContent").load("grid.html");
     });
-  </script>
+  </script> -->
 </head>
 
 <body>
-  <div id="includedContent">
+  <div class="gridcontainer">
+    <div id="condition" class="gridlabel" style="margin-bottom: -2%">
+      <h1>Was möchten Sie zukünftig über ihre Arbeit sagen können?</h5>
+    </div>
+
+    <div id="extremes1" class="gridlabel">
+      <span class="leftlabel" style="padding-right: 15%">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        Stimme weniger zu.
+      </span>
+      <span class="rightlabel" style="padding-left: 15%">
+        Stimme mehr zu.
+        <i class="fa fa-arrow-right" aria-hidden="true "></i>
+      </span>
+      <div style="clear: both"></div>
+    </div>
+
+    <div id="grid" class="grid ncol09">
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell">
+        <div class="hexagon item">
+          <span class="textstyle">
+             Bei der Arbeit kann ich meiner Kreativität freien Lauf lassen.
+         </span>
+        </div>
+      </div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell">
+        <div class="hexagon item draggable" id="arbeitenzuhause">
+          <span class="textstyle">
+          Arbeiten von zu Hause erlaubt es mir, Job und Familie problemlos zu vereinbaren.
+         </span>
+        </div>
+      </div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable">
+        <div class="hexagon item draggable" id="lirum">
+          <span class="textstyle">
+          Lirum larum.
+         </span>
+        </div>
+      </div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+      <div class="hexagon cell droppable free"></div>
+    </div>
+    <div id="extremes" class="gridlabel">
+      <span class="leftlabel" style="padding-right: 15%">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        Stimme weniger zu.
+      </span>
+      <span class="rightlabel" style="padding-left: 15%">
+        Stimme mehr zu.
+        <i class="fa fa-arrow-right" aria-hidden="true "></i>
+      </span>
+      <div style="clear: both"></div>
+    </div>
   </div>
+
 </body>
 
 </html>

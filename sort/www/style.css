@@ -7,6 +7,7 @@ body {
 
 .gridcontainer {
   display: flex;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
   height: 100%;
@@ -172,6 +173,7 @@ body {
 
 .textstyle {
   color: black;
+  opacity: 0.7;
   font-family: sans-serif;
   top: 25%;
   left: 10%;
@@ -182,6 +184,18 @@ body {
   font-size: 0.9vw;
 }
 
+.gridcontainer > #condition { order: 1; }
+.gridcontainer > .grid { order: 2; }
+.gridcontainer > #extremes { order: 3; }
+
+.gridlabel{
+  color: white;
+  font-family: sans-serif;
+  opacity: 0.6;
+  padding: 1.5%;
+  text-align: center;
+  font-size: 1.5vw;
+}
 
 /*=== hack fix: intend lines dependening on ncol ===*/
 

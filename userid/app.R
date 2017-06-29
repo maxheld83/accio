@@ -65,18 +65,24 @@ server <- function(input, output) {
   observeEvent(input$submit_fakename, {
       res$time_namesubmit <- Sys.time()
       res$input <- input
-      # drop_auth()
 
       # input <- NULL
       # input$fakename <- "Lisa"
       filename <- paste0(res$input$fakename, "_", res$time_start, ".rds")
+      filepath <- file.path(tempdir(), filename)
+
+      # filepath <- tempdir()
       # readRDS(file = "../../Dropbox/qsort/Lisa_2017-06-29 20:07:56.rds")
-      saveRDS(object = res, file = filename)
-      drop_upload(file = filename,
+      saveRDS(object = res, file = filepath)
+
+      # token <- drop_auth()
+      # saveRDS(object = token, file = "droptoken.rds")
+      token <- readRDS(file = "droptoken.rds")
+      drop_upload(file = filepath,
+                  dtoken = token,
                   dest = "qsort",
                   overwrite = FALSE,
                   autorename = TRUE)
-      file.remove(filename)
       removeModal()
   })
 }

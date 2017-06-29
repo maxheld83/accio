@@ -21,7 +21,7 @@ $(function() {
       $(this)
         .hide();
       $(".cell")
-        .removeClass("cell--infocus cell--outfocus");
+        .removeClass("zoom-in scale-contrast");
     },
 
     create: function(event, ui) {
@@ -67,22 +67,22 @@ $(function() {
         .click(function() {
           $(this)
             // scale in-out currently clicked cell
-            .toggleClass("cell--infocus")
+            .toggleClass("zoom-in")
             // clicked must never be transparent
-            .removeClass("cell--outfocus");
-          if ($(this).hasClass("cell--infocus")) {
+            .removeClass("scale-contrast");
+          if ($(this).hasClass("zoom-in")) {
             // in case the clicked cell becomes toggled ON, scale out all others and make them transparent
             $(this)
               .siblings(".cell")
               .has(".item")
-              .addClass("cell--outfocus")
-              .removeClass("cell--infocus");
+              .addClass("scale-contrast")
+              .removeClass("zoom-in");
           } else {
             // in case the clicked cell becomes toggled OFF, make all others opaque
             $(this)
               .siblings(".cell")
               .has(".item")
-              .removeClass("cell--outfocus");
+              .removeClass("scale-contrast");
           }
         });
 
@@ -94,7 +94,7 @@ $(function() {
         // revert what happens on "drop" in the above
         .addClass("free")
         // unscale the sending cell (remove artefact)
-        .removeClass("cell--infocus")
+        .removeClass("zoom-in")
         // make the sending cell droppable again
         .droppable("enable");
 
@@ -102,9 +102,9 @@ $(function() {
       $(".cell:not(:has(.item))")
         .off("click");
 
-      // we also revert cell--outfocus of the unscaled item cells
+      // we also revert the scale-contrast of the unscaled item cells
       $(".cell")
-        .removeClass("cell--outfocus");
+        .removeClass("scale-contrast");
     },
   });
 });
@@ -118,22 +118,22 @@ $(function() {
   $(".cell").has(".item").click(function() {
     $(this)
       // scale in-out currently clicked cell
-      .toggleClass("cell--infocus")
+      .toggleClass("zoom-in")
       // clicked must never be transparent
-      .removeClass("cell--outfocus");
-    if ($(this).hasClass("cell--infocus")) {
+      .removeClass("scale-contrast");
+    if ($(this).hasClass("zoom-in")) {
       // in case the clicked cell becomes toggled ON, scale out all others and make them transparent
       $(this)
         .siblings(".cell")
         .has(".item")
-        .addClass("cell--outfocus")
-        .removeClass("cell--infocus");
+        .addClass("scale-contrast")
+        .removeClass("zoom-in");
     } else {
       // in case the clicked cell becomes toggled OFF, make all others opaque
       $(this)
         .siblings(".cell")
         .has(".item")
-        .removeClass("cell--outfocus");
+        .removeClass("scale-contrast");
     }
   });
   // initial droppables must also be disabled if they are already filled

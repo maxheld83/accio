@@ -1,9 +1,11 @@
+/*=== design for elements ===*/
+
 body {
   margin: 0 0;
   height: 100vh;
 }
 
-.q-sort {
+.gridcontainer {
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -39,16 +41,9 @@ body {
   background: linear-gradient(to right, #F4D03F, #16A085);*/
 }
 
-.q-sort__ui{
-  color: white;
-  font-family: sans-serif;
-  opacity: 0.6;
-  padding: 1.5%;
-  text-align: center;
-  font-size: 1.5vw;
-}
 
 /*this is for the overall grid*/
+
 .grid {
   /*=== calculation of dimensions===*/
   --margins: 0.1%;
@@ -69,12 +64,9 @@ body {
   width: 100%;
 }
 
-/*who comes first*/
-.q-sort > #condition { order: 1; }
-.q-sort > .grid { order: 2; }
-.q-sort > #extremes { order: 3; }
 
 /*this is simply the hexagonal shape*/
+
 .hexagon {
   overflow: hidden;
   clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
@@ -82,47 +74,24 @@ body {
   -webkit-shape-outside: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
 }
 
-/*this takes care of all the arrangement of the cells IN the grid*/
-.cell {
-  float: left;
-  position: relative;
-  margin-right: var(--margins);
-  margin-left: var(--margins);
-  margin-top: calc(var(--verticalinset) * -1);
-  visibility: hidden;
-  transition: all 0.2s ease-in-out;
-}
-
-.cell--infocus {
-  transform: scale(2.027);
-  /*TODO calculate scale plus margins, so that it fits exactly*/
-  transition: all 0.2s ease-in-out;
-  z-index: 9999;
-}
-
-.cell--outfocus {
-  opacity: 0.6;
-  /*needs to be visible, because otherwise .cells visibility:hidden conflicted in safari*/
-  visibility: visible;
-}
-
-/*this gives dimensions when item is in parent cell*/
-.cell .item {
-  width: 100%;
-}
 
 /*this gives dimensions to hexagons when they are direct children of grid*/
+
 .cell, .ui-draggable-dragging {
   width: var(--d2-short);
   padding-top: var(--d-long);
 }
 
-.cell.ui-droppable-hover {
-  background-color: white;
-  opacity: 0.4;
+
+/*this gives dimensions when item is in parent cell*/
+
+.cell .item {
+  width: 100%;
 }
 
+
 /*this designs an item*/
+
 .item {
   background-color: rgba(255, 255, 255, 0.9);
   visibility: visible;
@@ -133,22 +102,59 @@ body {
   bottom: 0;
 }
 
+.cell.ui-droppable-hover {
+  background-color: white;
+  opacity: 0.4;
+}
+
+
+/*this takes care of all the arrangement of the cells IN the grid*/
+
+.cell {
+  float: left;
+  position: relative;
+  margin-right: var(--margins);
+  margin-left: var(--margins);
+  margin-top: calc(var(--verticalinset) * -1);
+  visibility: hidden;
+  transition: all 0.2s ease-in-out;
+}
+
+.zoom-in {
+  transform: scale(2.027);
+  /*TODO calculate scale plus margins, so that it fits exactly*/
+  transition: all 0.2s ease-in-out;
+  z-index: 9999;
+}
+
+.scale-contrast {
+  opacity: 0.6;
+  /*needs to be visible, because otherwise .cells visibility:hidden conflicted in safari*/
+  visibility: visible;
+}
+
+
+/*used simply to select interactivity*/
+
+.droppable {}
+
+
+/*design for free, but available cells*/
+
+.free {
+  background-color: rgba(255, 255, 255, 0.2);
+  visibility: visible;
+  /*transition must override parameters from cell (zoom-in), because free cells shouldn't transition slowly.*/
+  transition: initial;
+}
+
+
 /*additions for the cloned item while dragging, which is now relative to .grid!*/
+
 .ui-draggable-dragging {
   position: absolute;
   bottom: auto;
 }
-
-/*design for free, but available cells*/
-.free {
-  background-color: rgba(255, 255, 255, 0.2);
-  visibility: visible;
-  /*transition must override parameters from cell (.cell--infocus), because free cells shouldn't transition slowly.*/
-  transition: initial;
-}
-
-/*used simply to select interactivity*/
-.droppable {}
 
 
 /*.img {
@@ -178,11 +184,25 @@ body {
   font-size: 0.9vw;
 }
 
+.gridcontainer > #condition { order: 1; }
+.gridcontainer > .grid { order: 2; }
+.gridcontainer > #extremes { order: 3; }
+
+.gridlabel{
+  color: white;
+  font-family: sans-serif;
+  opacity: 0.6;
+  padding: 1.5%;
+  text-align: center;
+  font-size: 1.5vw;
+}
+
 /*=== hack fix: intend lines dependening on ncol ===*/
 
 .ncol02>.cell:nth-child(-n + 2) {
   margin-top: var(--margins);
 }
+
 
 /*give first/last n items a top/bottom margin*/
 
@@ -190,11 +210,13 @@ body {
   margin-bottom: var(--margins);
 }
 
+
 /*give first/last n items a top/bottom margin*/
 
 .ncol02>.cell:nth-child(4n + 1) {
   margin-left: calc(var(--d2-short) / 2 + 2 * var(--margins));
 }
+
 
 /*intend every n*2 items, HERE you can set whether to indent even or odd rows*/
 
@@ -202,11 +224,13 @@ body {
   margin-top: var(--margins);
 }
 
+
 /*give first/last n items a top/bottom margin*/
 
 .ncol03>cell:nth-last-child(-n + 3) {
   margin-bottom: var(--margins);
 }
+
 
 /*give first/last n items a top/bottom margin*/
 
@@ -214,11 +238,13 @@ body {
   margin-left: calc(var(--d2-short) / 2 + 2 * var(--margins));
 }
 
+
 /*intend every n*2 items, HERE you can set whether to indent even or odd rows*/
 
 .ncol04>.cell:nth-child(-n + 4) {
   margin-top: var(--margins);
 }
+
 
 /*give first/last n items a top/bottom margin*/
 
@@ -226,11 +252,13 @@ body {
   margin-bottom: var(--margins);
 }
 
+
 /*give first/last n items a top/bottom margin*/
 
 .ncol04>.cell:nth-child(8n + 1) {
   margin-left: calc(var(--d2-short) / 2 + 2 * var(--margins));
 }
+
 
 /*intend every n*2 items, HERE you can set whether to indent even or odd rows*/
 
@@ -238,11 +266,13 @@ body {
   margin-top: var(--margins);
 }
 
+
 /*give first/last n items a top/bottom margin*/
 
 .ncol05>cell:nth-last-child(-n + 5) {
   margin-bottom: var(--margins);
 }
+
 
 /*give first/last n items a top/bottom margin*/
 
@@ -250,11 +280,13 @@ body {
   margin-left: calc(var(--d2-short) / 2 + 2 * var(--margins));
 }
 
+
 /*intend every n*2 items, HERE you can set whether to indent even or odd rows*/
 
 .ncol06>.cell:nth-child(-n + 6) {
   margin-top: var(--margins);
 }
+
 
 /*give first/last n items a top/bottom margin*/
 
@@ -262,11 +294,13 @@ body {
   margin-bottom: var(--margins);
 }
 
+
 /*give first/last n items a top/bottom margin*/
 
 .ncol06>.cell:nth-child(12n + 1) {
   margin-left: calc(var(--d2-short) / 2 + 2 * var(--margins));
 }
+
 
 /*intend every n*2 items, HERE you can set whether to indent even or odd rows*/
 
@@ -274,11 +308,13 @@ body {
   margin-top: var(--margins);
 }
 
+
 /*give first/last n items a top/bottom margin*/
 
 .ncol07>cell:nth-last-child(-n + 7) {
   margin-bottom: var(--margins);
 }
+
 
 /*give first/last n items a top/bottom margin*/
 
@@ -286,11 +322,13 @@ body {
   margin-left: calc(var(--d2-short) / 2 + 2 * var(--margins));
 }
 
+
 /*intend every n*2 items, HERE you can set whether to indent even or odd rows*/
 
 .ncol08>.cell:nth-child(-n + 8) {
   margin-top: var(--margins);
 }
+
 
 /*give first/last n items a top/bottom margin*/
 
@@ -298,11 +336,13 @@ body {
   margin-bottom: var(--margins);
 }
 
+
 /*give first/last n items a top/bottom margin*/
 
 .ncol08>.cell:nth-child(16n + 1) {
   margin-left: calc(var(--d2-short) / 2 + 2 * var(--margins));
 }
+
 
 /*intend every n*2 items, HERE you can set whether to indent even or odd rows*/
 
@@ -310,11 +350,13 @@ body {
   margin-top: var(--margins);
 }
 
+
 /*give first/last n items a top/bottom margin*/
 
 .ncol09>cell:nth-last-child(-n + 9) {
   margin-bottom: var(--margins);
 }
+
 
 /*give first/last n items a top/bottom margin*/
 
@@ -322,11 +364,13 @@ body {
   margin-left: calc(var(--d2-short) / 2 + 2 * var(--margins));
 }
 
+
 /*intend every n*2 items, HERE you can set whether to indent even or odd rows*/
 
 .ncol10>.cell:nth-child(-n + 10) {
   margin-top: var(--margins);
 }
+
 
 /*give first/last n items a top/bottom margin*/
 
@@ -334,11 +378,13 @@ body {
   margin-bottom: var(--margins);
 }
 
+
 /*give first/last n items a top/bottom margin*/
 
 .ncol10>.cell:nth-child(20n + 1) {
   margin-left: calc(var(--d2-short) / 2 + 2 * var(--margins));
 }
+
 
 /*intend every n*2 items, HERE you can set whether to indent even or odd rows*/
 
@@ -346,11 +392,13 @@ body {
   margin-top: var(--margins);
 }
 
+
 /*give first/last n items a top/bottom margin*/
 
 .ncol11>cell:nth-last-child(-n + 11) {
   margin-bottom: var(--margins);
 }
+
 
 /*give first/last n items a top/bottom margin*/
 
@@ -358,11 +406,13 @@ body {
   margin-left: calc(var(--d2-short) / 2 + 2 * var(--margins));
 }
 
+
 /*intend every n*2 items, HERE you can set whether to indent even or odd rows*/
 
 .ncol12>.cell:nth-child(-n + 12) {
   margin-top: var(--margins);
 }
+
 
 /*give first/last n items a top/bottom margin*/
 
@@ -370,11 +420,13 @@ body {
   margin-bottom: var(--margins);
 }
 
+
 /*give first/last n items a top/bottom margin*/
 
 .ncol12>.cell:nth-child(24n + 1) {
   margin-left: calc(var(--d2-short) / 2 + 2 * var(--margins));
 }
+
 
 /*intend every n*2 items, HERE you can set whether to indent even or odd rows*/
 
@@ -382,11 +434,13 @@ body {
   margin-top: var(--margins);
 }
 
+
 /*give first/last n items a top/bottom margin*/
 
 .ncol13>cell:nth-last-child(-n + 13) {
   margin-bottom: var(--margins);
 }
+
 
 /*give first/last n items a top/bottom margin*/
 
@@ -394,11 +448,13 @@ body {
   margin-left: calc(var(--d2-short) / 2 + 2 * var(--margins));
 }
 
+
 /*intend every n*2 items, HERE you can set whether to indent even or odd rows*/
 
 .ncol14>.cell:nth-child(-n + 14) {
   margin-top: var(--margins);
 }
+
 
 /*give first/last n items a top/bottom margin*/
 
@@ -406,11 +462,13 @@ body {
   margin-bottom: var(--margins);
 }
 
+
 /*give first/last n items a top/bottom margin*/
 
 .ncol14>.cell:nth-child(28n + 1) {
   margin-left: calc(var(--d2-short) / 2 + 2 * var(--margins));
 }
+
 
 /*intend every n*2 items, HERE you can set whether to indent even or odd rows*/
 
@@ -418,11 +476,13 @@ body {
   margin-top: var(--margins);
 }
 
+
 /*give first/last n items a top/bottom margin*/
 
 .ncol15>cell:nth-last-child(-n + 15) {
   margin-bottom: var(--margins);
 }
+
 
 /*give first/last n items a top/bottom margin*/
 
@@ -430,7 +490,9 @@ body {
   margin-left: calc(var(--d2-short) / 2 + 2 * var(--margins));
 }
 
+
 /*=== hack-fix to read in number of columns ===*/
+
 
 /*necessary because css cannot read, and calc on number of siblings*/
 

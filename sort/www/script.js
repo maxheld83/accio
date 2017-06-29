@@ -143,84 +143,84 @@ $(function() {
 
 // The following code prevents overflow when scaling items. The items should only scale inside container(.grid)
 // TODO: Why option false?
-document.addEventListener("DOMContentLoaded", setEvent, false);
-// window.addEventListener("resize", setEvent);
+// document.addEventListener("DOMContentLoaded", setEvent, false);
+// // window.addEventListener("resize", setEvent);
+//
+// $(window).resize(function() {
+//   setEvent();
+// });
 
-$(window).resize(function() {
-  setEvent();
-});
-
-function setEvent() {
-  var elements = document.getElementsByClassName("cell");
-  // compare all of the below to grandparent dimensions (gridcontainer)
-  var grid = elements[0].parentElement.parentElement;
-  // calculate dimensions of grid. We need this to compare it with item positions below.
-
-  var gridWidth = grid.clientWidth;
-  var gridHeight = grid.clientHeight;
-  var maxGrid = {
-    right: gridWidth,
-    bottom: gridHeight
-  }
-
-  for (var n = 0; n < elements.length; n++) {
-    evaluate(elements[n], maxGrid);
-  }
-};
-
-function evaluate(element, maxGrid) {
+// function setEvent() {
+//   var elements = document.getElementsByClassName("cell");
+//   // compare all of the below to grandparent dimensions (gridcontainer)
+//   var grid = elements[0].parentElement.parentElement;
+//   // calculate dimensions of grid. We need this to compare it with item positions below.
+//
+//   var gridWidth = grid.clientWidth;
+//   var gridHeight = grid.clientHeight;
+//   var maxGrid = {
+//     right: gridWidth,
+//     bottom: gridHeight
+//   }
+//
+//   for (var n = 0; n < elements.length; n++) {
+//     evaluate(elements[n], maxGrid);
+//   }
+// };
+//
+// function evaluate(element, maxGrid) {
 
   // We need the declare variable "transOrigin" to put it into the .transformOrigin method later on in order to transform item position.
 
-  var transOrigin = " ";
+  // var transOrigin = " ";
 
 
   // This is the important part, where we compare item position with grid dimensions and say how the item should be transformed in which case (left, right, bottom, top).
 
-  var left = element.offsetLeft;
-  if (left < element.clientWidth / 2) {
-    transOrigin += "left ";
-  } else if (left + (element.clientWidth / 2) > maxGrid.right - element.clientWidth) {
-    transOrigin += "right ";
-  } else {
-    transOrigin += "center ";
-  }
+  // var left = element.offsetLeft;
+  // if (left < element.clientWidth / 2) {
+  //   transOrigin += "left ";
+  // } else if (left + (element.clientWidth / 2) > maxGrid.right - element.clientWidth) {
+  //   transOrigin += "right ";
+  // } else {
+  //   transOrigin += "center ";
+  // }
 
   // for the available space on top or bottom of cells, we need to know the distance of every cell from its GRANDPARENT gridcontainer
   // because this is not easily available, we first calculate the offset from parent (grid) to grandparent (gridcontainer) and add these up.
-  var whitespacetop = element.parentElement.offsetTop;
-  var top = element.offsetTop + whitespacetop;
-  if (top < element.clientHeight / 2) {
-    transOrigin += "top";
-  } else if (top + (element.clientHeight / 2) > maxGrid.bottom - element.clientHeight) {
-    transOrigin += "bottom";
-  } else {
-    transOrigin += "center";
-  }
+  // var whitespacetop = element.parentElement.offsetTop;
+  // var top = element.offsetTop + whitespacetop;
+  // if (top < element.clientHeight / 2) {
+  //   transOrigin += "top";
+  // } else if (top + (element.clientHeight / 2) > maxGrid.bottom - element.clientHeight) {
+  //   transOrigin += "bottom";
+  // } else {
+  //   transOrigin += "center";
+  // }
 
   // Finally, the transformOrigin property sets the position on items ('x-axis y-axis z-axis').
-  element.style.transformOrigin = transOrigin;
-}
+//   element.style.transformOrigin = transOrigin;
+// }
 
 
 // when the grid is "wider" (in terms of aspect ratio) than the gridcontainer (happens rarely), the dimensions of the grid must be resized to fit
 // specifically, only the width can/must be resized, because all dimensions in grid depend only on grid.
-function squishvertical(heightneed) {
-  var outeraspect = $(".gridcontainer")[0].clientWidth / $(".gridcontainer")[0].clientHeight;
-  var inneraspect = $(".grid")[0].clientWidth / $(".grid")[0].clientHeight;
-  if (outeraspect > inneraspect) {
-    // attention: this part of the if clause writes out pixels, not percent
-    var heightneed = $(".grid")[0].clientHeight;
-    var heightavail = $(".gridcontainer")[0].clientHeight;
-    var widthfactor = heightavail / heightneed;
-    var newwidth = widthfactor * $(".grid")[0].clientWidth;
-    $(".grid").css("width", newwidth);
-  } else {
-    $(".grid").css("width", "100%");
-  }
-}
-
-document.addEventListener("DOMContentLoaded", squishvertical, false);
-$(window).resize(function() {
-  squishvertical();
-});
+// function squishvertical(heightneed) {
+//   var outeraspect = $(".gridcontainer")[0].clientWidth / $(".gridcontainer")[0].clientHeight;
+//   var inneraspect = $(".grid")[0].clientWidth / $(".grid")[0].clientHeight;
+//   if (outeraspect > inneraspect) {
+//     // attention: this part of the if clause writes out pixels, not percent
+//     var heightneed = $(".grid")[0].clientHeight;
+//     var heightavail = $(".gridcontainer")[0].clientHeight;
+//     var widthfactor = heightavail / heightneed;
+//     var newwidth = widthfactor * $(".grid")[0].clientWidth;
+//     $(".grid").css("width", newwidth);
+//   } else {
+//     $(".grid").css("width", "100%");
+//   }
+// }
+//
+// document.addEventListener("DOMContentLoaded", squishvertical, false);
+// $(window).resize(function() {
+//   squishvertical();
+// });

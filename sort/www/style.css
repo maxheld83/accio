@@ -7,7 +7,6 @@ body {
   display: flex;
   flex-flow: column;
   justify-content: center;
-  align-items: center;
   height: 100%;
   /* START: gradient blue to pink, good contrast for items*/
   background: #3494E6;
@@ -40,12 +39,14 @@ body {
 }
 
 .q-sort__ui{
+}
+
+.q-sort__ui__textstyle{
   color: white;
   font-family: sans-serif;
   opacity: 0.6;
-  padding: 1.5%;
   text-align: center;
-  font-size: 1.5vw;
+  z-index: -1;
 }
 
 /*this is for the overall grid*/
@@ -70,9 +71,12 @@ body {
 }
 
 /*who comes first*/
-.q-sort > #condition { order: 1; }
+.q-sort > .condition { order: 1; }
 .q-sort > .grid { order: 2; }
-.q-sort > #extremes { order: 3; }
+.q-sort > .extremes { order: 3; }
+
+.condition{}
+.extremes{}
 
 /*this is simply the hexagonal shape*/
 .hexagon {
@@ -82,28 +86,16 @@ body {
   -webkit-shape-outside: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
 }
 
-/*this takes care of all the arrangement of the cells IN the grid*/
-.cell {
-  float: left;
-  position: relative;
-  margin-right: var(--margins);
-  margin-left: var(--margins);
-  margin-top: calc(var(--verticalinset) * -1);
-  visibility: hidden;
-  transition: all 0.2s ease-in-out;
-}
-
-.cell--infocus {
-  transform: scale(2.027);
-  /*TODO calculate scale plus margins, so that it fits exactly*/
-  transition: all 0.2s ease-in-out;
-  z-index: 9999;
-}
-
-.cell--outfocus {
-  opacity: 0.6;
-  /*needs to be visible, because otherwise .cells visibility:hidden conflicted in safari*/
+/*this designs an item*/
+.item {
+  background-color: white;
+  opacity: 0.9;
   visibility: visible;
+  z-index: 1;
+  position: absolute;
+  /*margin: 0 auto;*/
+  top: 0;
+  bottom: 0;
 }
 
 /*this gives dimensions when item is in parent cell*/
@@ -122,15 +114,15 @@ body {
   opacity: 0.4;
 }
 
-/*this designs an item*/
-.item {
-  background-color: rgba(255, 255, 255, 0.9);
-  visibility: visible;
-  z-index: 1;
-  position: absolute;
-  margin: 0 auto;
-  top: 0;
-  bottom: 0;
+/*this takes care of all the arrangement of the cells IN the grid*/
+.cell {
+  float: left;
+  position: relative;
+  margin-right: var(--margins);
+  margin-left: var(--margins);
+  margin-top: calc(var(--verticalinset) * -1);
+  visibility: hidden;
+  transition: all 0.2s ease-in-out;
 }
 
 /*additions for the cloned item while dragging, which is now relative to .grid!*/
@@ -139,9 +131,23 @@ body {
   bottom: auto;
 }
 
+.cell--infocus {
+  transform: scale(2.027);
+  /*TODO calculate scale plus margins, so that it fits exactly*/
+  transition: all 0.2s ease-in-out;
+  z-index: 9999;
+}
+
+.cell--outfocus {
+  opacity: 0.6;
+  /*needs to be visible, because otherwise .cells visibility:hidden conflicted in safari*/
+  visibility: visible;
+}
+
 /*design for free, but available cells*/
 .free {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: white;
+  opacity: 0.2;
   visibility: visible;
   /*transition must override parameters from cell (.cell--infocus), because free cells shouldn't transition slowly.*/
   transition: initial;
@@ -177,6 +183,7 @@ body {
   position: absolute;
   font-size: 0.9vw;
 }
+
 
 /*=== hack fix: intend lines dependening on ncol ===*/
 

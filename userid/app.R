@@ -9,6 +9,7 @@
 
 library(shiny)
 library(shinyjs)
+library(rdrop2)
 
 # Define UI for application that draws a histogram
 ui <- basicPage(
@@ -58,8 +59,24 @@ server <- function(input, output) {
   })
 
   showModal(dataModal())
+  res <- NULL
+  res$time_start <- Sys.time()
 
   observeEvent(input$submit_fakename, {
+      res$time_namesubmit <- Sys.time()
+      res$input <- input
+      # drop_auth()
+
+      # input <- NULL
+      # input$fakename <- "Lisa"
+      filename <- paste0(res$input$fakename, "_", res$time_start, ".rds")
+      # readRDS(file = "../../Dropbox/qsort/Lisa_2017-06-29 20:07:56.rds")
+      saveRDS(object = res, file = filename)
+      drop_upload(file = filename,
+                  dest = "qsort",
+                  overwrite = FALSE,
+                  autorename = TRUE)
+      file.remove(filename)
       removeModal()
   })
 }

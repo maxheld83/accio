@@ -8,9 +8,11 @@
 #
 
 library(shiny)
+library(shinyjs)
 
 # Define UI for application that draws a histogram
 ui <- basicPage(
+  useShinyjs()
 )
 
 # Define server logic required to draw a histogram
@@ -42,9 +44,6 @@ server <- function(input, output) {
                    max = 130,
                    step = 1
       ),
-      if (failed)
-        div(tags$b("Bitte geben Sie ein Pseudonym an.",
-                   style = "color: red;")),
 
       footer = tagList(
         actionButton(inputId = "submit_fakename",
@@ -52,6 +51,11 @@ server <- function(input, output) {
       )
     )
   }
+
+  observe({
+    shinyjs::toggleState(id = "submit_fakename",
+                         condition = !is.null(input$fakename) && input$fakename != "")
+  })
 
   showModal(dataModal())
 

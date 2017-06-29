@@ -59,25 +59,8 @@ server <- function(input, output) {
 
   showModal(dataModal())
 
-  # When OK button is pressed, attempt to load the data set. If successful,
-  # remove the modal. If not show another modal, but this time with a failure
-  # message.
   observeEvent(input$submit_fakename, {
-    # Check that data object exists and is data frame.
-    if (!is.null(input$fakename) && nzchar(input$fakename)) {
-      vals$data <- get(input$dataset)
       removeModal()
-    } else {
-      showModal(dataModal(failed = TRUE))
-    }
-  })
-
-  # Display information about selected data
-  output$dataInfo <- renderPrint({
-    if (is.null(vals$data))
-      "No data selected"
-    else
-      summary(vals$data)
   })
 }
 

@@ -11,8 +11,6 @@ library(shiny)
 
 # Define UI for application that draws a histogram
 ui <- basicPage(
-  actionButton("show", "Show modal dialog"),
-  verbatimTextOutput("dataInfo")
 )
 
 # Define server logic required to draw a histogram
@@ -24,6 +22,8 @@ server <- function(input, output) {
   # TRUE, then display a message that the previous value was invalid.
   dataModal <- function(failed = FALSE) {
     modalDialog(
+      h4("QWrks Erhebung", code("sublab")),
+      p("Vielen Dank, dass Sie an unserer Studie zu subjektiven Arbeitswelten der Zukunft teilnehmen."),
       textInput(inputId = "fakename",
                 label = "Pseudonym",
                 placeholder = "Bitte merken Sie sich diesen Namen"
@@ -32,7 +32,8 @@ server <- function(input, output) {
                    label = "Geschlecht",
                    choiceNames = c("weiblich", "männlich", "andere", "keine Angabe"),
                    choiceValues = c("female", "male", "other", "no response"),
-                   inline = TRUE
+                   inline = TRUE,
+                   selected = "no response"
       ),
       numericInput(inputId = "age",
                    label = "Alter",
@@ -41,30 +42,25 @@ server <- function(input, output) {
                    max = 130,
                    step = 1
       ),
-      span('(Try the name of a valid data object like "mtcars", ',
-           'then a name of a non-existent object like "abc")'),
       if (failed)
-        div(tags$b("Invalid name of data object", style = "color: red;")),
+        div(tags$b("Bitte geben Sie ein Pseudonym an.",
+                   style = "color: red;")),
 
       footer = tagList(
-        modalButton("Cancel"),
-        actionButton("ok", "OK")
+        actionButton(inputId = "submit_fakename",
+                     label = "Weiter")
       )
     )
   }
 
-  # Show modal when button is clicked.
-   # {
-    showModal(dataModal())
-  # })
+  showModal(dataModal())
 
   # When OK button is pressed, attempt to load the data set. If successful,
   # remove the modal. If not show another modal, but this time with a failure
   # message.
-  observeEvent(input$ok, {
+  observeEvent(input$submit_fakename, {
     # Check that data object exists and is data frame.
-    if (!is.null(input$dataset) && nzchar(input$dataset) &&
-        exists(input$dataset) && is.data.frame(get(input$dataset))) {
+    if (!is.null(input$fakename) && nzchar(input$fakename)) {
       vals$data <- get(input$dataset)
       removeModal()
     } else {

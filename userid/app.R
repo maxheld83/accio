@@ -64,7 +64,7 @@ server <- function(input, output) {
 
   observeEvent(input$submit_fakename, {
       res$time_namesubmit <- Sys.time()
-      res$input <- input
+      res$input <- reactiveValuesToList(input)
 
       # input <- NULL
       # input$fakename <- "Lisa"
@@ -72,7 +72,7 @@ server <- function(input, output) {
       filepath <- file.path(tempdir(), filename)
 
       # filepath <- tempdir()
-      # readRDS(file = "../../Dropbox/qsort/Lisa_2017-06-29 20:07:56.rds")
+      # validation <- readRDS(file = "../../Dropbox/qsort/nonreact_2017-06-29 21:06:46.rds")
       saveRDS(object = res, file = filepath)
 
       # token <- drop_auth()

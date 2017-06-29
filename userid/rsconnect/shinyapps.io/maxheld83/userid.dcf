@@ -3,9 +3,8 @@ title: userid
 account: maxheld83
 server: shinyapps.io
 appId: 192620
-bundleId: 886993
+bundleId: 887007
 url: https://maxheld83.shinyapps.io/userid/
-when: 1498762641.40172
+when: 1498763292.80256
 asMultiple: FALSE
 asStatic: FALSE
-ignoredFiles: anchristin_2017-06-29 20:36:44.rds

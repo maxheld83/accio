@@ -184,18 +184,27 @@ body {
   font-size: 0.9vw;
 }
 
+
 /*.gridcontainer > #condition { order: 1; }*/
+
+
 /*.gridcontainer > .grid { order: 2; }*/
+
+
 /*.gridcontainer > #extremes { order: 3; }*/
 
-.gridlabel{
+.gridlabel {
   color: white;
   font-family: sans-serif;
   opacity: 0.6;
-  padding: 1.5%;
+  /*padding: 1.5%;*/
   text-align: center;
   font-size: 1.5vw;
+  width: 100%;
+  text-align: center;
+  margin: 2% auto;
 }
+
 
 /*=== hack fix: intend lines dependening on ncol ===*/
 

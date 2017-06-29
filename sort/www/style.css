@@ -184,9 +184,9 @@ body {
   font-size: 0.9vw;
 }
 
-.gridcontainer > #condition { order: 1; }
-.gridcontainer > .grid { order: 2; }
-.gridcontainer > #extremes { order: 3; }
+/*.gridcontainer > #condition { order: 1; }*/
+/*.gridcontainer > .grid { order: 2; }*/
+/*.gridcontainer > #extremes { order: 3; }*/
 
 .gridlabel{
   color: white;

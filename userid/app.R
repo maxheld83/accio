@@ -10,10 +10,26 @@
 library(shiny)
 library(shinyjs)
 library(rdrop2)
+library(shinyjqui)
+library(readr)
 
 # Define UI for application that draws a histogram
 ui <- basicPage(
-  useShinyjs()
+  useShinyjs(),
+  includeJqueryUI(),
+  tags$head(
+    tags$link(rel = "stylesheet", type = "text/css", href = "style.css"),
+    tags$link(rel = "stylesheet", type = "text/css", href = "font-awesome.css")
+  ),
+
+  # sidebarLayout(
+  #
+  #   sidebarPanel(
+  #     "sidebar panel",
+  #     shiny::textOutput(outputId = "text1")
+  #   ),
+
+  tags$div(HTML(read_file(file = "www/index.html")))
 )
 
 # Define server logic required to draw a histogram
@@ -58,7 +74,7 @@ server <- function(input, output) {
                          condition = !is.null(input$fakename) && input$fakename != "")
   })
 
-  showModal(dataModal())
+  # showModal(dataModal())
   res <- NULL
   res$time_start <- Sys.time()
 

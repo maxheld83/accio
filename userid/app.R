@@ -19,7 +19,8 @@ ui <- fillPage(
   includeJqueryUI(),
   tags$head(
     tags$link(rel = "stylesheet", type = "text/css", href = "style.css"),
-    tags$link(rel = "stylesheet", type = "text/css", href = "font-awesome.css")
+    tags$link(rel = "stylesheet", type = "text/css", href = "font-awesome.css"),
+    tags$script(src = "script.js")
   ),
 
   # sidebarLayout(
@@ -29,7 +30,7 @@ ui <- fillPage(
   #     shiny::textOutput(outputId = "text1")
   #   ),
 
-  tags$div(HTML(read_file(file = "www/index.html")))
+  HTML(read_file(file = "www/index.html"))
 )
 
 # Define server logic required to draw a histogram

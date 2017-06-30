@@ -1,10 +1,5 @@
 /*=== design for elements ===*/
 
-/*body {
-  margin: 0 0;
-  height: 100vh;
-}*/
-
 .gridcontainer {
   display: flex;
   flex-flow: column;

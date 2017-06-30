@@ -225,5 +225,5 @@ function squishvertical(heightneed) {
 
 document.addEventListener("DOMContentLoaded", squishvertical, false);
 $(window).resize(function() {
-  squishvertical();
+  // squishvertical();
 });

@@ -1,8 +1,8 @@
 /*=== design for elements ===*/
 
 body {
-  margin: 0 0;
-  height: 100vh;
+  margin: 0 auto;
+  height: 100%;
 }
 
 .gridcontainer {

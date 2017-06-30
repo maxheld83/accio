@@ -90,7 +90,9 @@ ui <- fillPage(
       ),
       div(
         style = "clear: both"
-      )
+      ),
+      div("foo"),
+      textOutput(outputId = "text1", inline = FALSE)
     )
   )
 )
@@ -165,6 +167,9 @@ server <- function(input, output) {
       removeModal()
   })
 
+  # res$input <- reactiveValuesToList(input)
+  # print(res)
+
   jqui_droppable(
     selector = ".droppable",
     options = list(
@@ -172,19 +177,17 @@ server <- function(input, output) {
       accept = ".draggable",
       drop = htmlwidgets::JS(
         read_file("www/dropscript.js")
-      ),
-      shiny = list(
-        dropped = list(
-          drop = htmlwidgets::JS(
-            c(
-              'function(event, ui) { return ui.draggable.attr("id");',
-              'console.log(ui.draggable.attr("id"));}'
-            )
-          )
-        )
       )
     )
   )
+  output$text1 <- shiny::renderText({
+    c(input$a01_drop,
+      input$a01_out,
+      input$a02_drop,
+      input$a03_drop,
+      input$b01_drop)
+    # "you have selected this."
+  })
 }
 
 # Run the application

@@ -15,7 +15,7 @@ $(function() {
     // necessary to espace the parent
     helper: "clone",
     // prevents draggint outside of grid
-    containment: ".gridcontainer",
+    containment: ".grid",
     start: function(event, ui) {
       // original must be hidden on start of dragging clone
       $(this)

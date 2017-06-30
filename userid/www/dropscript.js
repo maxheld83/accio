@@ -2,6 +2,7 @@ function(event, ui) {
   // The following happens to RECEIVING parent cells on drop
   // child from SENDING parent was a clone appended to grid, so must first be appended to receiving parent
   ui.draggable.detach().appendTo($(this));
+  /*console.log(ui.draggable.attr("id"));*/
   $(this)
     // change layout appropriately
     .removeClass("free")
@@ -49,4 +50,7 @@ function(event, ui) {
   // we also revert the scale-contrast of the unscaled item cells
   $(".cell")
     .removeClass("scale-contrast");
+
+  //console.log(ui.draggable.attr("id"));
+  //return ui.draggable.attr("id");
 }

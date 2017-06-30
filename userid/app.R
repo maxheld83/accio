@@ -50,21 +50,29 @@ ui <- fillPage(
         style = "clear: both"
       )
     ),
-      #
-      # <div id="extremes1" class="gridlabel">
-      #   <span class="leftlabel" style="padding-right: 15%">
-      #   <i class="fa fa-arrow-left" aria-hidden="true"></i>
-      #   Stimme weniger zu.
-      # </span>
-      #   <span class="rightlabel" style="padding-left: 15%">
-      #   Stimme mehr zu.
-      # <i class="fa fa-arrow-right" aria-hidden="true "></i>
-      #   </span>
-      #   <div style="clear: both"></div>
-      #   </div>
-    HTML(
-      read_file(file = "www/index.html")
-    ),
+    print(do.call(
+      div,
+      c(
+        id = "grid",
+        class = "grid ncol09",
+        replicate(
+        n = 22,
+        simplify = FALSE,
+        expr = div(class = "hexagon cell droppable free")
+        ),
+        list(
+          div(
+            class = "hexagon cell droppable free",
+            id = "c-05"
+          )
+        ),
+        replicate(
+          n = 22,
+          simplify = FALSE,
+          expr = div(class = "hexagon cell droppable free")
+        )
+      )
+    )),
     div(
       id = "extremes1",
       class = "gridlabel",

@@ -165,26 +165,26 @@ server <- function(input, output) {
       removeModal()
   })
 
-    jqui_droppable(
-      selector = ".droppable",
-      options = list(
-        tolerance = "pointer",
-        accept = ".draggable",
-        drop = htmlwidgets::JS(
-          read_file("www/dropscript.js")
-        ),
-        shiny = list(
-          dropped = list(
-            drop = htmlwidgets::JS(
-              c(
-                'function(event, ui) { return ui.draggable.attr("id");',
-                'console.log(ui.draggable.attr("id"));}'
-              )
+  jqui_droppable(
+    selector = ".droppable",
+    options = list(
+      tolerance = "pointer",
+      accept = ".draggable",
+      drop = htmlwidgets::JS(
+        read_file("www/dropscript.js")
+      ),
+      shiny = list(
+        dropped = list(
+          drop = htmlwidgets::JS(
+            c(
+              'function(event, ui) { return ui.draggable.attr("id");',
+              'console.log(ui.draggable.attr("id"));}'
             )
           )
         )
       )
     )
+  )
 }
 
 # Run the application

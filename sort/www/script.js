@@ -13,7 +13,7 @@ $(function() {
     // this makes sure that we can escape the parent
     appendTo: ".grid",
     // necessary to espace the parent
-    helper: "clone",
+    helper: function () { return $(this).clone()},
     // prevents draggint outside of grid
     containment: ".gridcontainer",
     start: function(event, ui) {
@@ -207,10 +207,8 @@ function evaluate(element, maxGrid) {
 // specifically, only the width can/must be resized, because all dimensions in grid depend only on grid.
 function squishvertical(heightneed) {
   var outeraspect = $(".gridcontainer")[0].clientWidth / $(".gridcontainer")[0].clientHeight;
-  console.log("condition", $("#condition")[0].clientHeight);
   var spacefortext = $("#condition")[0].clientHeight * 2 + ($("#extremes1")[0].clientHeight * 2);
   var inneraspect = $(".grid")[0].clientWidth / ($(".grid")[0].clientHeight + spacefortext);
-  console.log("inneraspect", inneraspect);
   if (outeraspect > inneraspect) {
     // attention: this part of the if clause writes out pixels, not percent
     var heightneed = $(".grid")[0].clientHeight + spacefortext;

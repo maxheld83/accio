@@ -171,9 +171,9 @@ body {
   }
   */
 
-.image {
-  max-width: 100%;
-  padding-top: 28.5%;
+#palmen {
+  background-image: url("palmen.png");
+  background-size: 100%;
 }
 
 .textstyle {

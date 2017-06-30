@@ -19,7 +19,6 @@ ui <- fillPage(
   includeJqueryUI(),
   tags$head(
     tags$link(rel = "stylesheet", type = "text/css", href = "style.css"),
-    tags$link(rel = "stylesheet", type = "text/css", href = "font-awesome.css"),
     tags$script(src = "script.js")
   ),
 
@@ -173,6 +172,16 @@ server <- function(input, output) {
         accept = ".draggable",
         drop = htmlwidgets::JS(
           read_file("www/dropscript.js")
+        ),
+        shiny = list(
+          dropped = list(
+            drop = htmlwidgets::JS(
+              c(
+                'function(event, ui) { return ui.draggable.attr("id");',
+                'console.log(ui.draggable.attr("id"));}'
+              )
+            )
+          )
         )
       )
     )

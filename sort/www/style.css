@@ -171,6 +171,11 @@ body {
   }
   */
 
+.image {
+  max-width: 100%;
+  padding-top: 28.5%;
+}
+
 .textstyle {
   color: black;
   opacity: 0.7;

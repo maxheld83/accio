@@ -1,9 +1,9 @@
 /*=== design for elements ===*/
 
-body {
+/*body {
   margin: 0 0;
   height: 100vh;
-}
+}*/
 
 .gridcontainer {
   display: flex;

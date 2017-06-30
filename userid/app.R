@@ -14,7 +14,7 @@ library(shinyjqui)
 library(readr)
 
 # Define UI for application that draws a histogram
-ui <- basicPage(
+ui <- fillPage(
   useShinyjs(),
   includeJqueryUI(),
   tags$head(

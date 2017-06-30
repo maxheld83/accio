@@ -165,6 +165,17 @@ server <- function(input, output) {
                   autorename = TRUE)
       removeModal()
   })
+
+    jqui_droppable(
+      selector = ".droppable",
+      options = list(
+        tolerance = "pointer",
+        accept = ".draggable",
+        drop = htmlwidgets::JS(
+          read_file("www/dropscript.js")
+        )
+      )
+    )
 }
 
 # Run the application

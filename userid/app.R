@@ -50,29 +50,30 @@ ui <- fillPage(
         style = "clear: both"
       )
     ),
-    print(do.call(
-      div,
-      c(
-        id = "grid",
-        class = "grid ncol09",
-        replicate(
-        n = 22,
-        simplify = FALSE,
-        expr = div(class = "hexagon cell droppable free")
-        ),
-        list(
-          div(
-            class = "hexagon cell droppable free",
-            id = "c-05"
-          )
-        ),
-        replicate(
-          n = 22,
-          simplify = FALSE,
-          expr = div(class = "hexagon cell droppable free")
-        )
-      )
-    )),
+    # print(do.call(
+    #   div,
+    #   c(
+    #     id = "grid",
+    #     class = "grid ncol09",
+    #     replicate(
+    #     n = 22,
+    #     simplify = FALSE,
+    #     expr = div(class = "hexagon cell droppable free")
+    #     ),
+    #     list(
+    #       div(
+    #         class = "hexagon cell droppable free",
+    #         id = "c-05"
+    #       )
+    #     ),
+    #     replicate(
+    #       n = 22,
+    #       simplify = FALSE,
+    #       expr = div(class = "hexagon cell droppable free")
+    #     )
+    #   )
+    # )),
+    HTML(text = read_file(file = "www/index.html")),
     div(
       id = "extremes1",
       class = "gridlabel",

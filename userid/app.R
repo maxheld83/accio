@@ -23,14 +23,68 @@ ui <- fillPage(
     tags$script(src = "script.js")
   ),
 
-  # sidebarLayout(
-  #
-  #   sidebarPanel(
-  #     "sidebar panel",
-  #     shiny::textOutput(outputId = "text1")
-  #   ),
-
-  HTML(read_file(file = "www/index.html"))
+  div(
+    class = "gridcontainer",
+    div(
+      id = "condition",
+      class = "gridlabel",
+      style = "margin-bottom: -2%",
+      h3("Was möchten Sie zukünftig über ihre Arbeit sagen können?")
+    ),
+    div(
+      id = "extremes1",
+      class = "gridlabel",
+      span(
+        class = "leftlabel",
+        style = "padding-right: 15%",
+        icon(name = "arrow-left", lib = "font-awesome"),
+        "Trifft eher nicht zu."
+      ),
+      span(
+        class = "rightlabel",
+        style = "padding-left: 15%",
+        "Trifft eher zu.",
+        icon(name = "arrow-right", lib = "font-awesome")
+      ),
+      div(
+        style = "clear: both"
+      )
+    ),
+      #
+      # <div id="extremes1" class="gridlabel">
+      #   <span class="leftlabel" style="padding-right: 15%">
+      #   <i class="fa fa-arrow-left" aria-hidden="true"></i>
+      #   Stimme weniger zu.
+      # </span>
+      #   <span class="rightlabel" style="padding-left: 15%">
+      #   Stimme mehr zu.
+      # <i class="fa fa-arrow-right" aria-hidden="true "></i>
+      #   </span>
+      #   <div style="clear: both"></div>
+      #   </div>
+    HTML(
+      read_file(file = "www/index.html")
+    ),
+    div(
+      id = "extremes1",
+      class = "gridlabel",
+      span(
+        class = "leftlabel",
+        style = "padding-right: 15%",
+        icon(name = "arrow-left", lib = "font-awesome"),
+        "Trifft eher nicht zu."
+      ),
+      span(
+        class = "rightlabel",
+        style = "padding-left: 15%",
+        "Trifft eher zu.",
+        icon(name = "arrow-right", lib = "font-awesome")
+      ),
+      div(
+        style = "clear: both"
+      )
+    )
+  )
 )
 
 # Define server logic required to draw a histogram

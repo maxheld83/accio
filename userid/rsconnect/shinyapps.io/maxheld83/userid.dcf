@@ -3,9 +3,9 @@ title: userid
 account: maxheld83
 server: shinyapps.io
 appId: 192620
-bundleId: 887182
+bundleId: 887590
 url: https://maxheld83.shinyapps.io/userid/
-when: 1498772455.39637
+when: 1498813599.20464
 asMultiple: FALSE
 asStatic: FALSE
 ignoredFiles: www/.DS_Store

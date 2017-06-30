@@ -225,3 +225,24 @@ document.addEventListener("DOMContentLoaded", squishvertical, false);
 $(window).resize(function() {
   squishvertical();
 });
+
+
+$( function() {
+    $( "#dialog" ).dialog({
+      autoOpen: false,
+      dialogClass: "no-close",
+ buttons: [
+   {
+     text: "OK",
+     click: function() {
+       $( this ).dialog( "close" );
+     }
+   }
+ ]
+    });
+
+    $(".item").on( "dblclick", function() {
+      $( "#dialog" ).dialog( "open" )
+    .position({ my: 'left', at: 'top', of: $(this) });
+    });
+  } );

@@ -245,7 +245,7 @@ server <- function(input, output) {
     return(newmat2)
   })
 
-  # output$desirable <- renderTable(expr = res$desirable)
+  # output$ <- renderTable(expr = res$desirable)
   #
   # observeEvent(eventExpr = res,
   #   handlerExpr = {

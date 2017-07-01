@@ -13,6 +13,66 @@ library(rdrop2)
 library(shinyjqui)
 library(readr)
 
+desirable <- matrix(data = NA,
+                    nrow = 5,
+                    ncol = 9,
+                    dimnames = list(rows = c("a", "b", "c", "d", "e"),
+                                    columns = c("01", "02", "03", "04", "05", "06", "07", "08", "09")))
+
+saveData <- function(res_inner) {
+  res <<- res_inner
+}
+
+save_data_dropbox <- function(res) {
+  res$time_saved <- Sys.time()
+  filename <- paste0(res$fakename, "_", res$time_saved, ".rds")
+  filepath <- file.path(tempdir(), filename)
+  saveRDS(object = res, file = filepath)
+
+  token <- readRDS(file = "droptoken.rds")
+  drop_upload(file = filepath,
+              dtoken = token,
+              dest = "qsort",
+              overwrite = FALSE,
+              autorename = TRUE)
+}
+
+make_newsort <- function(cells, emptymat) {
+  # emptymat <- desirable
+  # cells <- list(b02_drop = "foo", a03_drop = "bar", e09_drop = "lirum")
+  # set all to NA
+  emptymat[,] <- NA
+  newmat <- emptymat
+  for (row_i in rownames(emptymat)) {
+    for (col_i in 1:ncol(emptymat)) {
+      thisel <- paste0(row_i, "0", col_i, "_", "drop")
+      if (!is.null(cells[[thisel]])) {
+        newmat[row_i, col_i] <- cells[[thisel]]
+      }
+    }
+  }
+  return(newmat)
+}
+
+update_sort <- function(oldsort, newsort) {
+  # newsort <- test_newmat
+  # oldsort <- test_oldmat
+  for (row_i in rownames(newsort)) {
+    for (col_i in 1:ncol(newsort)) {
+      current_item <- newsort[row_i, col_i]
+      # current_item <- "as"
+      # current_item <- "foo"
+      if (sum(current_item == newsort, na.rm = TRUE) > 1) {
+        newsort[which(oldsort == newsort & newsort == current_item, arr.ind = TRUE)] <- NA
+      }
+    }
+  }
+  return(newsort)
+}
+
+res <- NULL
+
+
 # Define UI for application that draws a histogram
 ui <- fillPage(
   useShinyjs(),
@@ -28,7 +88,7 @@ ui <- fillPage(
       id = "condition",
       class = "gridlabel",
       style = "margin-bottom: -2%",
-      h3("Was möchten Sie zukünftig über ihre Arbeit sagen können?")
+      h3("Was werden Sie", tags$i("wahrscheinlich"), "über ihre Arbeit sagen können?")
     ),
     div(
       id = "extremes1",
@@ -74,53 +134,34 @@ ui <- fillPage(
     # )),
     HTML(text = read_file(file = "www/index.html")),
     div(
-      id = "extremes1",
-      class = "gridlabel",
-      span(
-        class = "leftlabel",
-        style = "padding-right: 15%",
-        icon(name = "arrow-left", lib = "font-awesome"),
-        "Trifft eher nicht zu."
-      ),
-      span(
-        class = "rightlabel",
-        style = "padding-left: 15%",
-        "Trifft eher zu.",
-        icon(name = "arrow-right", lib = "font-awesome")
-      ),
-      div(
-        style = "clear: both"
-      ),
-      div("foo"),
-      textOutput(outputId = "text1", inline = FALSE)
+      # id = "extremes1",
+      # class = "gridlabel",
+      # span(
+      #   class = "leftlabel",
+      #   style = "padding-right: 15%",
+      #   icon(name = "arrow-left", lib = "font-awesome"),
+      #   "Trifft eher nicht zu."
+      # ),
+      # span(
+      #   class = "rightlabel",
+      #   style = "padding-left: 15%",
+      #   "Trifft eher zu.",
+      #   icon(name = "arrow-right", lib = "font-awesome")
+      # ),
+      # div(
+      #   style = "clear: both"
+      # ),
+      # div("foo"),
+      # textOutput(outputId = "text1", inline = FALSE),
+      style = "float: right",
+      style = "padding-left: 20%",
+      actionButton(inputId = "submit_everything",
+                   label = "Fertig",
+                   style = "float: right")
     )
   )
 )
 
-
-desirable <- matrix(data = NA,
-                    nrow = 5,
-                    ncol = 9,
-                    dimnames = list(rows = c("a", "b", "c", "d", "e"),
-                                    columns = c("01", "02", "03", "04", "05", "06", "07", "08", "09")))
-
-
-make_newsort <- function(cells, emptymat) {
-  # emptymat <- desirable
-  # cells <- list(b02_drop = "foo", a03_drop = "bar", e09_drop = "lirum")
-  # set all to NA
-  emptymat[,] <- NA
-  newmat <- emptymat
-  for (row_i in rownames(emptymat)) {
-    for (col_i in 1:ncol(emptymat)) {
-      thisel <- paste0(row_i, "0", col_i, "_", "drop")
-      if (!is.null(cells[[thisel]])) {
-        newmat[row_i, col_i] <- cells[[thisel]]
-      }
-    }
-  }
-  return(newmat)
-}
 
 # test_oldmat <- structure(c(NA, NA, NA, NA, NA, NA, "foo", NA, NA, NA, "bar",
 #                            NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,
@@ -135,28 +176,13 @@ make_newsort <- function(cells, emptymat) {
 #                                                                                                "b", "c", "d", "e"), columns = c("01", "02", "03", "04", "05",
 #                                                                                                                                 "06", "07", "08", "09")), .Names = c("rows", "columns")))
 
-update_sort <- function(oldsort, newsort) {
-  # newsort <- test_newmat
-  # oldsort <- test_oldmat
-  for (row_i in rownames(newsort)) {
-    for (col_i in 1:ncol(newsort)) {
-      current_item <- newsort[row_i, col_i]
-      # current_item <- "as"
-      # current_item <- "foo"
-      if (sum(current_item == newsort, na.rm = TRUE) > 1) {
-        newsort[which(oldsort == newsort & newsort == current_item, arr.ind = TRUE)] <- NA
-      }
-    }
-  }
-  return(newsort)
-}
+
 
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {
 
-  # Return the UI for a modal dialog with data selection input. If 'failed' is
-  # TRUE, then display a message that the previous value was invalid.
+  # ==== NAME
   dataModal <- function(failed = FALSE) {
     modalDialog(
       h4("QWrks Erhebung", code("sublab")),
@@ -192,34 +218,32 @@ server <- function(input, output) {
                          condition = !is.null(input$fakename) && input$fakename != "")
   })
 
-  # showModal(dataModal())
-  res <- NULL
-  res$time_start <- Sys.time()
-  res$desirable <- desirable
+  res_inner <- NULL
+  res_inner$desirable <- desirable
+
+  showModal(dataModal())
 
   observeEvent(input$submit_fakename, {
-      res$time_namesubmit <- Sys.time()
-      res$input <- reactiveValuesToList(input)
-
-      # input <- NULL
-      # input$fakename <- "Lisa"
-      filename <- paste0(res$input$fakename, "_", res$time_start, ".rds")
-      filepath <- file.path(tempdir(), filename)
-
-      # filepath <- tempdir()
-      # validation <- readRDS(file = "../../Dropbox/qsort/nonreact_2017-06-29 21:06:46.rds")
-      saveRDS(object = res, file = filepath)
-
-      # token <- drop_auth()
-      # saveRDS(object = token, file = "droptoken.rds")
-      token <- readRDS(file = "droptoken.rds")
-      drop_upload(file = filepath,
-                  dtoken = token,
-                  dest = "qsort",
-                  overwrite = FALSE,
-                  autorename = TRUE)
+      res_inner$time_namesubmit <- Sys.time()
+      res_inner$input <- input
+      saveData(res_inner = res_inner)
       removeModal()
+
+      showModal(modalDialog(
+        title = "Studienanleitung",
+        p("Vielen Dank, dass Sie an unserer Studie über die Subjektivität zur Arbeit teilnehmen."),
+        p("Stellen Sie sich vor, Sie treffen sich in einige Jahre nach ihrem Abschluss erneut mit ihren Kommilitoninnen und Kommilitonen.",
+          "Sie kommen ins Gespräch, und reflektieren über ihre zukünftige Arbeit."),
+        p("Bitte beantworten Sie uns in dieser fiktiven Situation", tags$b("zwei Fragen"), "in dieser Reihenfolge:"),
+
+        p("- b) Was", tags$i("werden"),  "Sie", tags$i("wahrscheinlich"), "über ihre Arbeit sagen können?"),
+        p("- a) Was", tags$i("möchten"), "Sie dann über ihre Arbeit sagen können?"),
+
+        p("Sortieren Sie die folgenden Aussagen danach, wie sehr auf ihre fiktive zukünftive Einschätzung ihrer Arbeit zutreffen."),
+        size = "l"
+      ))
   })
+
 
   jqui_droppable(
     selector = ".droppable",
@@ -232,18 +256,33 @@ server <- function(input, output) {
     )
   )
 
-  res$desirable <- reactive({
+  res_inner$desirable <- reactive({
     oldmat <- res$desirable
-    write.csv(x = res$desirable, file = "oldmat.csv")
+    # write.csv(x = res$desirable, file = "oldmat.csv")
     input_static <- reactiveValuesToList(input)
-    write_rds(input_static, path = "input_static.rds")
+    # write_rds(input_static, path = "input_static.rds")
     newmat <- make_newsort(cells = input_static,
                            emptymat = res$desirable)
-    write.csv(x = newmat, file = "newmat.csv")
+    # write.csv(x = newmat, file = "newmat.csv")
     newmat2 <- update_sort(oldsort = oldmat, newsort = newmat)
-    write.csv(x = newmat2, file = "newmat2.csv")
+    # write.csv(x = newmat2, file = "newmat2.csv")
     return(newmat2)
   })
+
+  # saveData(res_inner = res_inner)
+
+  # observeEvent(res_inner$desirable, {
+  #   saveData(res = res_inner)
+  #   write.csv(x = "foo", "foo.csv")
+  # })
+
+  observeEvent(input$submit_everything, {
+    save_data_dropbox(res = res)
+    # write.csv(x = res$desirable, "desirable.csv")
+    # saveRDS(object = res, file = "res.rds")
+  })
+
+
 
   # output$ <- renderTable(expr = res$desirable)
   #

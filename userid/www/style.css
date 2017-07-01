@@ -305,7 +305,7 @@ body {
   top: 0;
   bottom: 0;
   background-color: white;
-  opacity: 0.9;
+  opacity: 1;
 }
 
 .cell.ui-droppable-hover {

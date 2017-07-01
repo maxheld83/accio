@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   viewBox="0 0 1250 1443.75"
+   height="1443.75"
+   width="1250"
+   xml:space="preserve"
+   version="1.1"
+   id="svg2"><metadata
+     id="metadata8"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+     id="defs6"><clipPath
+       id="clipPath18"
+       clipPathUnits="userSpaceOnUse"><path
+         id="path20"
+         d="m 0,0 1000,0 0,1155 L 0,1155 0,0 Z" /></clipPath></defs><g
+     transform="matrix(1.25,0,0,-1.25,0,1443.75)"
+     id="g10"><g
+       id="g12" /><g
+       id="g14"><g
+         clip-path="url(#clipPath18)"
+         id="g16"><path
+           id="path22"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           d="m 0,0 1000,0 0,1155 L 0,1155 0,0 Z" /><g
+           transform="translate(20,603)"
+           id="g24"><text
+             id="text26"
+             style="font-variant:normal;font-weight:normal;font-size:75px;font-family:ArialMT;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="scale(1,-1)"><tspan
+               id="tspan28"
+               y="0"
+               x="0 54.165001 116.64 137.47501 154.14 216.61501 237.45 274.95001 316.66501 358.38 379.215 420.92999 462.64499 483.48001 504.315 566.78998 583.45502 604.28998 646.005 687.71997 704.38501 725.21997 766.935 808.65002 829.48499 866.98499 908.70001">Um im Job gut mithalten zu </tspan></text>
+</g><g
+           transform="translate(20,501)"
+           id="g30"><text
+             id="text32"
+             style="font-variant:normal;font-weight:normal;font-size:75px;font-family:ArialMT;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="scale(1,-1)"><tspan
+               id="tspan34"
+               y="0"
+               x="0 37.5 79.214996 120.93 162.645 204.36 246.075 266.91 287.745 329.45999 371.17499 387.84 408.67499 450.39001 471.22501 487.89001 525.39001 567.10498 587.94 650.41498 667.08002 704.58002 746.29498 767.13 787.96503 804.63 825.46503">können, halte ich mich fit.</tspan></text>
+</g></g></g></g></svg>

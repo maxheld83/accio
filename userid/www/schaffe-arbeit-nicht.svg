@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   viewBox="0 0 1250 1443.75"
+   height="1443.75"
+   width="1250"
+   xml:space="preserve"
+   version="1.1"
+   id="svg2"><metadata
+     id="metadata8"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+     id="defs6"><clipPath
+       id="clipPath18"
+       clipPathUnits="userSpaceOnUse"><path
+         id="path20"
+         d="m 0,0 1000,0 0,1155 L 0,1155 0,0 Z" /></clipPath></defs><g
+     transform="matrix(1.25,0,0,-1.25,0,1443.75)"
+     id="g10"><g
+       id="g12" /><g
+       id="g14"><g
+         clip-path="url(#clipPath18)"
+         id="g16"><path
+           id="path22"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           d="m 0,0 1000,0 0,1155 L 0,1155 0,0 Z" /><g
+           transform="translate(20,603)"
+           id="g24"><text
+             id="text26"
+             style="font-variant:normal;font-weight:normal;font-size:75px;font-family:ArialMT;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="scale(1,-1)"><tspan
+               id="tspan28"
+               y="0"
+               x="0 58.334999 79.169998 100.005 120.84 162.55499 204.27 245.985 287.70001 308.535 325.20001 362.70001 404.41501 425.25 466.965 508.67999 546.17999 567.01501 625.34998 667.065 687.90002 729.61499 771.33002 787.995 808.83002 829.66498 846.33002 883.83002 925.54498">Oft habe ich das Gefühl, ich </tspan></text>
+</g><g
+           transform="translate(20,501)"
+           id="g30"><text
+             id="text32"
+             style="font-variant:normal;font-weight:normal;font-size:75px;font-family:ArialMT;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="scale(1,-1)"><tspan
+               id="tspan34"
+               y="0"
+               x="0 37.5 75 116.715 158.42999 177.91499 198.75 240.465 261.29999 323.77499 365.48999 382.155 423.87 465.58499 482.28751 532.3125 557.28748 599.0025 640.71753 657.38251 678.21753 699.05249 740.76752 757.4325 794.9325 836.64752 857.48248">schaffe meine Arbeit nicht.</tspan></text>
+</g></g></g></g></svg>

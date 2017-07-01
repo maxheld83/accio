@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   viewBox="0 0 1250 1443.75"
+   height="1443.75"
+   width="1250"
+   xml:space="preserve"
+   version="1.1"
+   id="svg2"><metadata
+     id="metadata8"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+     id="defs6"><clipPath
+       id="clipPath18"
+       clipPathUnits="userSpaceOnUse"><path
+         id="path20"
+         d="m 0,0 1000,0 0,1155 L 0,1155 0,0 Z" /></clipPath></defs><g
+     transform="matrix(1.25,0,0,-1.25,0,1443.75)"
+     id="g10"><g
+       id="g12" /><g
+       id="g14"><g
+         clip-path="url(#clipPath18)"
+         id="g16"><path
+           id="path22"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           d="m 0,0 1000,0 0,1155 L 0,1155 0,0 Z" /><g
+           transform="translate(20,654)"
+           id="g24"><text
+             id="text26"
+             style="font-variant:normal;font-weight:normal;font-size:75px;font-family:ArialMT;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="scale(1,-1)"><tspan
+               id="tspan28"
+               y="0"
+               x="0 58.334999 100.05 120.885 137.55 175.05 216.765 237.60001 283.48499 325.20001 341.86499 358.53 396.03 437.745 454.41 475.245 496.07999 537.79498 579.51001 621.22498 646.20001 665.685 703.185 744.90002 761.565 778.22998 815.72998 857.44501 874.10999 894.94501">Ob ich Vollzeit oder Teilzeit </tspan></text>
+</g><g
+           transform="translate(20,552)"
+           id="g30"><text
+             id="text32"
+             style="font-variant:normal;font-weight:normal;font-size:75px;font-family:ArialMT;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="scale(1,-1)"><tspan
+               id="tspan34"
+               y="0"
+               x="0 41.715 66.690002 108.405 150.12 166.785 187.62 229.33501 250.17 271.005 312.72 354.435 391.935 412.76999 429.435 491.91 554.38501 596.09998 616.935 633.59998 671.09998 712.815 733.65002 775.36499 817.08002 854.58002 896.29498">arbeite, bestimme ich nach </tspan></text>
+</g><g
+           transform="translate(20,449)"
+           id="g36"><text
+             id="text38"
+             style="font-variant:normal;font-weight:normal;font-size:75px;font-family:ArialMT;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="scale(1,-1)"><tspan
+               id="tspan40"
+               y="0"
+               x="0 62.474998 104.19 120.855 162.57001 204.285 246 266.83499 287.67001 329.38501 350.22 391.935 416.91 458.625 496.125 533.625 575.34003 617.05499">meinen Interessen.</tspan></text>
+</g></g></g></g></svg>

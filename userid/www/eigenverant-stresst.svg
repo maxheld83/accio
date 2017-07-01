@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   viewBox="0 0 1250 1443.75"
+   height="1443.75"
+   width="1250"
+   xml:space="preserve"
+   version="1.1"
+   id="svg2"><metadata
+     id="metadata8"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+     id="defs6"><clipPath
+       id="clipPath18"
+       clipPathUnits="userSpaceOnUse"><path
+         id="path20"
+         d="m 0,0 1000,0 0,1155 L 0,1155 0,0 Z" /></clipPath></defs><g
+     transform="matrix(1.25,0,0,-1.25,0,1443.75)"
+     id="g10"><g
+       id="g12" /><g
+       id="g14"><g
+         clip-path="url(#clipPath18)"
+         id="g16"><path
+           id="path22"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           d="m 0,0 1000,0 0,1155 L 0,1155 0,0 Z" /><g
+           transform="translate(20,603)"
+           id="g24"><text
+             id="text26"
+             style="font-variant:normal;font-weight:normal;font-size:75px;font-family:ArialMT;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="scale(1,-1)"><tspan
+               id="tspan28"
+               y="0"
+               x="0 45.810001 87.525002 108.36 145.86 162.52499 204.24001 220.905 241.74001 291.76501 308.42999 350.14499 391.85999 433.57501 471.07501 512.78998 537.76501 579.47998 621.19501 642.03003 696.19501 737.90997 762.88501 783.71997 825.435 867.15002 908.86499">Zu viel Eigenverantwortung </tspan></text>
+</g><g
+           transform="translate(20,501)"
+           id="g30"><text
+             id="text32"
+             style="font-variant:normal;font-weight:normal;font-size:75px;font-family:ArialMT;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="scale(1,-1)"><tspan
+               id="tspan34"
+               y="0"
+               x="0 37.5 58.334999 83.309998 125.025 162.52499 200.02499 220.86 241.69501 304.17001 320.83499 358.33499 400.04999">stresst mich.</tspan></text>
+</g></g></g></g></svg>

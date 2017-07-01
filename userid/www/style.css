@@ -5,6 +5,211 @@ body {
   height: 100%;
 }
 
+#telearbeit-vereinbarkeit {
+  background-image: url("telearbeit-vereinbarkeit.svg");
+  background-size: 100%;
+}
+
+#arbeit-kreativ {
+  background-image: url("arbeit-kreativ.svg");
+  background-size: 100%;
+}
+
+#freizeit-gleich-arbeit {
+  background-image: url("freizeit-gleich-arbeit.svg");
+  background-size: 100%;
+}
+
+#sinnstiftung {
+  background-image: url("sinnstiftung.svg");
+  background-size: 100%;
+}
+
+#ortl-unabh {
+  background-image: url("ortl-unabh.svg");
+  background-size: 100%;
+}
+
+#selbstmotivation {
+  background-image: url("selbstmotivation.svg");
+  background-size: 100%;
+}
+
+#personaldecke {
+  background-image: url("personaldecke.svg");
+  background-size: 100%;
+}
+
+#team-laenger {
+  background-image: url("team-laenger.svg");
+  background-size: 100%;
+}
+
+#am-besten-druck {
+  background-image: url("am-besten-druck.svg");
+  background-size: 100%;
+}
+
+#arbeit-leben {
+  background-image: url("arbeit-leben.svg");
+  background-size: 100%;
+}
+
+#privat-vs-beruf {
+  background-image: url("privat-vs-beruf.svg");
+  background-size: 100%;
+}
+
+#eigener-chef {
+  background-image: url("eigener-chef.svg");
+  background-size: 100%;
+}
+
+#ruhig-schlafen {
+  background-image: url("ruhig-schlafen.svg");
+  background-size: 100%;
+}
+
+#leben-arbeit {
+  background-image: url("leben-arbeit.svg");
+  background-size: 100%;
+}
+
+#motivation-das-beste {
+  background-image: url("motivation-das-beste.svg");
+  background-size: 100%;
+}
+
+#beste-setzt-sich-durch {
+  background-image: url("beste-setzt-sich-durch.svg");
+  background-size: 100%;
+}
+
+#ganze-pers-erkannt {
+  background-image: url("ganze-pers-erkannt.svg");
+  background-size: 100%;
+}
+
+#bis-zur-rente {
+  background-image: url("bis-zur-rente.svg");
+  background-size: 100%;
+}
+
+#mit-wem-team {
+  background-image: url("mit-wem-team.svg");
+  background-size: 100%;
+}
+
+#kooperation-wettbewerb {
+  background-image: url("kooperation-wettbewerb.svg");
+  background-size: 100%;
+}
+
+#ziel-nicht-weg {
+  background-image: url("ziel-nicht-weg.svg");
+  background-size: 100%;
+}
+
+#emo-aspekte-arbeit {
+  background-image: url("emo-aspekte-arbeit.svg");
+  background-size: 100%;
+}
+
+#bezahlung-wertsch {
+  background-image: url("bezahlung-wertsch.svg");
+  background-size: 100%;
+}
+
+#klare-vorgaben {
+  background-image: url("klare-vorgaben.svg");
+  background-size: 100%;
+}
+
+#an-ag-zusammen {
+  background-image: url("an-ag-zusammen.svg");
+  background-size: 100%;
+}
+
+#befristet-flexibel {
+  background-image: url("befristet-flexibel.svg");
+  background-size: 100%;
+}
+
+#tauschwert {
+  background-image: url("tauschwert.svg");
+  background-size: 100%;
+}
+
+#nutzwert {
+  background-image: url("nutzwert.svg");
+  background-size: 100%;
+}
+
+#freizeit-freunde {
+  background-image: url("freizeit-freunde.svg");
+  background-size: 100%;
+}
+
+#freizeit-unverplant {
+  background-image: url("freizeit-unverplant.svg");
+  background-size: 100%;
+}
+
+#alleine-interessen {
+  background-image: url("alleine-interessen.svg");
+  background-size: 100%;
+}
+
+#schwer-strukturieren {
+  background-image: url("schwer-strukturieren.svg");
+  background-size: 100%;
+}
+
+#vollzeit-teilzeit-selbst {
+  background-image: url("vollzeit-teilzeit-selbst.svg");
+  background-size: 100%;
+}
+
+#schaffe-arbeit-nicht {
+  background-image: url("schaffe-arbeit-nicht.svg");
+  background-size: 100%;
+}
+
+#schwaechere-tragen {
+  background-image: url("schwaechere-tragen.svg");
+  background-size: 100%;
+}
+
+#pers-abstriche {
+  background-image: url("pers-abstriche.svg");
+  background-size: 100%;
+}
+
+#fit {
+  background-image: url("fit.svg");
+  background-size: 100%;
+}
+
+#auf-strasse {
+  background-image: url("auf-strasse.svg");
+  background-size: 100%;
+}
+
+#leidenschaft-länger {
+  background-image: url("leidenschaft-länger.svg");
+  background-size: 100%;
+}
+
+#belastung-andere {
+  background-image: url("belastung-andere.svg");
+  background-size: 100%;
+}
+
+#eigenverant-stresst {
+  background-image: url("eigenverant-stresst.svg");
+  background-size: 100%;
+}
+
 .gridcontainer {
   display: flex;
   flex-flow: column;
@@ -93,13 +298,14 @@ body {
 /*this designs an item*/
 
 .item {
-  background-color: rgba(255, 255, 255, 0.9);
   visibility: visible;
   z-index: 1;
   position: absolute;
   margin: 0 auto;
   top: 0;
   bottom: 0;
+  background-color: white;
+  opacity: 0.9;
 }
 
 .cell.ui-droppable-hover {

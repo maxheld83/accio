@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   viewBox="0 0 1250 1443.75"
+   height="1443.75"
+   width="1250"
+   xml:space="preserve"
+   version="1.1"
+   id="svg2"><metadata
+     id="metadata8"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+     id="defs6"><clipPath
+       id="clipPath18"
+       clipPathUnits="userSpaceOnUse"><path
+         id="path20"
+         d="m 0,0 1000,0 0,1155 L 0,1155 0,0 Z" /></clipPath></defs><g
+     transform="matrix(1.25,0,0,-1.25,0,1443.75)"
+     id="g10"><g
+       id="g12" /><g
+       id="g14"><g
+         clip-path="url(#clipPath18)"
+         id="g16"><path
+           id="path22"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           d="m 0,0 1000,0 0,1155 L 0,1155 0,0 Z" /><g
+           transform="translate(20,603)"
+           id="g24"><text
+             id="text26"
+             style="font-variant:normal;font-weight:normal;font-size:75px;font-family:ArialMT;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="scale(1,-1)"><tspan
+               id="tspan28"
+               y="0"
+               x="0 20.834999 83.309998 104.145 158.31 200.02499 220.86 262.57501 287.54999 329.26501 370.98001 412.69501 475.17001 516.88501 558.59998 579.435 616.935 658.65002 679.48499 716.98499 737.82001 758.65503 796.15503 812.82001 850.32001 892.03497">Im Unternehmen setzt sich </tspan></text>
+</g><g
+           transform="translate(20,501)"
+           id="g30"><text
+             id="text32"
+             style="font-variant:normal;font-weight:normal;font-size:75px;font-family:ArialMT;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="scale(1,-1)"><tspan
+               id="tspan34"
+               y="0"
+               x="0 41.715 83.43 108.405 129.24001 170.955 212.67 254.38499 279.35999 300.19501 341.91 358.57501 400.29001 421.125 471.14999 512.86499 550.36499 571.20001 612.91498 633.75 675.46503 717.17999 742.15503 779.65503 821.37">der oder die Beste durch.</tspan></text>
+</g></g></g></g></svg>

@@ -13,7 +13,7 @@ $(function() {
     // this makes sure that we can escape the parent
     appendTo: ".grid",
     // necessary to espace the parent
-    helper: "clone",
+    helper: function () { return $(this).clone()},
     // prevents draggint outside of grid
     containment: ".grid",
     start: function(event, ui) {

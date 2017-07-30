@@ -13,13 +13,12 @@ Depends:
 License: file LICENSE
 Encoding: UTF-8
 LazyData: true
-Remotes:
-  maxheld83/pensieve
 Suggests: 
   testthat,
-  covr
+  pensieve
 Imports:
-  pensieve (>= 0.0.0.9014),
   shiny (>= 1.0.3),
   shinyjqui (>= 0.2.0)
+Remotes:
+  maxheld83/pensieve
 RoxygenNote: 6.0.1

@@ -2,9 +2,4 @@
 .Rhistory
 .RData
 .Ruserdata
-_book/
-_bookdown_files/
-
-test/pic.jpeg
-
-test/small.png
+.httr-oauth

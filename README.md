@@ -1,5 +1,4 @@
-[![Travis CI Build Status (Package + Book)](https://travis-ci.com/maxheld83/accio.svg?branch=master)](https://travis-ci.com/maxheld83/accio)
-[![Coverage Status](https://img.shields.io/codecov/c/github/maxheld83/accio/master.svg)](https://codecov.io/github/maxheld83/accio?branch=master)
+[![Build Status](https://travis-ci.com/maxheld83/accio.svg?token=VqJKxxUwxXFJyYyqJx7G&branch=master)](https://travis-ci.com/maxheld83/accio)
 
 Web interface for [`pensieve`](http://github.com/maxheld83/pensieve/).
 

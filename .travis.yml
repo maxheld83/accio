@@ -10,8 +10,5 @@ cache:
 
 warnings_are_errors: true
 
-after_success:
-  - Rscript -e 'covr::codecov()'
-
 notifications:
   email: false

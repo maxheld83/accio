@@ -18,6 +18,7 @@ Suggests:
 Imports:
   shiny (>= 1.0.3),
   shinyjqui (>= 0.2.0),
+  rsconnect (>= 0.8),
   pensieve
 Remotes:
   maxheld83/pensieve

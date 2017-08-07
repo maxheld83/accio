@@ -12,7 +12,7 @@ warnings_are_errors: true
 
 after_success:
   - Rscript -e "rsconnect::setAccountInfo(name='maxheld83', token='408C6B3684F6F34394BB48190BD3702B', secret='eKIr50V9L+1RsULuMLOSBOXqIrrPdRjH3itZqHw5')"
-  - Rscript -e "rsconnect::deployApp(appDir = "inst/shiny/boilerplate/", account = "maxheld83")"
+  - Rscript -e "rsconnect::deployApp(appDir = 'inst/shiny/boilerplate/', account = 'maxheld83')"
 
 notifications:
   email: false

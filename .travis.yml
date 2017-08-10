@@ -12,7 +12,7 @@ warnings_are_errors: true
 
 after_success:
   - Rscript -e "rsconnect::setAccountInfo(name='maxheld83', token='${SHINYAPPS_TOKEN}', secret='${SHINYAPPS_SECRET}')"
-  - Rscript -e "rsconnect::deployApp(appDir = 'inst/shiny/boilerplate/', account = 'maxheld83', appName = 'boilerplate_${TRAVIS_BRANCH}')"
+  - Rscript -e "rsconnect::deployApp(appDir = 'inst/shiny/accio/', account = 'maxheld83', appName = 'accio_${TRAVIS_BRANCH}')"
 
 notifications:
   email: false

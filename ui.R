@@ -5,7 +5,7 @@ shinyUI(bootstrapPage(
                    placeholder = "Must be valid R name."),
 
   shiny::textAreaInput(inputId = "item_full",
-                       label = "Full wording for item",
+                       label = "Full wording for item (participant-facing)",
                        placeholder = "Must be plain text.",
                        height = '10pc',
                        resize = "vertical"),

@@ -1,12 +1,12 @@
 shinyUI(bootstrapPage(
 
   shiny::textInput(inputId = "item_handle",
-                   label = "Short handle for item (researcher-facing):",
-                   placeholder = "Must be valid R name."),
+                   label = "Item handle (researcher-facing):",
+                   placeholder = "Only letters, numbers, '.' and '_'"),
 
   shiny::textAreaInput(inputId = "item_full",
-                       label = "Full wording for item (participant-facing)",
-                       placeholder = "Must be plain text.",
+                       label = "Full item wording (participant-facing)",
+                       placeholder = "Plain text.",
                        height = '10pc',
                        resize = "vertical"),
 

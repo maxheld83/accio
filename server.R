@@ -2,15 +2,15 @@ shinyServer(function(input, output, session) {
 
   showModal(modalDialog(
     title = "Enter a New Item",
-    shiny::textInput(inputId = "item_handle",
+    textInput(inputId = "item_handle",
                      label = "Item handle (researcher-facing):",
                      placeholder = "Only letters, numbers, '.' and '_'"),
-    shiny::textAreaInput(inputId = "item_full",
+    textAreaInput(inputId = "item_full",
                          label = "Full item wording (participant-facing)",
                          placeholder = "Plain text.",
                          height = '10pc',
                          resize = "vertical"),
-    shiny::textOutput(outputId = "item_preview"),
+    textOutput(outputId = "item_preview"),
     easyClose = TRUE,
     size = "l",
     fade = FALSE,
@@ -25,7 +25,7 @@ shinyServer(function(input, output, session) {
   output$item_preview <- renderText(expr = {
     #TODO disable button here via shinyjs once vailable
     req(input$item_handle, input$item_full)
-    new_item <- QItemConcourse(
+    new_item <- pensieve::QItemConcourse(
       concourse = matrix(
         data = input$item_full,
         nrow = 1,

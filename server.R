@@ -1,4 +1,4 @@
-shinyServer(function(input, output) {
+shinyServer(function(input, output, session) {
 
   showModal(modalDialog(
     title = "Enter a New Item",
@@ -16,12 +16,14 @@ shinyServer(function(input, output) {
     fade = FALSE,
     footer = tagList(
       modalButton(label = "Cancel"),
-      actionButton(inputId = "submit", label = "Submit")
+      # init button as disabled
+      shinyBS::bsButton(inputId = "submit", label = "Submit", disabled = TRUE)  # this is a hack-fix until we get shinyJS
+      # actionButton(inputId = "submit", label = "Submit")
     )
   ))
 
   output$item_preview <- renderText(expr = {
-    shinyjs::disable(id = "submit")  # start with disabled button
+    #TODO disable button here via shinyjs once vailable
     req(input$item_handle, input$item_full)
     new_item <- QItemConcourse(
       concourse = matrix(
@@ -36,7 +38,8 @@ shinyServer(function(input, output) {
     validate(
       need(x = new_item, label = "Item handle or full text")
     )
-    shinyjs::enable(id = "submit")  # only enable button on successful test
+    #TODO enable button here via shinyjs once available
+    shinyBS::updateButton(session = session, inputId = "submit", label = "Submit", disabled = FALSE)
     return(new_item)
   })
 })

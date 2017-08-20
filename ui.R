@@ -1,4 +1,2 @@
-library(shiny)
-
 shinyUI(bootstrapPage(
 ))

@@ -1,6 +1,8 @@
+library(shiny)
+library(pensieve)
+library(shinyBS)
+
 shinyServer(function(input, output, session) {
-  library(pensieve)
-  library(shinyBS)
 
   showModal(modalDialog(
     title = "Enter a New Item",

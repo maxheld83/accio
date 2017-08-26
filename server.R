@@ -1,7 +1,3 @@
-library(shiny)
-library(pensieve)
-library(shinyBS)
-
 shinyServer(function(input, output, session) {
 
   showModal(modalDialog(

@@ -25,7 +25,7 @@ shinyServer(function(input, output, session) {
   output$item_preview <- renderText(expr = {
     #TODO disable button here via shinyjs once vailable
     req(input$item_handle, input$item_full)
-    new_item <- pensieve::QItemConcourse(
+    new_item <- pensieve::ItemConcourse(
       concourse = matrix(
         data = input$item_full,
         nrow = 1,

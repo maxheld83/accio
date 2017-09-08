@@ -1,7 +1,7 @@
 shinyServer(function(input, output, session) {
 
   showModal(modalDialog(
-    title = "Enter a New Item",
+    title = "Enter a new item",
     textInput(inputId = "item_handle",
                      label = "Item handle (researcher-facing):",
                      placeholder = "Only letters, numbers, '.' and '_'"),

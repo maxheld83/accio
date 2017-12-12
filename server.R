@@ -1,26 +1,26 @@
 shinyServer(function(input, output, session) {
 
-  showModal(modalDialog(
-    title = "Enter a new item",
-    textInput(inputId = "item_handle",
-                     label = "Item handle (researcher-facing):",
-                     placeholder = "Only letters, numbers, '.' and '_'"),
-    textAreaInput(inputId = "item_full",
-                         label = "Full item wording (participant-facing)",
-                         placeholder = "Plain text.",
-                         height = '10pc',
-                         resize = "vertical"),
-    textOutput(outputId = "item_preview"),
-    easyClose = TRUE,
-    size = "l",
-    fade = FALSE,
-    footer = tagList(
-      modalButton(label = "Cancel"),
-      # init button as disabled
-      shinyBS::bsButton(inputId = "submit", label = "Submit", disabled = TRUE)  # this is a hack-fix until we get shinyJS
-      # actionButton(inputId = "submit", label = "Submit")
-    )
-  ))
+  # showModal(modalDialog(
+  #   title = "Enter a new item",
+  #   textInput(inputId = "item_handle",
+  #                    label = "Item handle (researcher-facing):",
+  #                    placeholder = "Only letters, numbers, '.' and '_'"),
+  #   textAreaInput(inputId = "item_full",
+  #                        label = "Full item wording (participant-facing)",
+  #                        placeholder = "Plain text.",
+  #                        height = '10pc',
+  #                        resize = "vertical"),
+  #   textOutput(outputId = "item_preview"),
+  #   easyClose = TRUE,
+  #   size = "l",
+  #   fade = FALSE,
+  #   footer = tagList(
+  #     modalButton(label = "Cancel"),
+  #     # init button as disabled
+  #     shinyBS::bsButton(inputId = "submit", label = "Submit", disabled = TRUE)  # this is a hack-fix until we get shinyJS
+  #     # actionButton(inputId = "submit", label = "Submit")
+  #   )
+  # ))
 
   output$item_preview <- renderText(expr = {
     #TODO disable button here via shinyjs once vailable

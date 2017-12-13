@@ -9,7 +9,16 @@ header <- dashboardHeader(
 
 sidebar <- dashboardSidebar(
   sidebarMenu(
-    menuItem("Items", tabName = "items", icon = icon("file-text-o")),
+    menuItem(
+      text = "Items",
+      tabName = "items",
+      icon = icon("file-text-o"),
+      menuSubItem(
+        text = "Concourse",
+        tabName = "concourse",
+        icon = icon("edit")
+      )
+    ),
     menuItem("People", tabName = "people", icon = icon("dashboard"))
   )
 )
@@ -20,6 +29,11 @@ body <- dashboardBody(
       tabName = "items",
       h2("Items stuff")
     ),
+
+      tabItem(
+        tabName = "concourse",
+        h2("concourse stuff")
+      ),
 
     tabItem(
       tabName = "people",

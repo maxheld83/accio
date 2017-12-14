@@ -29,7 +29,6 @@ df <- data.frame(english = c("foo", "bar"),
 
 body <- dashboardBody(
   shinyjs::useShinyjs(),  # odd but proper place to call this
-  rintrojs::introjsUI(),
 
   tabItems(
     tabItem(
@@ -80,7 +79,10 @@ body <- dashboardBody(
           box(
             title = "Enter and Edit",
             width = 12,
-            rhandsontable::rhandsontable(data = df)
+            rhandsontable::rhandsontable(
+              data = df,
+              strechH = "all"
+            )
           )
         )
       ),

@@ -1,5 +1,18 @@
 shinyServer(function(input, output, session) {
 
+  observe({
+    shinyjs::toggleElement(
+      id = "markup",
+      condition = input$type == "text"
+    )
+  })
+  observe({
+    shinyjs::toggleElement(
+      id = "babel",
+      condition = input$type == "text"
+    )
+  })
+
   # showModal(modalDialog(
   #   title = "Enter a new item",
   #   textInput(inputId = "item_handle",

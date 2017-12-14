@@ -2,6 +2,7 @@ library(pensieve)
 library(shiny)
 library(shinydashboard)
 library(shinyjs)
+library(rintrojs)
 
 header <- dashboardHeader(
   title = span(img(src = "logo.png", height = 40), "accio pensieve")
@@ -24,7 +25,8 @@ sidebar <- dashboardSidebar(
 )
 
 body <- dashboardBody(
-  useShinyjs(),  # odd but proper place to call this
+  shinyjs::useShinyjs(),  # odd but proper place to call this
+  rintrojs::introjsUI(),
 
   tabItems(
     tabItem(
@@ -51,12 +53,24 @@ body <- dashboardBody(
               label = "Markup",
               choices = list('Plain Text' = "plain"),
               selected = "plain"
+            )
+          ),
+          box(
+            title = "Languages",
+            selectizeInput(
+              inputId = "languages-babel",
+              label = NULL,
+              choices = pensieve:::latex$options$babel,
+              options = list(
+                maxItems = 100
+              )
             ),
             checkboxInput(
               inputId = "babel",
-              label = "Babel Language Support",
+              label = "Language(s) are Babel Languages",
               value = TRUE
-            )
+            ),
+            footer = "For text items, select valid Babel languages for enhanced typesetting."
           ),
           box(
             fileInput(

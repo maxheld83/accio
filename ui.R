@@ -1,4 +1,5 @@
 library(pensieve)
+library(rhandsontable)
 library(shiny)
 library(shinydashboard)
 library(shinyjs)
@@ -23,6 +24,9 @@ sidebar <- dashboardSidebar(
   )
 )
 
+df <- data.frame(english = c("foo", "bar"),
+                 german = c("zap", "zop"))
+
 body <- dashboardBody(
   shinyjs::useShinyjs(),  # odd but proper place to call this
   rintrojs::introjsUI(),
@@ -40,6 +44,8 @@ body <- dashboardBody(
         fluidRow(
           box(
             title = "Options",
+            footer = "For text items, select valid Babel languages for enhanced typesetting.",
+            width = 12,
             radioButtons(
               inputId = "type",
               label = "Item Type",
@@ -52,34 +58,29 @@ body <- dashboardBody(
               label = "Markup",
               choices = list('Plain Text' = "plain"),
               selected = "plain"
-            )
-          ),
-          box(
-            title = "Languages",
-            selectizeInput(
-              inputId = "languages-babel",
-              label = NULL,
-              choices = pensieve:::latex$options$babel,
-              options = list(
-                maxItems = 100
-              )
             ),
             checkboxInput(
               inputId = "babel",
               label = "Language(s) are Babel Languages",
               value = TRUE
             ),
-            footer = "For text items, select valid Babel languages for enhanced typesetting."
+            selectizeInput(
+              inputId = "languages-babel",
+              label = "Item Language(s)",
+              choices = pensieve:::latex$options$babel,
+              multiple = TRUE,
+              options = list(placeholder = "Select one or more languages.")
+            ),
+            textInput(
+              inputId = "languages-any",
+              label = "Item Language(s)",
+              value = "english, german"
+            )
           ),
           box(
-            fileInput(
-              inputId = "concourse",
-              label = "Upload",
-              multiple = FALSE,
-              accept = c(
-                "text/csv"
-              )
-            )
+            title = "Enter and Edit",
+            width = 12,
+            rhandsontable::rhandsontable(data = df)
           )
         )
       ),

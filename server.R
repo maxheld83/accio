@@ -7,10 +7,13 @@ shinyServer(function(input, output, session) {
     )
   })
   observe({
-    shinyjs::toggleElement(
-      id = "babel",
-      condition = input$type == "text"
-    )
+    if (input$babel) {
+      shinyjs::show(id = "languages-babel")
+      shinyjs::hide(id = "languages-any")
+    } else {
+      shinyjs::hide(id = "languages-babel")
+      shinyjs::show(id = "languages-any")
+    }
   })
 
   # showModal(modalDialog(

@@ -2,7 +2,6 @@ library(pensieve)
 library(shiny)
 library(shinydashboard)
 library(shinyjs)
-library(rintrojs)
 
 header <- dashboardHeader(
   title = span(img(src = "logo.png", height = 40), "accio pensieve")

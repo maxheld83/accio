@@ -1,5 +1,6 @@
 shinyServer(function(input, output, session) {
 
+  # concourse ui stuff
   observe({
     shinyjs::toggleElement(
       id = "markup",
@@ -8,13 +9,31 @@ shinyServer(function(input, output, session) {
   })
   observe({
     if (input$babel) {
-      shinyjs::show(id = "languages-babel")
-      shinyjs::hide(id = "languages-any")
+      shinyjs::show(id = "languages_babel")
+      shinyjs::hide(id = "languages_any")
     } else {
-      shinyjs::hide(id = "languages-babel")
-      shinyjs::show(id = "languages-any")
+      shinyjs::hide(id = "languages_babel")
+      shinyjs::show(id = "languages_any")
     }
   })
+#
+#   languages <- reactive({
+#     if (input$babel) {
+#       input$languages_babel
+#     } else {
+#       unlist(strsplit(x = input$languages_any, split = ","))
+#     }
+#   })
+#
+#   output$languages <- renderText({languages()})
+#
+#   reactive({
+#     concourse <- as_psConcourse(concourse = NA,
+#                                 type = input$type,
+#                                 markup = input$markup,
+#                                 babel = input$babel,
+#                                 languages = input)
+#   })
 
   # showModal(modalDialog(
   #   title = "Enter a new item",

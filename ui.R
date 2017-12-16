@@ -48,7 +48,10 @@ body <- dashboardBody(
             radioButtons(
               inputId = "type",
               label = "Item Type",
-              choices = list(Text = "text", Images = "image"),
+              choices = list(
+                Text = "text"
+                # Images = "image"
+              ),
               selected = "text",
               inline = TRUE
             ),
@@ -64,14 +67,14 @@ body <- dashboardBody(
               value = TRUE
             ),
             selectizeInput(
-              inputId = "languages-babel",
+              inputId = "languages_babel",
               label = "Item Language(s)",
               choices = pensieve:::latex$options$babel,
               multiple = TRUE,
               options = list(placeholder = "Select one or more languages.")
             ),
             textInput(
-              inputId = "languages-any",
+              inputId = "languages_any",
               label = "Item Language(s)",
               value = "english, german"
             )
@@ -79,6 +82,7 @@ body <- dashboardBody(
           box(
             title = "Enter and Edit",
             width = 12,
+            span(shiny::textOutput(outputId = "languages")),
             rhandsontable::rhandsontable(
               data = df,
               strechH = "all"

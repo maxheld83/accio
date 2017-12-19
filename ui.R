@@ -43,7 +43,6 @@ body <- dashboardBody(
         fluidRow(
           box(
             title = "Options",
-            footer = "For text items, select valid Babel languages for enhanced typesetting.",
             width = 12,
             radioButtons(
               inputId = "type",
@@ -61,22 +60,28 @@ body <- dashboardBody(
               choices = list('Plain Text' = "plain"),
               selected = "plain"
             ),
-            checkboxInput(
-              inputId = "babel",
-              label = "Language(s) are Babel Languages",
-              value = TRUE
-            ),
             selectizeInput(
               inputId = "languages_babel",
               label = "Item Language(s)",
               choices = pensieve:::latex$options$babel,
               multiple = TRUE,
+              selected = c("english", "ngerman"),
               options = list(placeholder = "Select one or more languages.")
             ),
             textInput(
               inputId = "languages_any",
               label = "Item Language(s)",
-              value = "english, german"
+              value = "klingon, elvish"
+            ),
+            tags$div(
+              "For text items, select valid",
+              tags$a(href = "https://ctan.org/pkg/babel", "Babel"),
+              "languages for enhanced typesetting."
+            ),
+            checkboxInput(
+              inputId = "babel",
+              label = "Language(s) are Babel Languages",
+              value = TRUE
             )
           ),
           box(

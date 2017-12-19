@@ -1,5 +1,4 @@
 library(pensieve)
-library(rhandsontable)
 library(shiny)
 library(shinydashboard)
 library(shinyjs)
@@ -24,9 +23,6 @@ sidebar <- dashboardSidebar(
   )
 )
 
-df <- data.frame(english = c("foo", "bar"),
-                 german = c("zap", "zop"))
-
 body <- dashboardBody(
   shinyjs::useShinyjs(),  # odd but proper place to call this
 
@@ -43,7 +39,7 @@ body <- dashboardBody(
         fluidRow(
           box(
             title = "Options",
-            width = 12,
+            width = 6,
             radioButtons(
               inputId = "type",
               label = "Item Type",
@@ -85,13 +81,34 @@ body <- dashboardBody(
             )
           ),
           box(
-            title = "Enter and Edit",
-            width = 12,
-            span(shiny::textOutput(outputId = "languages")),
-            rhandsontable::rhandsontable(
-              data = df,
-              strechH = "all"
-            )
+            title = "Upload CSV File",
+            width = 6,
+            # Input: Checkbox if file has header
+            checkboxInput(
+              inputId = "header",
+              label = "Ignore first row (may include language names for easier editing).",
+              value = TRUE
+            ),
+            radioButtons(
+              inputId = "quote",
+              label = "Place each item in",
+              choices = c('Double Quotes' = '"', 'Single Quotes' = "'"),
+              selected = '"',
+              inline = TRUE
+            ),
+            radioButtons(
+              inputId = "sep",
+              label = "Separate items by",
+              inline = TRUE,
+              choices = c(Comma = ",", Semicolon = ";"),
+              selected = ","
+            ),
+            tags$hr(),
+            tags$div(
+              "A comma-separated-values (CSV) file can be easily created and exported from Microsoft Excel or other spreadsheet programs.",
+              "Please make sure your CSV file looks like this:"
+            ),
+            tags$pre("foo")
           )
         )
       ),

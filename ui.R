@@ -86,16 +86,16 @@ body <- dashboardBody(
             # Input: Checkbox if file has header
             checkboxInput(
               inputId = "header",
-              label = "Ignore first row (may include language names for easier editing).",
+              label = "File includes first row with language names (will be ignored).",
               value = TRUE
             ),
-            radioButtons(
-              inputId = "quote",
-              label = "Place each item in",
-              choices = c('Double Quotes' = '"', 'Single Quotes' = "'"),
-              selected = '"',
-              inline = TRUE
-            ),
+            # radioButtons(
+            #   inputId = "quote",
+            #   label = "Place each item in",
+            #   choices = c('Double Quotes' = '"', 'Single Quotes' = "'"),
+            #   selected = '"',
+            #   inline = TRUE
+            # ),
             radioButtons(
               inputId = "sep",
               label = "Separate items by",
@@ -105,10 +105,10 @@ body <- dashboardBody(
             ),
             tags$hr(),
             tags$div(
-              "A comma-separated-values (CSV) file can be easily created and exported from Microsoft Excel or other spreadsheet programs.",
-              "Please make sure your CSV file looks like this:"
+              "Use Microsoft Excel or another spreadsheet program to create and export a comma-separated-values (CSV) file of full items.",
+              "The resulting CSV file should look like this:"
             ),
-            tags$pre("foo")
+            shiny::verbatimTextOutput(outputId = "example")
           )
         )
       ),

@@ -26,4 +26,27 @@ shinyServer(function(input, output, session) {
     }
   })
 
+  # create example csv
+  output$example <- shiny::renderPrint(
+    expr = {
+      items <- c(
+        foo = "full wording for 'foo' item in",
+        bar = "full wording for 'bar' item in"
+      )
+      m <- matrix(
+        data = paste(rep(items, length(languages())), languages()),
+        nrow = 2,
+        dimnames = list(items = names(items), languages = languages())
+      )
+      df <- data.frame(handle = rownames(m))
+      df <- cbind(df, as.data.frame(m))
+      write.table(
+        x = df,
+        file = "",
+        row.names = FALSE,
+        col.names = input$header,
+        sep = input$sep,
+        quote = TRUE
+      )
+    })
 })

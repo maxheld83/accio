@@ -52,7 +52,7 @@ body <- dashboardBody(
             ),
             radioButtons(
               inputId = "markup",
-              label = "Markup",
+              label = "Markup Language",
               choices = list('Plain Text' = "plain"),
               selected = "plain"
             ),
@@ -67,7 +67,8 @@ body <- dashboardBody(
             textInput(
               inputId = "languages_any",
               label = "Item Language(s)",
-              value = "klingon, elvish"
+              value = "klingon, elvish",
+              placeholder = "Enter one or more languages, separated by commas."
             ),
             tags$div(
               "For text items, select valid",
@@ -81,21 +82,13 @@ body <- dashboardBody(
             )
           ),
           box(
-            title = "Upload CSV File",
+            title = "Upload",
             width = 6,
-            # Input: Checkbox if file has header
             checkboxInput(
               inputId = "header",
               label = "File includes first row with language names (will be ignored).",
               value = TRUE
             ),
-            # radioButtons(
-            #   inputId = "quote",
-            #   label = "Place each item in",
-            #   choices = c('Double Quotes' = '"', 'Single Quotes' = "'"),
-            #   selected = '"',
-            #   inline = TRUE
-            # ),
             radioButtons(
               inputId = "sep",
               label = "Separate items by",
@@ -108,7 +101,19 @@ body <- dashboardBody(
               "Use Microsoft Excel or another spreadsheet program to create and export a comma-separated-values (CSV) file of full items.",
               "The resulting CSV file should look like this:"
             ),
-            shiny::verbatimTextOutput(outputId = "example")
+            verbatimTextOutput(outputId = "example"),
+            tags$hr(),
+            shiny::fileInput(
+              inputId = "file",
+              label = "CSV file",
+              multiple = FALSE,
+              accept = c(
+                "text/csv",
+                "text/comma-separated-values,text/plain",
+                ".csv"
+              ),
+              placeholder = "Choose a file from your computer."
+              )
           )
         )
       ),

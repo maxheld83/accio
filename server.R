@@ -49,4 +49,15 @@ shinyServer(function(input, output, session) {
         quote = TRUE
       )
     })
+
+   # upload and process actual csv
+  concourse <- reactive({
+    if (is.null(inFile)) {
+      return(NULL)
+    } else {
+      csv <- read.csv(inFile$datapath, header = input$header)
+    }
+
+  })
+
 })

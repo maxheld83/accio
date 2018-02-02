@@ -34,7 +34,11 @@ shinyServer(function(input, output, session) {
         bar = "full wording for 'bar' item in"
       )
       m <- matrix(
-        data = paste(rep(items, length(languages())), languages()),
+        data = apply(
+          X = expand.grid(items, languages(), stringsAsFactors = FALSE),
+          MARGIN = 1,
+          FUN = function(x) paste(x, collapse = " ")
+        ),
         nrow = 2,
         dimnames = list(items = names(items), languages = languages())
       )

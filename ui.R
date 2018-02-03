@@ -1,18 +1,33 @@
 library(pensieve)
+source("helpers.R")
 library(shiny)
 library(shinydashboard)
 library(shinyjs)
 
+# header ====
 header <- dashboardHeader(
   title = span(img(src = "logo.png", height = 40), "accio pensieve")
 )
 
+# sidebar ====
 sidebar <- dashboardSidebar(
   sidebarMenu(
+    menuItem(
+      text = "Study",
+      badgeLabel = "Demo",
+      badgeColor = "purple",
+      tabName = "study",
+      icon = icon(name = "cloud-upload", lib = "font-awesome")
+    ),
     menuItem(
       text = "Items",
       tabName = "items",
       icon = icon("file-text-o"),
+      menuItem(
+        text = "Foo",
+        badgeLabel = "zap",
+        icon = icon("file-text-o")
+      ),
       menuSubItem(
         text = "Concourse",
         tabName = "concourse",
@@ -23,10 +38,77 @@ sidebar <- dashboardSidebar(
   )
 )
 
+# body ====
 body <- dashboardBody(
   shinyjs::useShinyjs(),  # odd but proper place to call this
 
+  # study
   tabItems(
+    tabItem(
+      tabName = "study",
+
+      fluidRow(
+        box(
+          title = "Study",
+          footer = md("If you load a study, **all unsaved changes will be lost.**"),
+          radioButtons(
+            inputId = "source",
+            label = "Select source",
+            choices = c(Demo = "demo", New = "new", Upload = "upload"),
+            selected = "demo",
+            inline = TRUE
+          ),
+          conditionalPanel(
+            condition = "input.source == 'demo'",
+            selectizeInput(
+              inputId = "Study",
+              label = "Demo Study",
+              selected = "brown1980",
+              multiple = FALSE,
+              choices = c(
+                'Brown 1980' = "brown1980",
+                'Pfeiffer Held 2016' = "pfeifferetal2016"
+              ),
+              options = list(
+                create = FALSE,
+                createOnBlur = TRUE,
+                highlight = TRUE,
+                persist = FALSE,
+                openOnFocus = TRUE,
+                closeAfterSelect = TRUE
+              )
+            )
+          ),
+          conditionalPanel(
+            condition = "input.source == 'new'",
+            textInput(
+              inputId = "new-name",
+              label = "Study Name",
+              value = "",
+              placeholder = "Add a short file name for your new study."
+            )
+          ),
+          conditionalPanel(
+            condition = "input.source == 'upload'",
+            fileInput(
+              inputId = "rdata",
+              label = md("Upload a `*.rdata` file created by *pensieve*."),
+              multiple = FALSE,
+              placeholder =
+                "Only for `.rdata` files previously exported from pensieve."
+            ),
+            md("To upload your own raw data not touched by *pensieve*, select 'New' and continue in the app.")
+          ),
+          actionButton(
+            inputId = "load-study",
+            label = "Load",
+            icon = NULL,
+            width = '100%'
+          )
+        )
+      )
+    ),
+
     tabItem(
       tabName = "items",
       h2("Items stuff")
